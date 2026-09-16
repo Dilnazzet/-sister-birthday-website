@@ -210,9 +210,19 @@ p{
 .cover{
   text-align:center;
   align-items:center;
-  background-image:url("fon1.jpg");
+
+  background-image:
+    linear-gradient(
+      rgba(250,248,243,.55),
+      rgba(250,248,243,.55)
+    ),
+    url("fon1.jpg");
+
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
+
+  color:#1d1c1a;
 }
 
 .cover .date{
