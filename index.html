@@ -1,1 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>31 — Happy Birthday</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+    --cream: #f4f0e9;
+    --paper: #faf8f3;
+    --black: #1d1c1a;
+    --gray: #77736d;
+    --line: rgba(29,28,26,.18);
+    --accent: #9b7068;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+.page {
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner {
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+.number {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gray);
+}
+
+.small {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(155,112,104,.12), transparent 28%),
+        radial-gradient(circle at 85% 75%, rgba(155,112,104,.09), transparent 30%),
+        var(--cream);
+}
+
+.cover-top {
+    position: absolute;
+    top: 35px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cover-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.cover-subtitle {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.big31 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(180px, 32vw, 390px);
+    line-height: .65;
+    font-weight: 400;
+    letter-spacing: -15px;
+}
+
+.cover-title {
+    margin-top: 65px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 400;
+}
+
+.cover-date {
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+.corner {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 1px solid var(--line);
+}
+
+.corner.one {
+    top: 17%;
+    left: 7%;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner.two {
+    bottom: 13%;
+    right: 7%;
+    border-left: none;
+    border-top: none;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+.piece {
+    display: flex;
+    align-items: center;
+    background: var(--paper);
+}
+
+.piece-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 9%;
+    align-items: center;
+}
+
+.piece-text h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(50px, 7vw, 95px);
+    line-height: .85;
+    font-weight: 500;
+    margin: 20px 0 35px;
+}
+
+.piece-text p {
+    max-width: 450px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #504c47;
+}
+
+.fake-photo {
+    position: relative;
+    background: #d8d0c7;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #716b64;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.fake-photo::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(29,28,26,.2);
+}
+
+.photo-note {
+    position: absolute;
+    bottom: -20px;
+    left: -30px;
+    background: var(--cream);
+    padding: 16px 22px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    transform: rotate(-3deg);
+}
+
+.things {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.things-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 55px;
+}
+
+.things-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 9vw, 120px);
+    font-weight: 400;
+    line-height: .8;
+}
+
+.things-header p {
+    width: 240px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+.things-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.thing {
+    min-height: 115px;
+    padding: 22px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.thing span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    color: var(--accent);
+}
+
+.thing p {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.photos {
+    background: #e8e1d8;
+    padding: 70px 0;
+}
+
+.photos-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+.photos-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(55px, 8vw, 105px);
+    font-weight: 400;
+}
+
+.photo-wall {
+    position: relative;
+    height: 650px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.polaroid {
+    position: absolute;
+    background: #f9f7f1;
+    padding: 13px 13px 48px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.08);
+    width: 230px;
+}
+
+.polaroid .photo-box {
+    height: 260px;
+    background: #cfc5bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.polaroid p {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.p1 { left: 2%; top: 40px; transform: rotate(-6deg); }
+.p2 { left: 29%; top: 5px; transform: rotate(4deg); }
+.p3 { right: 4%; top: 80px; transform: rotate(-3deg); }
+.p4 { left: 18%; top: 320px; transform: rotate(5deg); }
+.p5 { right: 21%; top: 300px; transform: rotate(-5deg); }
+
+.video-page {
+    display: flex;
+    align-items: center;
+    background: var(--black);
+    color: var(--paper);
+}
+
+.video-content {
+    width: min(950px, 90%);
+    margin: auto;
+}
+
+.video-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.video-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 9vw, 120px);
+    font-weight: 400;
+    line-height: .8;
+}
+
+.video-frame {
+    aspect-ratio: 16/9;
+    background: #33312e;
+    border: 1px solid rgba(255,255,255,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play {
+    width: 75px;
+    height: 75px;
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    padding-left: 4px;
+}
+
+.video-caption {
+    margin-top: 18px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    color: #aaa59e;
+}
+
+.music {
+    padding: 90px 0;
+    background: var(--paper);
+}
+
+.music-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.music-title h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 10vw, 125px);
+    font-weight: 400;
+    line-height: .8;
+}
+
+.music-title p {
+    margin-top: 20px;
+    color: var(--gray);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.song-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.song {
+    display: grid;
+    grid-template-columns: 55px 70px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.song-number {
+    color: var(--gray);
+    font-size: 11px;
+}
+
+.album {
+    width: 60px;
+    height: 60px;
+    background: #d5cdc4;
+}
+
+.song-info h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.song-info p {
+    font-size: 10px;
+    color: var(--gray);
+    margin-top: 3px;
+}
+
+.song-time {
+    font-size: 11px;
+    color: var(--gray);
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd2c7;
+}
+
+.note-paper {
+    width: min(700px, 88%);
+    min-height: 650px;
+    background: #f8f4ec;
+    padding: 70px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+    position: relative;
+    transform: rotate(-1deg);
+}
+
+.note-paper h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.note-paper p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.signature {
+    margin-top: 40px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.tape {
+    position: absolute;
+    width: 110px;
+    height: 30px;
+    background: rgba(185,160,130,.45);
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(155,112,104,.13), transparent 30%),
+        var(--cream);
+}
+
+.card-content {
+    text-align: center;
+    max-width: 700px;
+}
+
+.card-content .tiny {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+.card-content h2 {
+    margin: 35px 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(60px, 9vw, 110px);
+    font-weight: 400;
+    line-height: .9;
+}
+
+.card-content p {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #55504a;
+}
+
+.hearts {
+    margin-top: 40px;
+    font-size: 20px;
+    letter-spacing: 18px;
+}
+
+.secret {
+    background: var(--black);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secret-content {
+    text-align: center;
+}
+
+.secret-small {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #96918a;
+}
+
+.secret h2 {
+    margin: 35px 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(80px, 13vw, 170px);
+    font-weight: 400;
+    line-height: .75;
+}
+
+.secret-text {
+    max-width: 500px;
+    margin: auto;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #b7b1a9;
+}
+
+.reveal-button {
+    margin-top: 45px;
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(255,255,255,.35);
+    padding: 14px 28px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.secret-message {
+    display: none;
+    margin: 35px auto 0;
+    max-width: 500px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    line-height: 1.4;
+}
+
+.dots {
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: .45;
+    transition: .3s;
+}
+
+.dot.active {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.next-btn {
+    position: absolute;
+    bottom: 28px;
+    right: 5%;
+    z-index: 10;
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+
+    .piece-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .piece {
+        padding: 70px 0;
+    }
+
+    .piece-text h2 {
+        font-size: 65px;
+    }
+
+    .fake-photo {
+        width: 75%;
+        margin: auto;
+    }
+
+    .things {
+        padding: 70px 0;
+    }
+
+    .things-header {
+        display: block;
+    }
+
+    .things-header p {
+        margin-top: 25px;
+    }
+
+    .things-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo-wall {
+        height: 570px;
+        transform: scale(.9);
+        transform-origin: top center;
+    }
+
+    .polaroid {
+        width: 175px;
+    }
+
+    .polaroid .photo-box {
+        height: 195px;
+    }
+
+    .p1 { left: 0; }
+    .p2 { left: 25%; }
+    .p3 { right: 0; }
+    .p4 { left: 8%; top: 300px; }
+    .p5 { right: 8%; top: 320px; }
+
+    .song {
+        grid-template-columns: 30px 55px 1fr;
+        gap: 12px;
+    }
+
+    .album {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-info h3 {
+        font-size: 21px;
+    }
+
+    .song-time {
+        display: none;
+    }
+
+    .note-paper {
+        padding: 45px 30px;
+        min-height: 550px;
+    }
+
+    .note-paper h2 {
+        font-size: 30px;
+    }
+
+    .note-paper p {
+        font-size: 19px;
+    }
+
+    .dots {
+        right: 10px;
+    }
+
+    .big31 {
+        font-size: 210px;
+    }
+
+    .cover-title {
+        font-size: 31px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="dots">
+    <div class="dot active" onclick="goTo(0)"></div>
+    <div class="dot" onclick="goTo(1)"></div>
+    <div class="dot" onclick="goTo(2)"></div>
+    <div class="dot" onclick="goTo(3)"></div>
+    <div class="dot" onclick="goTo(4)"></div>
+    <div class="dot" onclick="goTo(5)"></div>
+    <div class="dot" onclick="goTo(6)"></div>
+    <div class="dot" onclick="goTo(7)"></div>
+    <div class="dot" onclick="goTo(8)"></div>
+</div>
+
+<section class="page cover">
+
+    <div class="cover-top">
+        <span class="number">01 / 09</span>
+        <span class="small">for my sister</span>
+    </div>
+
+    <div class="corner one"></div>
+    <div class="corner two"></div>
+
+    <div class="cover-content">
+        <div class="cover-subtitle">a little website made with love</div>
+
+        <div class="big31">31</div>
+
+        <div class="cover-title">Happy Birthday, Sister</div>
+
+        <div class="cover-date">19 september · 1995 — ∞</div>
+    </div>
+
+    <div class="scroll">scroll to begin ↓</div>
+
+    <button class="next-btn" onclick="goTo(1)">next →</button>
+</section>
+
+<section class="page piece">
+
+    <div class="inner piece-grid">
+
+        <div class="piece-text">
+            <div class="number">02 / 09</div>
+
+            <h2>
+                A little<br>
+                piece of<br>
+                you.
+            </h2>
+
+            <p>
+                There are people who become a part of your life
+                so naturally that you can't remember what it
+                looked like before them.
+            </p>
+        </div>
+
+        <div class="fake-photo">
+            PHOTO OF HER
+
+            <div class="photo-note">
+                this is her ♡
+            </div>
+        </div>
+
+    </div>
+
+    <button class="next-btn" onclick="goTo(2)">next →</button>
+</section>
+
+<section class="page things">
+
+    <div class="inner">
+
+        <div class="things-header">
+            <div>
+                <div class="number">03 / 09</div>
+                <h2>31 things<br>about you.</h2>
+            </div>
+
+            <p>
+                31 little things that make you,
+                well... you.
+            </p>
+        </div>
+
+        <div class="things-grid">
+
+            <div class="thing"><span>01</span><p>Your laugh</p></div>
+            <div class="thing"><span>02</span><p>The way you care</p></div>
+            <div class="thing"><span>03</span><p>Your patience</p></div>
+            <div class="thing"><span>04</span><p>Your little habits</p></div>
+            <div class="thing"><span>05</span><p>Your sense of humour</p></div>
+            <div class="thing"><span>06</span><p>The way you say my name</p></div>
+            <div class="thing"><span>07</span><p>Your kindness</p></div>
+            <div class="thing"><span>08</span><p>Your stubbornness</p></div>
+            <div class="thing"><span>09</span><p>Your beautiful heart</p></div>
+            <div class="thing"><span>10</span><p>Your honesty</p></div>
+            <div class="thing"><span>11</span><p>Your strength</p></div>
+            <div class="thing"><span>12</span><p>The way you love</p></div>
+            <div class="thing"><span>13</span><p>Your voice</p></div>
+            <div class="thing"><span>14</span><p>Your eyes</p></div>
+            <div class="thing"><span>15</span><p>Your energy</p></div>
+            <div class="thing"><span>16</span><p>Your little jokes</p></div>
+            <div class="thing"><span>17</span><p>Your warmth</p></div>
+            <div class="thing"><span>18</span><p>Your confidence</p></div>
+            <div class="thing"><span>19</span><p>Your dreams</p></div>
+            <div class="thing"><span>20</span><p>Your courage</p></div>
+            <div class="thing"><span>21</span><p>Your weird side</p></div>
+            <div class="thing"><span>22</span><p>Your favourite things</p></div>
+            <div class="thing"><span>23</span><p>Your stories</p></div>
+            <div class="thing"><span>24</span><p>Your hugs</p></div>
+            <div class="thing"><span>25</span><p>Your advice</p></div>
+            <div class="thing"><span>26</span><p>Your smile</p></div>
+            <div class="thing"><span>27</span><p>Your personality</p></div>
+            <div class="thing"><span>28</span><p>Your dreams</p></div>
+            <div class="thing"><span>29</span><p>Your memories</p></div>
+            <div class="thing"><span>30</span><p>Everything you are</p></div>
+            <div class="thing"><span>31</span><p>Simply being you.</p></div>
+
+        </div>
+    </div>
+
+    <button class="next-btn" onclick="goTo(3)">next →</button>
+</section>
+
+<section class="page photos">
+
+    <div class="inner">
+
+        <div class="photos-header">
+            <div>
+                <div class="number">04 / 09</div>
+                <h2>our<br>memories.</h2>
+            </div>
+
+            <div class="small">little pieces of us</div>
+        </div>
+
+        <div class="photo-wall">
+
+            <div class="polaroid p1">
+                <div class="photo-box">PHOTO 01</div>
+                <p>remember this?</p>
+            </div>
+
+            <div class="polaroid p2">
+                <div class="photo-box">PHOTO 02</div>
+                <p>one of my favourites</p>
+            </div>
+
+            <div class="polaroid p3">
+                <div class="photo-box">PHOTO 03</div>
+                <p>us ♡</p>
+            </div>
+
+            <div class="polaroid p4">
+                <div class="photo-box">PHOTO 04</div>
+                <p>another little memory</p>
+            </div>
+
+            <div class="polaroid p5">
+                <div class="photo-box">PHOTO 05</div>
+                <p>always us</p>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="next-btn" onclick="goTo(4)">next →</button>
+</section>
+
+<section class="page video-page">
+
+    <div class="video-content">
+
+        <div class="video-heading">
+            <div>
+                <div class="number">05 / 09</div>
+                <h2>A little<br>video.</h2>
+            </div>
+
+            <div class="small">press play</div>
+        </div>
+
+        <div class="video-frame">
+            <div class="play">▶</div>
+        </div>
+
+        <div class="video-caption">
+            a little something we made just for you.
+        </div>
+    </div>
+
+    <button class="next-btn" onclick="goTo(5)">next →</button>
+</section>
+
+<section class="page music">
+
+    <div class="inner">
+
+        <div class="music-title">
+            <div class="number">06 / 09</div>
+            <h2>your soundtrack.</h2>
+            <p>songs that somehow remind us of you</p>
+        </div>
+
+        <div class="song-list">
+
+            <div class="song">
+                <div class="song-number">01</div>
+                <div class="album"></div>
+                <div class="song-info">
+                    <h3>Your Favourite Song</h3>
+                    <p>Artist Name</p>
+                </div>
+                <div class="song-time">03:42</div>
+            </div>
+
+            <div class="song">
+                <div class="song-number">02</div>
+                <div class="album"></div>
+                <div class="song-info">
+                    <h3>A Song For You</h3>
+                    <p>Artist Name</p>
+                </div>
+                <div class="song-time">04:01</div>
+            </div>
+
+            <div class="song">
+                <div class="song-number">03</div>
+                <div class="album"></div>
+                <div class="song-info">
+                    <h3>Our Little Song</h3>
+                    <p>Artist Name</p>
+                </div>
+                <div class="song-time">03:28</div>
+            </div>
+
+            <div class="song">
+                <div class="song-number">04</div>
+                <div class="album"></div>
+                <div class="song-info">
+                    <h3>Another Favourite</h3>
+                    <p>Artist Name</p>
+                </div>
+                <div class="song-time">03:56</div>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="next-btn" onclick="goTo(6)">next →</button>
+</section>
+
+<section class="page note">
+
+    <div class="note-paper">
+
+        <div class="tape"></div>
+
+        <div class="number">07 / 09</div>
+
+        <h2>A note from your sisters.</h2>
+
+        <p>
+            Dear sister,<br><br>
+
+            sometimes we don't say enough how much
+            you mean to us. So today we wanted to leave
+            you something that you can come back to
+            whenever you need it.
+            <br><br>
+
+            We hope you always remember how loved you are,
+            how much you matter, and how many people are
+            quietly cheering for you.
+            <br><br>
+
+            Happy birthday.
+        </p>
+
+        <div class="signature">
+            with love,<br>
+            your sisters ♡
+        </div>
+
+    </div>
+
+    <button class="next-btn" onclick="goTo(7)">next →</button>
+</section>
+
+<section class="page card">
+
+    <div class="card-content">
+
+        <div class="number">08 / 09</div>
+
+        <div class="tiny">just because</div>
+
+        <h2>
+            You deserve<br>
+            good things.
+        </h2>
+
+        <p>
+            soft mornings, peaceful nights,
+            people who choose you,
+            dreams that come true,
+            and a life that feels like yours.
+        </p>
+
+        <div class="hearts">♡ ♡ ♡</div>
+
+    </div>
+
+    <button class="next-btn" onclick="goTo(8)">next →</button>
+</section>
+
+<section class="page secret">
+
+    <div class="secret-content">
+
+        <div class="secret-small">09 / 09 · one last thing</div>
+
+        <h2>THE<br>SECRET.</h2>
+
+        <div class="secret-text">
+            You thought this was just a little birthday website...
+            but there is one more thing waiting for you.
+        </div>
+
+        <button class="reveal-button" onclick="revealSecret()">
+            open the secret
+        </button>
+
+        <div class="secret-message" id="secretMessage">
+            This little website will always belong to you.
+            <br><br>
+            Come back whenever you need a reminder
+            of how loved you are.
+            <br><br>
+            Happy 31st, sister. ♡
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const pages = document.querySelectorAll(".page");
+const dots = document.querySelectorAll(".dot");
+
+function goTo(index) {
+    pages[index].scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function updateDots() {
+
+    let current = 0;
+    let smallest = Infinity;
+
+    pages.forEach((page, index) => {
+
+        const distance =
+            Math.abs(page.getBoundingClientRect().top);
+
+        if (distance < smallest) {
+            smallest = distance;
+            current = index;
+        }
+
+    });
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === current);
+    });
+}
+
+window.addEventListener("scroll", updateDots);
+
+function revealSecret() {
+
+    const message = document.getElementById("secretMessage");
+    const button = document.querySelector(".reveal-button");
+
+    message.style.display = "block";
+    button.style.display = "none";
+}
+
+document.addEventListener("keydown", function(e) {
+
+    let current = 0;
+
+    pages.forEach((page, index) => {
+
+        if (Math.abs(page.getBoundingClientRect().top) < 100) {
+            current = index;
+        }
+
+    });
+
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        if (current < pages.length - 1) {
+            goTo(current + 1);
+        }
+    }
+
+    if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        if (current > 0) {
+            goTo(current - 1);
+        }
+    }
+
+});
+
+</script>
+
+</body>
+</html>
