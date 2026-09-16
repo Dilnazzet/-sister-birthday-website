@@ -1,1151 +1,1689 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>31 — Happy Birthday</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
-:root {
-    --cream: #f4f0e9;
-    --paper: #faf8f3;
-    --black: #1d1c1a;
-    --gray: #77736d;
-    --line: rgba(29,28,26,.18);
-    --accent: #9b7068;
+:root{
+  --cream:#f4f0e9;
+  --paper:#faf8f3;
+  --black:#1d1c1a;
+  --gray:#77736d;
+  --line:rgba(29,28,26,.16);
+  --accent:#9b7068;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+  box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-    background: var(--cream);
-    color: var(--black);
-    font-family: "DM Sans", sans-serif;
-    overflow-x: hidden;
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--black);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
 }
 
-.page {
-    min-height: 100svh;
-    position: relative;
-    overflow: hidden;
-}
+/* ---------------- LANGUAGE ---------------- */
 
-.inner {
-    width: min(1100px, 90%);
-    margin: auto;
-}
+.lang{
+  position:fixed;
+  top:22px;
+  right:25px;
+  z-index:100;
 
-.number {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--gray);
-}
+  background:rgba(250,248,243,.82);
+  backdrop-filter:blur(10px);
 
-.small {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+  border:1px solid var(--line);
+  border-radius:30px;
 
-.cover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(155,112,104,.12), transparent 28%),
-        radial-gradient(circle at 85% 75%, rgba(155,112,104,.09), transparent 30%),
-        var(--cream);
-}
+  padding:7px;
 
-.cover-top {
-    position: absolute;
-    top: 35px;
-    left: 5%;
-    right: 5%;
-    display: flex;
-    justify-content: space-between;
+  display:flex;
+  gap:3px;
 }
 
-.cover-content {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
+.lang button{
+  border:0;
+  background:transparent;
 
-.cover-subtitle {
-    font-size: 12px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
+  padding:7px 11px;
 
-.big31 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(180px, 32vw, 390px);
-    line-height: .65;
-    font-weight: 400;
-    letter-spacing: -15px;
-}
+  border-radius:20px;
 
-.cover-title {
-    margin-top: 65px;
-    font-family: "Playfair Display", serif;
-    font-size: clamp(30px, 5vw, 58px);
-    font-weight: 400;
-}
+  font:500 11px "DM Sans",sans-serif;
 
-.cover-date {
-    margin-top: 18px;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gray);
-}
-
-.corner {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    border: 1px solid var(--line);
-}
+  cursor:pointer;
 
-.corner.one {
-    top: 17%;
-    left: 7%;
-    border-right: none;
-    border-bottom: none;
+  color:var(--gray);
 }
 
-.corner.two {
-    bottom: 13%;
-    right: 7%;
-    border-left: none;
-    border-top: none;
+.lang button.active{
+  background:var(--black);
+  color:white;
 }
 
-.scroll {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray);
-}
-
-.piece {
-    display: flex;
-    align-items: center;
-    background: var(--paper);
-}
+/* ---------------- NAVIGATION ---------------- */
 
-.piece-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 9%;
-    align-items: center;
-}
+.dots{
+  position:fixed;
 
-.piece-text h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(50px, 7vw, 95px);
-    line-height: .85;
-    font-weight: 500;
-    margin: 20px 0 35px;
-}
+  left:25px;
+  top:50%;
 
-.piece-text p {
-    max-width: 450px;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.7;
-    color: #504c47;
-}
+  transform:translateY(-50%);
 
-.fake-photo {
-    position: relative;
-    background: #d8d0c7;
-    aspect-ratio: 4/5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #716b64;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
+  z-index:90;
 
-.fake-photo::before {
-    content: "";
-    position: absolute;
-    inset: 15px;
-    border: 1px solid rgba(29,28,26,.2);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-.photo-note {
-    position: absolute;
-    bottom: -20px;
-    left: -30px;
-    background: var(--cream);
-    padding: 16px 22px;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    transform: rotate(-3deg);
-}
+.dot{
+  width:6px;
+  height:6px;
 
-.things {
-    padding: 80px 0;
-    background: var(--cream);
-}
+  border-radius:50%;
 
-.things-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 55px;
-}
+  border:0;
+  padding:0;
 
-.things-header h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(65px, 9vw, 120px);
-    font-weight: 400;
-    line-height: .8;
-}
+  background:rgba(29,28,26,.25);
 
-.things-header p {
-    width: 240px;
-    font-size: 12px;
-    line-height: 1.7;
-    color: var(--gray);
-}
+  cursor:pointer;
 
-.things-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+  transition:.25s;
 }
 
-.thing {
-    min-height: 115px;
-    padding: 22px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
+.dot.active{
+  height:24px;
+  border-radius:8px;
 
-.thing span {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 27px;
-    color: var(--accent);
+  background:var(--black);
 }
 
-.thing p {
-    margin-top: 10px;
-    font-size: 12px;
-    line-height: 1.5;
-}
+/* ---------------- GENERAL ---------------- */
 
-.photos {
-    background: #e8e1d8;
-    padding: 70px 0;
-}
+.screen{
+  min-height:100svh;
 
-.photos-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 45px;
-}
+  padding:42px 7vw 70px;
 
-.photos-header h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(55px, 8vw, 105px);
-    font-weight: 400;
-}
+  position:relative;
 
-.photo-wall {
-    position: relative;
-    height: 650px;
-    max-width: 950px;
-    margin: auto;
-}
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
-.polaroid {
-    position: absolute;
-    background: #f9f7f1;
-    padding: 13px 13px 48px;
-    box-shadow: 0 12px 35px rgba(0,0,0,.08);
-    width: 230px;
+  overflow:hidden;
 }
 
-.polaroid .photo-box {
-    height: 260px;
-    background: #cfc5bb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #777;
-    font-size: 10px;
-    letter-spacing: 2px;
-}
+.eyebrow{
+  font-size:10px;
 
-.polaroid p {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 13px;
-}
+  letter-spacing:.22em;
 
-.p1 { left: 2%; top: 40px; transform: rotate(-6deg); }
-.p2 { left: 29%; top: 5px; transform: rotate(4deg); }
-.p3 { right: 4%; top: 80px; transform: rotate(-3deg); }
-.p4 { left: 18%; top: 320px; transform: rotate(5deg); }
-.p5 { right: 21%; top: 300px; transform: rotate(-5deg); }
+  text-transform:uppercase;
 
-.video-page {
-    display: flex;
-    align-items: center;
-    background: var(--black);
-    color: var(--paper);
-}
+  color:var(--gray);
 
-.video-content {
-    width: min(950px, 90%);
-    margin: auto;
+  margin-bottom:18px;
 }
 
-.video-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 35px;
-}
+h1,
+h2,
+h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
 
-.video-heading h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(65px, 9vw, 120px);
-    font-weight: 400;
-    line-height: .8;
+  margin:0;
 }
 
-.video-frame {
-    aspect-ratio: 16/9;
-    background: #33312e;
-    border: 1px solid rgba(255,255,255,.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+h1{
+  font-size:clamp(90px,17vw,220px);
+  line-height:.75;
 }
 
-.play {
-    width: 75px;
-    height: 75px;
-    border: 1px solid rgba(255,255,255,.6);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    padding-left: 4px;
+h2{
+  font-size:clamp(48px,8vw,105px);
+  line-height:.9;
 }
 
-.video-caption {
-    margin-top: 18px;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    color: #aaa59e;
+h3{
+  font-size:clamp(30px,4vw,54px);
+  line-height:1;
 }
 
-.music {
-    padding: 90px 0;
-    background: var(--paper);
+p{
+  line-height:1.7;
+  color:var(--gray);
+  max-width:650px;
 }
 
-.music-title {
-    text-align: center;
-    margin-bottom: 60px;
-}
+/* ---------------- NEXT BUTTON ---------------- */
 
-.music-title h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(65px, 10vw, 125px);
-    font-weight: 400;
-    line-height: .8;
-}
+.next{
+  position:absolute;
 
-.music-title p {
-    margin-top: 20px;
-    color: var(--gray);
-    font-size: 12px;
-    letter-spacing: 2px;
-}
+  bottom:28px;
+  left:50%;
+
+  transform:translateX(-50%);
 
-.song-list {
-    max-width: 800px;
-    margin: auto;
+  border:0;
+
+  background:none;
+
+  font:500 10px "DM Sans",sans-serif;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  color:var(--gray);
+
+  cursor:pointer;
 }
 
-.song {
-    display: grid;
-    grid-template-columns: 55px 70px 1fr auto;
-    gap: 20px;
-    align-items: center;
-    padding: 17px 0;
-    border-bottom: 1px solid var(--line);
+.next:after{
+  content:" ↓";
+  color:var(--black);
 }
 
-.song-number {
-    color: var(--gray);
-    font-size: 11px;
+/* ---------------- COVER ---------------- */
+
+.cover{
+  text-align:center;
+  align-items:center;
 }
+
+.cover .date{
+  margin-top:35px;
+
+  font-size:10px;
 
-.album {
-    width: 60px;
-    height: 60px;
-    background: #d5cdc4;
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+
+  color:var(--gray);
 }
+
+.cover .tiny{
+  margin-top:65px;
+
+  font-family:"Playfair Display",serif;
 
-.song-info h3 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 25px;
-    font-weight: 500;
+  font-style:italic;
+
+  color:var(--accent);
 }
+
+/* ---------------- SPLIT ---------------- */
+
+.split{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:7vw;
 
-.song-info p {
-    font-size: 10px;
-    color: var(--gray);
-    margin-top: 3px;
+  align-items:center;
 }
 
-.song-time {
-    font-size: 11px;
-    color: var(--gray);
+.photo-placeholder{
+  min-height:55vh;
+
+  background:var(--paper);
+
+  border:1px solid var(--line);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:var(--gray);
+
+  font-size:10px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
 }
+
+/* ---------------- 31 FACTS ---------------- */
 
-.note {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ddd2c7;
+.facts{
+  margin-top:30px;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:8px;
+
+  max-width:850px;
 }
+
+.fact{
+  border-top:1px solid var(--line);
 
-.note-paper {
-    width: min(700px, 88%);
-    min-height: 650px;
-    background: #f8f4ec;
-    padding: 70px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.08);
-    position: relative;
-    transform: rotate(-1deg);
+  padding:12px 4px 16px;
+
+  font-size:12px;
+
+  color:var(--gray);
 }
+
+.fact b{
+  color:var(--black);
+
+  font-family:"Cormorant Garamond",serif;
+
+  font-size:23px;
 
-.note-paper h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    font-weight: 400;
-    margin-bottom: 40px;
+  font-weight:500;
 }
 
-.note-paper p {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 22px;
-    line-height: 1.6;
+/* ---------------- GALLERY ---------------- */
+
+.gallery-wrap{
+  margin-top:40px;
 }
+
+.gallery{
+  position:relative;
+
+  height:min(58vh,560px);
+
+  background:var(--paper);
 
-.signature {
-    margin-top: 40px;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 20px;
+  border:1px solid var(--line);
+
+  overflow:hidden;
+
+  touch-action:pan-y;
 }
+
+.slide{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
 
-.tape {
-    position: absolute;
-    width: 110px;
-    height: 30px;
-    background: rgba(185,160,130,.45);
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%) rotate(2deg);
+  align-items:center;
+  justify-content:center;
+
+  padding:30px;
+
+  opacity:0;
+
+  transform:translateX(100%);
+
+  transition:
+    transform .5s cubic-bezier(.2,.75,.2,1),
+    opacity .35s ease;
 }
 
-.card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(155,112,104,.13), transparent 30%),
-        var(--cream);
+.slide.active{
+  opacity:1;
+
+  transform:translateX(0);
 }
+
+.slide.prev{
+  opacity:0;
 
-.card-content {
-    text-align: center;
-    max-width: 700px;
+  transform:translateX(-100%);
 }
 
-.card-content .tiny {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gray);
+.slide img{
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
 }
+
+.placeholder-photo{
+  width:100%;
+  height:100%;
+
+  display:flex;
 
-.card-content h2 {
-    margin: 35px 0;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(60px, 9vw, 110px);
-    font-weight: 400;
-    line-height: .9;
+  align-items:center;
+  justify-content:center;
+
+  color:var(--gray);
+
+  font-size:10px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
 }
 
-.card-content p {
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 20px;
-    line-height: 1.7;
-    color: #55504a;
+.gallery-controls{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  margin-top:13px;
 }
+
+.gallery-btn{
+  border:1px solid var(--line);
+
+  background:transparent;
+
+  border-radius:50%;
 
-.hearts {
-    margin-top: 40px;
-    font-size: 20px;
-    letter-spacing: 18px;
+  width:38px;
+  height:38px;
+
+  cursor:pointer;
+
+  font-size:18px;
 }
 
-.secret {
-    background: var(--black);
-    color: var(--paper);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.counter{
+  font-size:10px;
+
+  letter-spacing:.15em;
+
+  color:var(--gray);
 }
+
+.people-note{
+  font-size:11px;
 
-.secret-content {
-    text-align: center;
+  color:var(--gray);
+
+  margin-top:12px;
 }
+
+/* ---------------- VIDEO ---------------- */
+
+.video{
+  margin-top:35px;
+
+  height:min(55vh,560px);
+
+  background:var(--black);
 
-.secret-small {
-    font-size: 10px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #96918a;
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+
+  position:relative;
 }
+
+.play{
+  width:74px;
+  height:74px;
 
-.secret h2 {
-    margin: 35px 0;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(80px, 13vw, 170px);
-    font-weight: 400;
-    line-height: .75;
+  border:1px solid rgba(255,255,255,.55);
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
 }
+
+/* ---------------- SONGS ---------------- */
 
-.secret-text {
-    max-width: 500px;
-    margin: auto;
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.7;
-    color: #b7b1a9;
+.song-list{
+  margin-top:35px;
+
+  border-top:1px solid var(--line);
+
+  max-width:800px;
 }
+
+.song{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
 
-.reveal-button {
-    margin-top: 45px;
-    background: transparent;
-    color: var(--paper);
-    border: 1px solid rgba(255,255,255,.35);
-    padding: 14px 28px;
-    font-family: "DM Sans", sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
+  border-bottom:1px solid var(--line);
+
+  padding:18px 4px;
 }
+
+.song span:first-child{
+  font-family:"Cormorant Garamond",serif;
 
-.secret-message {
-    display: none;
-    margin: 35px auto 0;
-    max-width: 500px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 27px;
-    line-height: 1.4;
+  font-size:27px;
 }
 
-.dots {
-    position: fixed;
-    right: 22px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
+.song span:last-child{
+  font-size:10px;
+
+  color:var(--gray);
+
+  letter-spacing:.12em;
 }
+
+/* ---------------- LETTER ---------------- */
 
-.dot {
-    width: 7px;
-    height: 7px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: .45;
-    transition: .3s;
+.note{
+  max-width:700px;
+
+  font-family:"Playfair Display",serif;
+
+  font-size:clamp(22px,3vw,36px);
+
+  line-height:1.5;
+
+  color:var(--black);
 }
 
-.dot.active {
-    opacity: 1;
-    transform: scale(1.4);
+.card{
+  margin-top:35px;
+
+  border:1px solid var(--line);
+
+  background:var(--paper);
+
+  padding:55px;
+
+  max-width:850px;
 }
+
+/* ---------------- SECRET ---------------- */
 
-.next-btn {
-    position: absolute;
-    bottom: 28px;
-    right: 5%;
-    z-index: 10;
-    border: none;
-    background: none;
-    color: inherit;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
+.secret{
+  text-align:center;
+
+  align-items:center;
 }
+
+.secret button{
+  margin-top:45px;
+
+  border:1px solid var(--black);
+
+  background:var(--black);
+
+  color:white;
 
-@media (max-width: 700px) {
+  padding:14px 25px;
 
-    .piece-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
+  font:500 10px "DM Sans",sans-serif;
 
-    .piece {
-        padding: 70px 0;
-    }
+  letter-spacing:.16em;
 
-    .piece-text h2 {
-        font-size: 65px;
-    }
+  text-transform:uppercase;
 
-    .fake-photo {
-        width: 75%;
-        margin: auto;
-    }
+  cursor:pointer;
+}
+
+.secret-message{
+  max-width:650px;
 
-    .things {
-        padding: 70px 0;
-    }
+  margin-top:35px;
 
-    .things-header {
-        display: block;
-    }
+  display:none;
 
-    .things-header p {
-        margin-top: 25px;
-    }
+  font-family:"Playfair Display",serif;
 
-    .things-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  font-size:clamp(25px,4vw,45px);
 
-    .photo-wall {
-        height: 570px;
-        transform: scale(.9);
-        transform-origin: top center;
-    }
+  line-height:1.35;
+}
 
-    .polaroid {
-        width: 175px;
-    }
+.secret-message.show{
+  display:block;
+}
 
-    .polaroid .photo-box {
-        height: 195px;
-    }
+/* ---------------- MOBILE ---------------- */
 
-    .p1 { left: 0; }
-    .p2 { left: 25%; }
-    .p3 { right: 0; }
-    .p4 { left: 8%; top: 300px; }
-    .p5 { right: 8%; top: 320px; }
+@media(max-width:700px){
 
-    .song {
-        grid-template-columns: 30px 55px 1fr;
-        gap: 12px;
-    }
+  .screen{
+    padding:35px 11vw 65px;
+  }
 
-    .album {
-        width: 50px;
-        height: 50px;
-    }
+  .dots{
+    left:12px;
+  }
 
-    .song-info h3 {
-        font-size: 21px;
-    }
+  .lang{
+    top:14px;
+    right:14px;
+  }
 
-    .song-time {
-        display: none;
-    }
+  .split{
+    grid-template-columns:1fr;
 
-    .note-paper {
-        padding: 45px 30px;
-        min-height: 550px;
-    }
+    gap:30px;
+  }
 
-    .note-paper h2 {
-        font-size: 30px;
-    }
+  .photo-placeholder{
+    min-height:35vh;
+  }
 
-    .note-paper p {
-        font-size: 19px;
-    }
+  .facts{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .dots {
-        right: 10px;
-    }
+  .gallery{
+    height:55vh;
+  }
 
-    .big31 {
-        font-size: 210px;
-    }
+  .card{
+    padding:30px 22px;
+  }
 
-    .cover-title {
-        font-size: 31px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="dots">
-    <div class="dot active" onclick="goTo(0)"></div>
-    <div class="dot" onclick="goTo(1)"></div>
-    <div class="dot" onclick="goTo(2)"></div>
-    <div class="dot" onclick="goTo(3)"></div>
-    <div class="dot" onclick="goTo(4)"></div>
-    <div class="dot" onclick="goTo(5)"></div>
-    <div class="dot" onclick="goTo(6)"></div>
-    <div class="dot" onclick="goTo(7)"></div>
-    <div class="dot" onclick="goTo(8)"></div>
+
+<!-- LANGUAGE SWITCHER -->
+
+<div class="lang">
+
+  <button
+    id="kkBtn"
+    class="active"
+    onclick="setLanguage('kk')">
+    ҚАЗ
+  </button>
+
+  <button
+    id="ruBtn"
+    onclick="setLanguage('ru')">
+    RU
+  </button>
+
 </div>
 
-<section class="page cover">
 
-    <div class="cover-top">
-        <span class="number">01 / 09</span>
-        <span class="small">for my sister</span>
-    </div>
+<!-- SIDE NAVIGATION -->
 
-    <div class="corner one"></div>
-    <div class="corner two"></div>
+<nav class="dots">
 
-    <div class="cover-content">
-        <div class="cover-subtitle">a little website made with love</div>
+  <button class="dot active" onclick="goTo(0)"></button>
+  <button class="dot" onclick="goTo(1)"></button>
+  <button class="dot" onclick="goTo(2)"></button>
+  <button class="dot" onclick="goTo(3)"></button>
+  <button class="dot" onclick="goTo(4)"></button>
+  <button class="dot" onclick="goTo(5)"></button>
+  <button class="dot" onclick="goTo(6)"></button>
+  <button class="dot" onclick="goTo(7)"></button>
+  <button class="dot" onclick="goTo(8)"></button>
 
-        <div class="big31">31</div>
+</nav>
 
-        <div class="cover-title">Happy Birthday, Sister</div>
 
-        <div class="cover-date">19 september · 1995 — ∞</div>
-    </div>
+<!-- =========================
+     01 COVER
+========================= -->
 
-    <div class="scroll">scroll to begin ↓</div>
+<section class="screen cover" id="s0">
 
-    <button class="next-btn" onclick="goTo(1)">next →</button>
+  <div
+    class="eyebrow"
+    data-kk="сенің ерекше күнің"
+    data-ru="твой особенный день">
+    сенің ерекше күнің
+  </div>
+
+  <h1>31</h1>
+
+  <div class="date">
+    19.09.1995 — ∞
+  </div>
+
+  <div
+    class="tiny"
+    data-kk="Туған күніңмен, жаным."
+    data-ru="С днём рождения, родная.">
+    Туған күніңмен, жаным.
+  </div>
+
+  <button
+    class="next"
+    onclick="goTo(1)"
+    data-kk="ары қарай"
+    data-ru="дальше">
+    ары қарай
+  </button>
+
 </section>
 
-<section class="page piece">
 
-    <div class="inner piece-grid">
+<!-- =========================
+     02 HER
+========================= -->
 
-        <div class="piece-text">
-            <div class="number">02 / 09</div>
+<section class="screen" id="s1">
 
-            <h2>
-                A little<br>
-                piece of<br>
-                you.
-            </h2>
+  <div
+    class="eyebrow"
+    data-kk="01 / ол туралы"
+    data-ru="01 / о ней">
+    01 / ол туралы
+  </div>
 
-            <p>
-                There are people who become a part of your life
-                so naturally that you can't remember what it
-                looked like before them.
-            </p>
-        </div>
+  <div class="split">
 
-        <div class="fake-photo">
-            PHOTO OF HER
+    <div>
 
-            <div class="photo-note">
-                this is her ♡
-            </div>
-        </div>
+      <h2
+        data-kk="Ол қандай?"
+        data-ru="Какая она?">
+        Ол қандай?
+      </h2>
 
-    </div>
-
-    <button class="next-btn" onclick="goTo(2)">next →</button>
-</section>
-
-<section class="page things">
-
-    <div class="inner">
-
-        <div class="things-header">
-            <div>
-                <div class="number">03 / 09</div>
-                <h2>31 things<br>about you.</h2>
-            </div>
-
-            <p>
-                31 little things that make you,
-                well... you.
-            </p>
-        </div>
-
-        <div class="things-grid">
-
-            <div class="thing"><span>01</span><p>Your laugh</p></div>
-            <div class="thing"><span>02</span><p>The way you care</p></div>
-            <div class="thing"><span>03</span><p>Your patience</p></div>
-            <div class="thing"><span>04</span><p>Your little habits</p></div>
-            <div class="thing"><span>05</span><p>Your sense of humour</p></div>
-            <div class="thing"><span>06</span><p>The way you say my name</p></div>
-            <div class="thing"><span>07</span><p>Your kindness</p></div>
-            <div class="thing"><span>08</span><p>Your stubbornness</p></div>
-            <div class="thing"><span>09</span><p>Your beautiful heart</p></div>
-            <div class="thing"><span>10</span><p>Your honesty</p></div>
-            <div class="thing"><span>11</span><p>Your strength</p></div>
-            <div class="thing"><span>12</span><p>The way you love</p></div>
-            <div class="thing"><span>13</span><p>Your voice</p></div>
-            <div class="thing"><span>14</span><p>Your eyes</p></div>
-            <div class="thing"><span>15</span><p>Your energy</p></div>
-            <div class="thing"><span>16</span><p>Your little jokes</p></div>
-            <div class="thing"><span>17</span><p>Your warmth</p></div>
-            <div class="thing"><span>18</span><p>Your confidence</p></div>
-            <div class="thing"><span>19</span><p>Your dreams</p></div>
-            <div class="thing"><span>20</span><p>Your courage</p></div>
-            <div class="thing"><span>21</span><p>Your weird side</p></div>
-            <div class="thing"><span>22</span><p>Your favourite things</p></div>
-            <div class="thing"><span>23</span><p>Your stories</p></div>
-            <div class="thing"><span>24</span><p>Your hugs</p></div>
-            <div class="thing"><span>25</span><p>Your advice</p></div>
-            <div class="thing"><span>26</span><p>Your smile</p></div>
-            <div class="thing"><span>27</span><p>Your personality</p></div>
-            <div class="thing"><span>28</span><p>Your dreams</p></div>
-            <div class="thing"><span>29</span><p>Your memories</p></div>
-            <div class="thing"><span>30</span><p>Everything you are</p></div>
-            <div class="thing"><span>31</span><p>Simply being you.</p></div>
-
-        </div>
-    </div>
-
-    <button class="next-btn" onclick="goTo(3)">next →</button>
-</section>
-
-<section class="page photos">
-
-    <div class="inner">
-
-        <div class="photos-header">
-            <div>
-                <div class="number">04 / 09</div>
-                <h2>our<br>memories.</h2>
-            </div>
-
-            <div class="small">little pieces of us</div>
-        </div>
-
-        <div class="photo-wall">
-
-            <div class="polaroid p1">
-                <div class="photo-box">PHOTO 01</div>
-                <p>remember this?</p>
-            </div>
-
-            <div class="polaroid p2">
-                <div class="photo-box">PHOTO 02</div>
-                <p>one of my favourites</p>
-            </div>
-
-            <div class="polaroid p3">
-                <div class="photo-box">PHOTO 03</div>
-                <p>us ♡</p>
-            </div>
-
-            <div class="polaroid p4">
-                <div class="photo-box">PHOTO 04</div>
-                <p>another little memory</p>
-            </div>
-
-            <div class="polaroid p5">
-                <div class="photo-box">PHOTO 05</div>
-                <p>always us</p>
-            </div>
-
-        </div>
-    </div>
-
-    <button class="next-btn" onclick="goTo(4)">next →</button>
-</section>
-
-<section class="page video-page">
-
-    <div class="video-content">
-
-        <div class="video-heading">
-            <div>
-                <div class="number">05 / 09</div>
-                <h2>A little<br>video.</h2>
-            </div>
-
-            <div class="small">press play</div>
-        </div>
-
-        <div class="video-frame">
-            <div class="play">▶</div>
-        </div>
-
-        <div class="video-caption">
-            a little something we made just for you.
-        </div>
-    </div>
-
-    <button class="next-btn" onclick="goTo(5)">next →</button>
-</section>
-
-<section class="page music">
-
-    <div class="inner">
-
-        <div class="music-title">
-            <div class="number">06 / 09</div>
-            <h2>your soundtrack.</h2>
-            <p>songs that somehow remind us of you</p>
-        </div>
-
-        <div class="song-list">
-
-            <div class="song">
-                <div class="song-number">01</div>
-                <div class="album"></div>
-                <div class="song-info">
-                    <h3>Your Favourite Song</h3>
-                    <p>Artist Name</p>
-                </div>
-                <div class="song-time">03:42</div>
-            </div>
-
-            <div class="song">
-                <div class="song-number">02</div>
-                <div class="album"></div>
-                <div class="song-info">
-                    <h3>A Song For You</h3>
-                    <p>Artist Name</p>
-                </div>
-                <div class="song-time">04:01</div>
-            </div>
-
-            <div class="song">
-                <div class="song-number">03</div>
-                <div class="album"></div>
-                <div class="song-info">
-                    <h3>Our Little Song</h3>
-                    <p>Artist Name</p>
-                </div>
-                <div class="song-time">03:28</div>
-            </div>
-
-            <div class="song">
-                <div class="song-number">04</div>
-                <div class="album"></div>
-                <div class="song-info">
-                    <h3>Another Favourite</h3>
-                    <p>Artist Name</p>
-                </div>
-                <div class="song-time">03:56</div>
-            </div>
-
-        </div>
-    </div>
-
-    <button class="next-btn" onclick="goTo(6)">next →</button>
-</section>
-
-<section class="page note">
-
-    <div class="note-paper">
-
-        <div class="tape"></div>
-
-        <div class="number">07 / 09</div>
-
-        <h2>A note from your sisters.</h2>
-
-        <p>
-            Dear sister,<br><br>
-
-            sometimes we don't say enough how much
-            you mean to us. So today we wanted to leave
-            you something that you can come back to
-            whenever you need it.
-            <br><br>
-
-            We hope you always remember how loved you are,
-            how much you matter, and how many people are
-            quietly cheering for you.
-            <br><br>
-
-            Happy birthday.
-        </p>
-
-        <div class="signature">
-            with love,<br>
-            your sisters ♡
-        </div>
+      <p
+        data-kk="Оны бірнеше сөзбен сипаттау қиын. Ол — өз мінезі, өз күлкісі, өз әлемі бар ерекше адам. Бұл жерде оның ең әдемі сәттері сөйлейді."
+        data-ru="Её сложно описать несколькими словами. У неё свой характер, свой смех и свой отдельный мир. Здесь за неё говорят её самые красивые моменты.">
+        Оны бірнеше сөзбен сипаттау қиын. Ол — өз мінезі, өз күлкісі, өз әлемі бар ерекше адам. Бұл жерде оның ең әдемі сәттері сөйлейді.
+      </p>
 
     </div>
 
-    <button class="next-btn" onclick="goTo(7)">next →</button>
+    <div class="photo-placeholder">
+      PHOTO OF HER
+    </div>
+
+  </div>
+
+  <button
+    class="next"
+    onclick="goTo(2)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
 </section>
 
-<section class="page card">
 
-    <div class="card-content">
+<!-- =========================
+     03 31 FACTS
+========================= -->
 
-        <div class="number">08 / 09</div>
+<section class="screen" id="s2">
 
-        <div class="tiny">just because</div>
+  <div
+    class="eyebrow"
+    data-kk="02 / 31 факт"
+    data-ru="02 / 31 факт">
+    02 / 31 факт
+  </div>
 
-        <h2>
-            You deserve<br>
-            good things.
-        </h2>
+  <h2
+    data-kk="Сен туралы<br>31 нәрсе."
+    data-ru="31 вещь<br>о тебе.">
+    Сен туралы<br>31 нәрсе.
+  </h2>
 
-        <p>
-            soft mornings, peaceful nights,
-            people who choose you,
-            dreams that come true,
-            and a life that feels like yours.
-        </p>
+  <div class="facts">
 
-        <div class="hearts">♡ ♡ ♡</div>
+    <script>
+
+      const kkFacts = [
+
+        "әрқашан әдемісің",
+        "күлкің ерекше",
+        "жүрегің жұмсақ",
+        "өз ойың бар",
+        "күштісің",
+        "шыдамдысың",
+        "отбасыңды бағалайсың",
+        "жақындарыңды қорғайсың",
+        "әдемі күлкің бар",
+        "өз стилің бар",
+        "қызық адамсың",
+        "жылы жансың",
+        "ерекше көзқарасың бар",
+        "батылсың",
+        "еңбекқорсың",
+        "кейде қырсықсың",
+        "бірақ сүйкімдісің",
+        "адалсың",
+        "бәрін есте сақтайсың",
+        "қамқорсың",
+        "жақсы тыңдайсың",
+        "өз армандарың бар",
+        "өз әлемің бар",
+        "сен — сенсің",
+        "саған ұқсайтын ешкім жоқ",
+        "үйдің бір бөлшегісің",
+        "жақсы әпкесің",
+        "жақсы адамсың",
+        "жаның әдемі",
+        "көп нәрсеге лайықсың",
+        "ең бастысы — өзің бол"
+      ];
+
+      const ruFacts = [
+
+        "всегда красивая",
+        "у тебя особенный смех",
+        "у тебя мягкое сердце",
+        "у тебя своё мнение",
+        "ты сильная",
+        "ты терпеливая",
+        "ты ценишь семью",
+        "ты защищаешь близких",
+        "у тебя красивая улыбка",
+        "у тебя свой стиль",
+        "с тобой интересно",
+        "ты тёплый человек",
+        "у тебя свой взгляд",
+        "ты смелая",
+        "ты трудолюбивая",
+        "иногда ты упрямая",
+        "но это мило",
+        "ты честная",
+        "ты всё запоминаешь",
+        "ты заботливая",
+        "ты умеешь слушать",
+        "у тебя есть мечты",
+        "у тебя свой мир",
+        "ты — это ты",
+        "такой больше нет",
+        "ты часть дома",
+        "ты хорошая сестра",
+        "ты хороший человек",
+        "у тебя красивая душа",
+        "ты заслуживаешь многого",
+        "главное — оставайся собой"
+
+      ];
+
+      for(let i = 0; i < 31; i++){
+
+        document.write(`
+
+          <div class="fact">
+
+            <b>${i + 1}</b>
+
+            <br>
+
+            <span
+              data-kk="${kkFacts[i]}"
+              data-ru="${ruFacts[i]}">
+              ${kkFacts[i]}
+            </span>
+
+          </div>
+
+        `);
+
+      }
+
+    </script>
+
+  </div>
+
+  <button
+    class="next"
+    onclick="goTo(3)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
+</section>
+
+
+<!-- =========================
+     04 OUR MEMORIES
+========================= -->
+
+<section class="screen" id="s3">
+
+  <div
+    class="eyebrow"
+    data-kk="03 / біздің естеліктеріміз"
+    data-ru="03 / наши воспоминания">
+    03 / біздің естеліктеріміз
+  </div>
+
+  <h2
+    data-kk="Біздің<br>естеліктеріміз."
+    data-ru="Наши<br>воспоминания.">
+    Біздің<br>естеліктеріміз.
+  </h2>
+
+
+  <div class="gallery-wrap">
+
+    <div class="gallery" id="ourGallery">
+
+      <div class="slide active">
+        <div class="placeholder-photo">
+          НАША ФОТО 01
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 02
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 03
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 04
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 05
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 06
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 07
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          НАША ФОТО 08
+        </div>
+      </div>
 
     </div>
 
-    <button class="next-btn" onclick="goTo(8)">next →</button>
-</section>
 
-<section class="page secret">
+    <div class="gallery-controls">
 
-    <div class="secret-content">
+      <button
+        class="gallery-btn"
+        onclick="moveGallery('our',-1)">
+        ←
+      </button>
 
-        <div class="secret-small">09 / 09 · one last thing</div>
+      <div
+        class="counter"
+        id="ourCounter">
+        01 / 08
+      </div>
 
-        <h2>THE<br>SECRET.</h2>
-
-        <div class="secret-text">
-            You thought this was just a little birthday website...
-            but there is one more thing waiting for you.
-        </div>
-
-        <button class="reveal-button" onclick="revealSecret()">
-            open the secret
-        </button>
-
-        <div class="secret-message" id="secretMessage">
-            This little website will always belong to you.
-            <br><br>
-            Come back whenever you need a reminder
-            of how loved you are.
-            <br><br>
-            Happy 31st, sister. ♡
-        </div>
+      <button
+        class="gallery-btn"
+        onclick="moveGallery('our',1)">
+        →
+      </button>
 
     </div>
 
+  </div>
+
+
+  <button
+    class="next"
+    onclick="goTo(4)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
 </section>
+
+
+<!-- =========================
+     05 HER PEOPLE
+========================= -->
+
+<section class="screen" id="s4">
+
+  <div
+    class="eyebrow"
+    data-kk="04 / оның адамдары"
+    data-ru="04 / её люди">
+    04 / оның адамдары
+  </div>
+
+  <h2
+    data-kk="Оның<br>адамдары."
+    data-ru="Её<br>люди.">
+    Оның<br>адамдары.
+  </h2>
+
+  <p
+    data-kk="Бұл бөлімде оның өміріндегі ең жақын адамдар болады: отбасы, туыстар, достар және жүрегіне жақын жандар."
+    data-ru="Здесь будут самые близкие люди в её жизни: семья, родственники, друзья и те, кто ей дорог.">
+    Бұл бөлімде оның өміріндегі ең жақын адамдар болады: отбасы, туыстар, достар және жүрегіне жақын жандар.
+  </p>
+
+
+  <div class="gallery-wrap">
+
+    <div class="gallery" id="peopleGallery">
+
+      <div class="slide active">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 01
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 02
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 03
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 04
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 05
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 06
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 07
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 08
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 09
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="placeholder-photo">
+          БЛИЗКИЕ 10
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="gallery-controls">
+
+      <button
+        class="gallery-btn"
+        onclick="moveGallery('people',-1)">
+        ←
+      </button>
+
+      <div
+        class="counter"
+        id="peopleCounter">
+        01 / 10
+      </div>
+
+      <button
+        class="gallery-btn"
+        onclick="moveGallery('people',1)">
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="people-note"
+    data-kk="фотоларды кейін қалағанымызша көбейтеміз"
+    data-ru="фотографий позже добавим столько, сколько понадобится">
+    фотоларды кейін қалағанымызша көбейтеміз
+  </div>
+
+
+  <button
+    class="next"
+    onclick="goTo(5)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
+</section>
+
+
+<!-- =========================
+     06 VIDEO
+========================= -->
+
+<section class="screen" id="s5">
+
+  <div
+    class="eyebrow"
+    data-kk="05 / бір сәт"
+    data-ru="05 / один момент">
+    05 / бір сәт
+  </div>
+
+  <h2
+    data-kk="Бір сәт."
+    data-ru="Один момент.">
+    Бір сәт.
+  </h2>
+
+  <p
+    data-kk="Бұл жерде кейін видео пайда болады. Бір видео қалдыруға да, бірнешеуін шағын видеогалерея қылып жасауға да болады."
+    data-ru="Здесь позже появится видео. Можно оставить одно видео или сделать небольшую видеогалерею из нескольких.">
+    Бұл жерде кейін видео пайда болады. Бір видео қалдыруға да, бірнешеуін шағын видеогалерея қылып жасауға да болады.
+  </p>
+
+
+  <div class="video">
+
+    <div class="play">
+      ▶
+    </div>
+
+  </div>
+
+
+  <button
+    class="next"
+    onclick="goTo(6)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
+</section>
+
+
+<!-- =========================
+     07 MUSIC
+========================= -->
+
+<section class="screen" id="s6">
+
+  <div
+    class="eyebrow"
+    data-kk="06 / оның саундтрегі"
+    data-ru="06 / её саундтрек">
+    06 / оның саундтрегі
+  </div>
+
+  <h2
+    data-kk="Сенің<br>саундтрегің."
+    data-ru="Твой<br>саундтрек.">
+    Сенің<br>саундтрегің.
+  </h2>
+
+
+  <div class="song-list">
+
+    <div class="song">
+      <span>01 — Ән</span>
+      <span>кейін қосамыз</span>
+    </div>
+
+    <div class="song">
+      <span>02 — Ән</span>
+      <span>кейін қосамыз</span>
+    </div>
+
+    <div class="song">
+      <span>03 — Ән</span>
+      <span>кейін қосамыз</span>
+    </div>
+
+    <div class="song">
+      <span>04 — Ән</span>
+      <span>кейін қосамыз</span>
+    </div>
+
+    <div class="song">
+      <span>05 — Ән</span>
+      <span>кейін қосамыз</span>
+    </div>
+
+  </div>
+
+
+  <button
+    class="next"
+    onclick="goTo(7)"
+    data-kk="келесі"
+    data-ru="дальше">
+    келесі
+  </button>
+
+</section>
+
+
+<!-- =========================
+     08 LETTER
+========================= -->
+
+<section class="screen" id="s7">
+
+  <div
+    class="eyebrow"
+    data-kk="07 / саған арналған"
+    data-ru="07 / для тебя">
+    07 / саған арналған
+  </div>
+
+  <h2
+    data-kk="Саған<br>арналған хат."
+    data-ru="Письмо<br>тебе.">
+    Саған<br>арналған хат.
+  </h2>
+
+
+  <div class="card">
+
+    <div
+      class="note"
+      data-kk="Сен біздің өміріміздегі жай ғана адам емессің. Сен — үйдің бір бөлігі, ортақ естеліктеріміздің үлкен бөлігісің. 31 жасың саған тыныштық, махаббат, күлкі және өзің қалаған барлық жақсы нәрселерді әкелсін."
+      data-ru="Ты не просто человек в нашей жизни. Ты — часть дома и большая часть наших общих воспоминаний. Пусть твои 31 принесут тебе спокойствие, любовь, смех и всё хорошее, чего ты сама хочешь.">
+
+      Сен біздің өміріміздегі жай ғана адам емессің.
+      Сен — үйдің бір бөлігі, ортақ естеліктеріміздің үлкен бөлігісің.
+      31 жасың саған тыныштық, махаббат, күлкі және өзің қалаған барлық жақсы нәрселерді әкелсін.
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="next"
+    onclick="goTo(8)"
+    data-kk="соңына"
+    data-ru="к финалу">
+    соңына
+  </button>
+
+</section>
+
+
+<!-- =========================
+     09 SECRET
+========================= -->
+
+<section class="screen" id="s8">
+
+  <div class="secret">
+
+    <div class="eyebrow">
+      08 / THE SECRET
+    </div>
+
+    <h2>
+      THE<br>SECRET.
+    </h2>
+
+
+    <button
+      onclick="revealSecret()"
+      data-kk="құпияны ашу"
+      data-ru="открыть секрет">
+      құпияны ашу
+    </button>
+
+
+    <div
+      class="secret-message"
+      id="secretMessage"
+      data-kk="Бұл сайттағы ең маңызды нәрсе — сенің өзің. Туған күніңмен. Біз сені жақсы көреміз."
+      data-ru="Самое важное во всём этом сайте — ты сама. С днём рождения. Мы тебя любим.">
+
+      Бұл сайттағы ең маңызды нәрсе — сенің өзің.
+      Туған күніңмен.
+      Біз сені жақсы көреміз.
+
+    </div>
+
+  </div>
+
+</section>
+
 
 <script>
 
-const pages = document.querySelectorAll(".page");
-const dots = document.querySelectorAll(".dot");
+/* =========================
+   PAGE NAVIGATION
+========================= */
 
-function goTo(index) {
-    pages[index].scrollIntoView({
-        behavior: "smooth"
-    });
+let current = 0;
+
+const screens = [
+  ...document.querySelectorAll(".screen")
+];
+
+const dots = [
+  ...document.querySelectorAll(".dot")
+];
+
+
+function goTo(i){
+
+  current = Math.max(
+    0,
+    Math.min(i, screens.length - 1)
+  );
+
+  screens[current].scrollIntoView({
+    behavior:"smooth"
+  });
+
+  dots.forEach((dot,index)=>{
+
+    dot.classList.toggle(
+      "active",
+      index === current
+    );
+
+  });
+
 }
 
-function updateDots() {
 
-    let current = 0;
-    let smallest = Infinity;
+/* =========================
+   GALLERIES
+========================= */
 
-    pages.forEach((page, index) => {
+const galleries = {
 
-        const distance =
-            Math.abs(page.getBoundingClientRect().top);
+  our:{
+    index:0,
 
-        if (distance < smallest) {
-            smallest = distance;
-            current = index;
-        }
+    el:document.getElementById("ourGallery"),
 
-    });
+    counter:document.getElementById("ourCounter")
+  },
 
-    dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === current);
-    });
-}
+  people:{
+    index:0,
 
-window.addEventListener("scroll", updateDots);
+    el:document.getElementById("peopleGallery"),
 
-function revealSecret() {
+    counter:document.getElementById("peopleCounter")
+  }
 
-    const message = document.getElementById("secretMessage");
-    const button = document.querySelector(".reveal-button");
+};
 
-    message.style.display = "block";
-    button.style.display = "none";
-}
 
-document.addEventListener("keydown", function(e) {
+function renderGallery(name){
 
-    let current = 0;
+  const gallery = galleries[name];
 
-    pages.forEach((page, index) => {
+  const slides = [
+    ...gallery.el.querySelectorAll(".slide")
+  ];
 
-        if (Math.abs(page.getBoundingClientRect().top) < 100) {
-            current = index;
-        }
 
-    });
+  slides.forEach((slide,index)=>{
 
-    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-        if (current < pages.length - 1) {
-            goTo(current + 1);
-        }
+    slide.classList.remove(
+      "active",
+      "prev"
+    );
+
+
+    if(index === gallery.index){
+
+      slide.classList.add("active");
+
     }
 
-    if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-        if (current > 0) {
-            goTo(current - 1);
-        }
+    else if(index < gallery.index){
+
+      slide.classList.add("prev");
+
     }
+
+  });
+
+
+  gallery.counter.textContent =
+
+    String(gallery.index + 1).padStart(2,"0")
+
+    +
+
+    " / "
+
+    +
+
+    String(slides.length).padStart(2,"0");
+
+}
+
+
+function moveGallery(name,direction){
+
+  const gallery = galleries[name];
+
+  const total =
+    gallery.el.querySelectorAll(".slide").length;
+
+
+  gallery.index =
+    (gallery.index + direction + total) % total;
+
+
+  renderGallery(name);
+
+}
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function setLanguage(lang){
+
+  document.documentElement.lang = lang;
+
+
+  document
+    .querySelectorAll("[data-kk]")
+    .forEach(element=>{
+
+      element.innerHTML =
+        element.dataset[lang];
+
+    });
+
+
+  document
+    .getElementById("kkBtn")
+    .classList
+    .toggle(
+      "active",
+      lang === "kk"
+    );
+
+
+  document
+    .getElementById("ruBtn")
+    .classList
+    .toggle(
+      "active",
+      lang === "ru"
+    );
+
+}
+
+
+/* =========================
+   SECRET
+========================= */
+
+function revealSecret(){
+
+  document
+    .getElementById("secretMessage")
+    .classList
+    .add("show");
+
+}
+
+
+/* =========================
+   UPDATE DOTS ON SCROLL
+========================= */
+
+screens.forEach((screen,index)=>{
+
+  const observer =
+    new IntersectionObserver(
+
+      entries=>{
+
+        if(entries[0].isIntersecting){
+
+          current = index;
+
+          dots.forEach((dot,n)=>{
+
+            dot.classList.toggle(
+              "active",
+              n === index
+            );
+
+          });
+
+        }
+
+      },
+
+      {
+        threshold:.55
+      }
+
+    );
+
+
+  observer.observe(screen);
 
 });
+
+
+/* =========================
+   SWIPE GALLERIES
+========================= */
+
+function addSwipe(id,name){
+
+  const element =
+    document.getElementById(id);
+
+
+  let startX = 0;
+  let startY = 0;
+
+
+  element.addEventListener(
+    "touchstart",
+    event=>{
+
+      startX =
+        event.touches[0].clientX;
+
+      startY =
+        event.touches[0].clientY;
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+  element.addEventListener(
+    "touchend",
+    event=>{
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const endY =
+        event.changedTouches[0].clientY;
+
+
+      const dx =
+        endX - startX;
+
+      const dy =
+        endY - startY;
+
+
+      if(
+        Math.abs(dx) > 50 &&
+        Math.abs(dx) > Math.abs(dy)
+      ){
+
+        moveGallery(
+          name,
+          dx < 0 ? 1 : -1
+        );
+
+      }
+
+    },
+    {
+      passive:true
+    }
+  );
+
+}
+
+
+addSwipe(
+  "ourGallery",
+  "our"
+);
+
+
+addSwipe(
+  "peopleGallery",
+  "people"
+);
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key === "ArrowDown" ||
+      event.key === "PageDown"
+    ){
+
+      goTo(current + 1);
+
+    }
+
+
+    if(
+      event.key === "ArrowUp" ||
+      event.key === "PageUp"
+    ){
+
+      goTo(current - 1);
+
+    }
+
+
+    if(event.key === "ArrowRight"){
+
+      if(current === 3){
+
+        moveGallery("our",1);
+
+      }
+
+      if(current === 4){
+
+        moveGallery("people",1);
+
+      }
+
+    }
+
+
+    if(event.key === "ArrowLeft"){
+
+      if(current === 3){
+
+        moveGallery("our",-1);
+
+      }
+
+      if(current === 4){
+
+        moveGallery("people",-1);
+
+      }
+
+    }
+
+  }
+);
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+renderGallery("our");
+
+renderGallery("people");
+
+setLanguage("kk");
 
 </script>
 
