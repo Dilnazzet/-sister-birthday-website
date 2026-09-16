@@ -214,8 +214,8 @@ p{
 
   background-image:
     linear-gradient(
-      rgba(250,248,243,.68),
-      rgba(250,248,243,.68)
+      rgba(0,0,0,.28),
+      rgba(0,0,0,.28)
     ),
     url("fon1.jpg");
 
@@ -223,10 +223,10 @@ p{
   background-position:center;
   background-repeat:no-repeat;
 
-  color:#1d1c1a;
+  color:#fff;
 }
 
-/* весь текст первой страницы */
+/* ВЕСЬ ТЕКСТ ПЕРВОЙ СТРАНИЦЫ */
 .cover .eyebrow,
 .cover .date,
 .cover .tiny,
@@ -234,26 +234,47 @@ p{
 .cover h1,
 .cover h2,
 .cover p{
-  color:#1d1c1a;
-  text-shadow:0 1px 2px rgba(255,255,255,.9);
+  color:#fff !important;
+
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.65),
+    0 0 10px rgba(0,0,0,.25);
 }
 
-/* главный возраст */
-.cover h1{
-  font-weight:500;
-  letter-spacing:.02em;
-}
-
-/* надпись HAPPY BIRTHDAY */
+/* HAPPY BIRTHDAY */
 .cover .eyebrow{
-  font-weight:600;
-  letter-spacing:.18em;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.22em;
 }
 
-/* дата и мелкий текст */
-.cover .date,
+/* 31 */
+.cover h1{
+  font-size:clamp(90px,20vw,150px);
+  font-weight:600;
+  line-height:.9;
+  letter-spacing:-.03em;
+}
+
+/* ДАТА */
+.cover .date{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.12em;
+}
+
+/* МЕЛКИЙ ТЕКСТ */
 .cover .tiny{
-  font-weight:500;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.08em;
+}
+
+/* ЛИСТАЙ / NEXT */
+.cover .next{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.12em;
 }
 .cover .date{
   margin-top:35px;
