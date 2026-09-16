@@ -226,7 +226,6 @@ p{
   color:#fff;
 }
 
-/* ВЕСЬ ТЕКСТ ПЕРВОЙ СТРАНИЦЫ */
 .cover .eyebrow,
 .cover .date,
 .cover .tiny,
@@ -241,14 +240,12 @@ p{
     0 0 10px rgba(0,0,0,.25);
 }
 
-/* HAPPY BIRTHDAY */
 .cover .eyebrow{
   font-size:16px;
   font-weight:700;
   letter-spacing:.22em;
 }
 
-/* 31 */
 .cover h1{
   font-size:clamp(90px,20vw,150px);
   font-weight:600;
@@ -256,36 +253,16 @@ p{
   letter-spacing:-.03em;
 }
 
-/* ДАТА */
-.cover .date{
-  font-size:16px;
-  font-weight:600;
-  letter-spacing:.12em;
-}
-
-/* МЕЛКИЙ ТЕКСТ */
-.cover .tiny{
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.08em;
-}
-
-/* ЛИСТАЙ / NEXT */
-.cover .next{
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.12em;
-}
 .cover .date{
   margin-top:35px;
 
-  font-size:10px;
+  font-size:16px;
 
-  letter-spacing:.18em;
+  font-weight:600;
+
+  letter-spacing:.12em;
 
   text-transform:uppercase;
-
-  color:var(--gray);
 }
 
 .cover .tiny{
@@ -295,7 +272,17 @@ p{
 
   font-style:italic;
 
-  color:var(--accent);
+  font-size:14px;
+
+  font-weight:600;
+
+  letter-spacing:.08em;
+}
+
+.cover .next{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.12em;
 }
 
 /* ---------------- SPLIT ---------------- */
@@ -317,18 +304,17 @@ p{
 
   border:1px solid var(--line);
 
-  display:flex;
+  overflow:hidden;
+}
 
-  align-items:center;
-  justify-content:center;
+.photo-placeholder img{
+  width:100%;
+  height:100%;
+  min-height:55vh;
 
-  color:var(--gray);
+  object-fit:cover;
 
-  font-size:10px;
-
-  letter-spacing:.16em;
-
-  text-transform:uppercase;
+  display:block;
 }
 
 /* ---------------- 31 FACTS ---------------- */
@@ -423,24 +409,8 @@ p{
   height:100%;
 
   object-fit:contain;
-}
 
-.placeholder-photo{
-  width:100%;
-  height:100%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  color:var(--gray);
-
-  font-size:10px;
-
-  letter-spacing:.16em;
-
-  text-transform:uppercase;
+  display:block;
 }
 
 .gallery-controls{
@@ -652,6 +622,10 @@ p{
     min-height:35vh;
   }
 
+  .photo-placeholder img{
+    min-height:35vh;
+  }
+
   .facts{
     grid-template-columns:repeat(2,1fr);
   }
@@ -669,9 +643,7 @@ p{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- LANGUAGE SWITCHER -->
 
@@ -692,7 +664,6 @@ p{
 
 </div>
 
-
 <!-- SIDE NAVIGATION -->
 
 <nav class="dots">
@@ -708,7 +679,6 @@ p{
   <button class="dot" onclick="goTo(8)"></button>
 
 </nav>
-
 
 <!-- =========================
      01 COVER
@@ -746,7 +716,6 @@ p{
 
 </section>
 
-
 <!-- =========================
      02 HER
 ========================= -->
@@ -779,7 +748,7 @@ p{
     </div>
 
     <div class="photo-placeholder">
-      PHOTO OF HER
+      <img src="sister1.jpeg" alt="Фото сестры">
     </div>
 
   </div>
@@ -793,7 +762,6 @@ p{
   </button>
 
 </section>
-
 
 <!-- =========================
      03 31 FACTS
@@ -836,21 +804,22 @@ p{
         "батылсың",
         "еңбекқорсың",
         "кейде қырсықсың",
-        "бірақ сүйкімдісің",
+        "керемет ата-анаңның қызысың",
         "адалсың",
-        "бәрін есте сақтайсың",
+        "керемет анасың",
         "қамқорсың",
-        "жақсы тыңдайсың",
+        "керемет жарсың",
         "өз армандарың бар",
         "өз әлемің бар",
         "сен — сенсің",
         "саған ұқсайтын ешкім жоқ",
         "үйдің бір бөлшегісің",
-        "жақсы әпкесің",
+        "керемет әпкесің",
         "жақсы адамсың",
         "жаның әдемі",
         "көп нәрсеге лайықсың",
         "ең бастысы — өзің бол"
+
       ];
 
       const ruFacts = [
@@ -871,17 +840,17 @@ p{
         "ты смелая",
         "ты трудолюбивая",
         "иногда ты упрямая",
-        "но это мило",
+        "самая лучшая дочка",
         "ты честная",
-        "ты всё запоминаешь",
+        "лучшая мама",
         "ты заботливая",
-        "ты умеешь слушать",
+        "прекрасная жена",
         "у тебя есть мечты",
         "у тебя свой мир",
         "ты — это ты",
         "такой больше нет",
         "ты часть дома",
-        "ты хорошая сестра",
+        "прекрасная сестра",
         "ты хороший человек",
         "у тебя красивая душа",
         "ты заслуживаешь многого",
@@ -925,7 +894,6 @@ p{
 
 </section>
 
-
 <!-- =========================
      04 OUR MEMORIES
 ========================= -->
@@ -945,61 +913,43 @@ p{
     Біздің<br>естеліктеріміз.
   </h2>
 
-
   <div class="gallery-wrap">
 
     <div class="gallery" id="ourGallery">
 
       <div class="slide active">
-        <div class="placeholder-photo">
-          НАША ФОТО 01
-        </div>
+        <img src="sister2.jpg" alt="Наше фото 01">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 02
-        </div>
+        <img src="sister3.jpg" alt="Наше фото 02">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 03
-        </div>
+        <img src="sister4.jpg" alt="Наше фото 03">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 04
-        </div>
+        <img src="sister5.jpg" alt="Наше фото 04">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 05
-        </div>
+        <img src="sister6.jpg" alt="Наше фото 05">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 06
-        </div>
+        <img src="sister7.jpg" alt="Наше фото 06">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 07
-        </div>
+        <img src="sister8.jpg" alt="Наше фото 07">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          НАША ФОТО 08
-        </div>
+        <img src="sister9.jpg" alt="Наше фото 08">
       </div>
 
     </div>
-
 
     <div class="gallery-controls">
 
@@ -1025,7 +975,6 @@ p{
 
   </div>
 
-
   <button
     class="next"
     onclick="goTo(4)"
@@ -1035,7 +984,6 @@ p{
   </button>
 
 </section>
-
 
 <!-- =========================
      05 HER PEOPLE
@@ -1062,73 +1010,51 @@ p{
     Бұл бөлімде оның өміріндегі ең жақын адамдар болады: отбасы, туыстар, достар және жүрегіне жақын жандар.
   </p>
 
-
   <div class="gallery-wrap">
 
     <div class="gallery" id="peopleGallery">
 
       <div class="slide active">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 01
-        </div>
+        <img src="sister10.jpg" alt="Близкие 01">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 02
-        </div>
+        <img src="sister11.jpg" alt="Близкие 02">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 03
-        </div>
+        <img src="sister12.jpg" alt="Близкие 03">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 04
-        </div>
+        <img src="sister13.jpg" alt="Близкие 04">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 05
-        </div>
+        <img src="sister14.jpg" alt="Близкие 05">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 06
-        </div>
+        <img src="sister15.jpg" alt="Близкие 06">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 07
-        </div>
+        <img src="sister16.jpg" alt="Близкие 07">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 08
-        </div>
+        <img src="sister17.jpg" alt="Близкие 08">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 09
-        </div>
+        <img src="sister18.jpg" alt="Близкие 09">
       </div>
 
       <div class="slide">
-        <div class="placeholder-photo">
-          БЛИЗКИЕ 10
-        </div>
+        <img src="sister19.jpg" alt="Близкие 10">
       </div>
 
     </div>
-
 
     <div class="gallery-controls">
 
@@ -1154,14 +1080,12 @@ p{
 
   </div>
 
-
   <div
     class="people-note"
     data-kk="фотоларды кейін қалағанымызша көбейтеміз"
     data-ru="фотографий позже добавим столько, сколько понадобится">
     фотоларды кейін қалағанымызша көбейтеміз
   </div>
-
 
   <button
     class="next"
@@ -1172,7 +1096,6 @@ p{
   </button>
 
 </section>
-
 
 <!-- =========================
      06 VIDEO
@@ -1199,7 +1122,6 @@ p{
     Бұл жерде кейін видео пайда болады. Бір видео қалдыруға да, бірнешеуін шағын видеогалерея қылып жасауға да болады.
   </p>
 
-
   <div class="video">
 
     <div class="play">
@@ -1207,7 +1129,6 @@ p{
     </div>
 
   </div>
-
 
   <button
     class="next"
@@ -1219,7 +1140,6 @@ p{
 
 </section>
 
-
 <!-- =========================
      07 MUSIC
 ========================= -->
@@ -1228,7 +1148,7 @@ p{
 
   <div
     class="eyebrow"
-    data-kk="06 / оның саундтрегі"
+    data-kk="06 / оның саундтрегi"
     data-ru="06 / её саундтрек">
     06 / оның саундтрегі
   </div>
@@ -1238,7 +1158,6 @@ p{
     data-ru="Твой<br>саундтрек.">
     Сенің<br>саундтрегің.
   </h2>
-
 
   <div class="song-list">
 
@@ -1269,7 +1188,6 @@ p{
 
   </div>
 
-
   <button
     class="next"
     onclick="goTo(7)"
@@ -1279,7 +1197,6 @@ p{
   </button>
 
 </section>
-
 
 <!-- =========================
      08 LETTER
@@ -1300,7 +1217,6 @@ p{
     Саған<br>арналған хат.
   </h2>
 
-
   <div class="card">
 
     <div
@@ -1316,7 +1232,6 @@ p{
 
   </div>
 
-
   <button
     class="next"
     onclick="goTo(8)"
@@ -1326,7 +1241,6 @@ p{
   </button>
 
 </section>
-
 
 <!-- =========================
      09 SECRET
@@ -1344,14 +1258,12 @@ p{
       THE<br>SECRET.
     </h2>
 
-
     <button
       onclick="revealSecret()"
       data-kk="құпияны ашу"
       data-ru="открыть секрет">
       құпияны ашу
     </button>
-
 
     <div
       class="secret-message"
@@ -1369,7 +1281,6 @@ p{
 
 </section>
 
-
 <script>
 
 /* =========================
@@ -1385,7 +1296,6 @@ const screens = [
 const dots = [
   ...document.querySelectorAll(".dot")
 ];
-
 
 function goTo(i){
 
@@ -1409,7 +1319,6 @@ function goTo(i){
 
 }
 
-
 /* =========================
    GALLERIES
 ========================= */
@@ -1418,22 +1327,17 @@ const galleries = {
 
   our:{
     index:0,
-
     el:document.getElementById("ourGallery"),
-
     counter:document.getElementById("ourCounter")
   },
 
   people:{
     index:0,
-
     el:document.getElementById("peopleGallery"),
-
     counter:document.getElementById("peopleCounter")
   }
 
 };
-
 
 function renderGallery(name){
 
@@ -1443,14 +1347,12 @@ function renderGallery(name){
     ...gallery.el.querySelectorAll(".slide")
   ];
 
-
   slides.forEach((slide,index)=>{
 
     slide.classList.remove(
       "active",
       "prev"
     );
-
 
     if(index === gallery.index){
 
@@ -1466,7 +1368,6 @@ function renderGallery(name){
 
   });
 
-
   gallery.counter.textContent =
 
     String(gallery.index + 1).padStart(2,"0")
@@ -1481,7 +1382,6 @@ function renderGallery(name){
 
 }
 
-
 function moveGallery(name,direction){
 
   const gallery = galleries[name];
@@ -1489,15 +1389,12 @@ function moveGallery(name,direction){
   const total =
     gallery.el.querySelectorAll(".slide").length;
 
-
   gallery.index =
     (gallery.index + direction + total) % total;
-
 
   renderGallery(name);
 
 }
-
 
 /* =========================
    LANGUAGE
@@ -1506,7 +1403,6 @@ function moveGallery(name,direction){
 function setLanguage(lang){
 
   document.documentElement.lang = lang;
-
 
   document
     .querySelectorAll("[data-kk]")
@@ -1517,7 +1413,6 @@ function setLanguage(lang){
 
     });
 
-
   document
     .getElementById("kkBtn")
     .classList
@@ -1525,7 +1420,6 @@ function setLanguage(lang){
       "active",
       lang === "kk"
     );
-
 
   document
     .getElementById("ruBtn")
@@ -1536,7 +1430,6 @@ function setLanguage(lang){
     );
 
 }
-
 
 /* =========================
    SECRET
@@ -1550,7 +1443,6 @@ function revealSecret(){
     .add("show");
 
 }
-
 
 /* =========================
    UPDATE DOTS ON SCROLL
@@ -1586,11 +1478,9 @@ screens.forEach((screen,index)=>{
 
     );
 
-
   observer.observe(screen);
 
 });
-
 
 /* =========================
    SWIPE GALLERIES
@@ -1601,10 +1491,8 @@ function addSwipe(id,name){
   const element =
     document.getElementById(id);
 
-
   let startX = 0;
   let startY = 0;
-
 
   element.addEventListener(
     "touchstart",
@@ -1622,7 +1510,6 @@ function addSwipe(id,name){
     }
   );
 
-
   element.addEventListener(
     "touchend",
     event=>{
@@ -1633,13 +1520,11 @@ function addSwipe(id,name){
       const endY =
         event.changedTouches[0].clientY;
 
-
       const dx =
         endX - startX;
 
       const dy =
         endY - startY;
-
 
       if(
         Math.abs(dx) > 50 &&
@@ -1661,18 +1546,15 @@ function addSwipe(id,name){
 
 }
 
-
 addSwipe(
   "ourGallery",
   "our"
 );
 
-
 addSwipe(
   "peopleGallery",
   "people"
 );
-
 
 /* =========================
    KEYBOARD
@@ -1691,7 +1573,6 @@ document.addEventListener(
 
     }
 
-
     if(
       event.key === "ArrowUp" ||
       event.key === "PageUp"
@@ -1700,7 +1581,6 @@ document.addEventListener(
       goTo(current - 1);
 
     }
-
 
     if(event.key === "ArrowRight"){
 
@@ -1717,7 +1597,6 @@ document.addEventListener(
       }
 
     }
-
 
     if(event.key === "ArrowLeft"){
 
@@ -1737,7 +1616,6 @@ document.addEventListener(
 
   }
 );
-
 
 /* =========================
    INITIALIZE
