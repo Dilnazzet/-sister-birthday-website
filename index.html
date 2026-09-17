@@ -527,14 +527,6 @@ p{
   color:var(--gray);
 }
 
-.people-note{
-  font-size:11px;
-
-  color:var(--gray);
-
-  margin-top:12px;
-}
-
 /* =========================
    FACTS
 ========================= */
@@ -1008,9 +1000,9 @@ p{
   }
 
   .note{
-  font-size:16px;
-  line-height:1.75;
-}
+    font-size:16px;
+    line-height:1.75;
+  }
 
 }
 
@@ -1033,7 +1025,6 @@ p{
 </head>
 
 <body>
-
 
 <!-- =========================
      LANGUAGE
@@ -1079,13 +1070,11 @@ p{
 
   <button class="dot" onclick="goTo(7)"></button>
 
-  <button class="dot" onclick="goTo(8)"></button>
-
 </nav>
 
 
 <!-- =====================================================
-     01 — COVER
+     00 — COVER
 ===================================================== -->
 
 <section class="screen cover" id="s0">
@@ -1122,7 +1111,7 @@ p{
 
 
 <!-- =====================================================
-     02 — HER
+     01 — HER
 ===================================================== -->
 
 <section class="screen" id="s1">
@@ -1174,7 +1163,7 @@ p{
 
 
 <!-- =====================================================
-     03 — 31 FACTS
+     02 — 31 FACTS
 ===================================================== -->
 
 <section class="screen facts-screen" id="s2">
@@ -1196,7 +1185,6 @@ p{
 
   </div>
 
-
   <div
     class="facts-window"
     id="factsWindow">
@@ -1205,846 +1193,380 @@ p{
       class="facts-track"
       id="factsTrack">
 
-      <!-- FACT 01 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact1.jpg"
-            alt="1-факт">
-
-          <div class="fact-number">
-            01 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact1.jpg" alt="1-факт">
+          <div class="fact-number">01 / 31</div>
+          <div class="fact-text"
             data-kk="Әрқашан әдемісің."
             data-ru="Ты всегда красивая.">
             Әрқашан әдемісің.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 02 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact2.jpg"
-            alt="2-факт">
-
-          <div class="fact-number">
-            02 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact2.jpg" alt="2-факт">
+          <div class="fact-number">02 / 31</div>
+          <div class="fact-text"
             data-kk="Күлкіңнің өзіңе ғана тән әдемілігі бар."
             data-ru="У твоего смеха есть своя особенная красота.">
             Күлкіңнің өзіңе ғана тән әдемілігі бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 03 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact3.jpeg"
-            alt="3-факт">
-
-          <div class="fact-number">
-            03 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact3.jpeg" alt="3-факт">
+          <div class="fact-number">03 / 31</div>
+          <div class="fact-text"
             data-kk="Жүрегің жұмсақ."
             data-ru="У тебя мягкое сердце.">
             Жүрегің жұмсақ.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 04 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact4.jpg"
-            alt="4-факт">
-
-          <div class="fact-number">
-            04 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact4.jpg" alt="4-факт">
+          <div class="fact-number">04 / 31</div>
+          <div class="fact-text"
             data-kk="Өз ойың бар."
             data-ru="У тебя всегда есть своё мнение.">
             Өз ойың бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 05 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact5.jpg"
-            alt="5-факт">
-
-          <div class="fact-number">
-            05 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact5.jpg" alt="5-факт">
+          <div class="fact-number">05 / 31</div>
+          <div class="fact-text"
             data-kk="Сен мықтысың."
             data-ru="Ты сильная.">
             Сен мықтысың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 06 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact6.jpg"
-            alt="6-факт">
-
-          <div class="fact-number">
-            06 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact6.jpg" alt="6-факт">
+          <div class="fact-number">06 / 31</div>
+          <div class="fact-text"
             data-kk="Шыдамдылығың көп нәрсеге жетелейді."
             data-ru="Твоё терпение помогает тебе пройти через многое.">
             Шыдамдылығың көп нәрсеге жетелейді.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 07 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact7.jpg"
-            alt="7-факт">
-
-          <div class="fact-number">
-            07 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact7.jpg" alt="7-факт">
+          <div class="fact-number">07 / 31</div>
+          <div class="fact-text"
             data-kk="Отбасыңды қатты бағалайсың."
             data-ru="Ты очень ценишь свою семью.">
             Отбасыңды қатты бағалайсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 08 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact8.jpeg"
-            alt="8-факт">
-
-          <div class="fact-number">
-            08 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact8.jpeg" alt="8-факт">
+          <div class="fact-number">08 / 31</div>
+          <div class="fact-text"
             data-kk="Жақындарыңды әрқашан қорғайсың."
             data-ru="Ты всегда защищаешь своих близких.">
             Жақындарыңды әрқашан қорғайсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 09 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact9.jpeg"
-            alt="9-факт">
-
-          <div class="fact-number">
-            09 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact9.jpeg" alt="9-факт">
+          <div class="fact-number">09 / 31</div>
+          <div class="fact-text"
             data-kk="Күлкің көңіл-күйді бірден өзгертеді."
             data-ru="Твоя улыбка сразу меняет настроение вокруг.">
             Күлкің көңіл-күйді бірден өзгертеді.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 10 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact10.jpg"
-            alt="10-факт">
-
-          <div class="fact-number">
-            10 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact10.jpg" alt="10-факт">
+          <div class="fact-number">10 / 31</div>
+          <div class="fact-text"
             data-kk="Өзіңе ғана тән стилің бар."
             data-ru="У тебя есть свой собственный стиль.">
             Өзіңе ғана тән стилің бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 11 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact11.jpg"
-            alt="11-факт">
-
-          <div class="fact-number">
-            11 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact11.jpg" alt="11-факт">
+          <div class="fact-number">11 / 31</div>
+          <div class="fact-text"
             data-kk="Сенімен бірге уақыт қызық өтеді."
             data-ru="С тобой всегда интересно проводить время.">
             Сенімен бірге уақыт қызық өтеді.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 12 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact12.jpeg"
-            alt="12-факт">
-
-          <div class="fact-number">
-            12 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact12.jpeg" alt="12-факт">
+          <div class="fact-number">12 / 31</div>
+          <div class="fact-text"
             data-kk="Сенің жаның жылы."
             data-ru="У тебя очень тёплая душа.">
             Сенің жаның жылы.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 13 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact13.jpeg"
-            alt="13-факт">
-
-          <div class="fact-number">
-            13 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact13.jpeg" alt="13-факт">
+          <div class="fact-number">13 / 31</div>
+          <div class="fact-text"
             data-kk="Өзіңнің өмірге деген ерекше көзқарасың бар."
             data-ru="У тебя свой особенный взгляд на жизнь.">
             Өзіңнің өмірге деген ерекше көзқарасың бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 14 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact14.jpg"
-            alt="14-факт">
-
-          <div class="fact-number">
-            14 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact14.jpg" alt="14-факт">
+          <div class="fact-number">14 / 31</div>
+          <div class="fact-text"
             data-kk="Сен батылсың."
             data-ru="Ты смелая.">
             Сен батылсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 15 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact15.jpg"
-            alt="15-факт">
-
-          <div class="fact-number">
-            15 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact15.jpg" alt="15-факт">
+          <div class="fact-number">15 / 31</div>
+          <div class="fact-text"
             data-kk="Еңбекқорлығыңды бағалаймыз."
             data-ru="Мы ценим твоё трудолюбие.">
             Еңбекқорлығыңды бағалаймыз.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 16 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact16.jpeg"
-            alt="16-факт">
-
-          <div class="fact-number">
-            16 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact16.jpeg" alt="16-факт">
+          <div class="fact-number">16 / 31</div>
+          <div class="fact-text"
             data-kk="Кейде қырсық болғаның да сүйкімді."
             data-ru="Даже твоя упрямость иногда очень милая.">
             Кейде қырсық болғаның да сүйкімді.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 17 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact17.jpg"
-            alt="17-факт">
-
-          <div class="fact-number">
-            17 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact17.jpg" alt="17-факт">
+          <div class="fact-number">17 / 31</div>
+          <div class="fact-text"
             data-kk="Сен отбасың үшін ерекше адамсың."
             data-ru="Ты особенный человек для своей семьи.">
             Сен отбасың үшін ерекше адамсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 18 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact18.jpeg"
-            alt="18-факт">
-
-          <div class="fact-number">
-            18 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact18.jpeg" alt="18-факт">
+          <div class="fact-number">18 / 31</div>
+          <div class="fact-text"
             data-kk="Сен адалсың."
             data-ru="Ты умеешь быть искренней и верной.">
             Сен адалсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 19 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact19.jpg"
-            alt="19-факт">
-
-          <div class="fact-number">
-            19 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact19.jpg" alt="19-факт">
+          <div class="fact-number">19 / 31</div>
+          <div class="fact-text"
             data-kk="Сен қамқор жансың."
             data-ru="Ты очень заботливый человек.">
             Сен қамқор жансың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 20 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact20.jpg"
-            alt="20-факт">
-
-          <div class="fact-number">
-            20 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact20.jpg" alt="20-факт">
+          <div class="fact-number">20 / 31</div>
+          <div class="fact-text"
             data-kk="Сен жақындарыңды жүрегіңмен сезесің."
             data-ru="Ты чувствуешь своих близких сердцем.">
             Сен жақындарыңды жүрегіңмен сезесің.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 21 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact21.jpeg"
-            alt="21-факт">
-
-          <div class="fact-number">
-            21 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact21.jpeg" alt="21-факт">
+          <div class="fact-number">21 / 31</div>
+          <div class="fact-text"
             data-kk="Сен өз армандарыңды бағалайсың."
             data-ru="Ты ценишь свои мечты.">
             Сен өз армандарыңды бағалайсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 22 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact22.jpeg"
-            alt="22-факт">
-
-          <div class="fact-number">
-            22 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact22.jpeg" alt="22-факт">
+          <div class="fact-number">22 / 31</div>
+          <div class="fact-text"
             data-kk="Сенің өз әлемің бар."
             data-ru="У тебя есть свой особенный мир.">
             Сенің өз әлемің бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 23 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact23.jpg"
-            alt="23-факт">
-
-          <div class="fact-number">
-            23 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact23.jpg" alt="23-факт">
+          <div class="fact-number">23 / 31</div>
+          <div class="fact-text"
             data-kk="Сен есте қалатын адамсың."
             data-ru="Ты из тех людей, которых запоминают.">
             Сен есте қалатын адамсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 24 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact24.jpg"
-            alt="24-факт">
-
-          <div class="fact-number">
-            24 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact24.jpg" alt="24-факт">
+          <div class="fact-number">24 / 31</div>
+          <div class="fact-text"
             data-kk="Сенің балалық шағыңнан әдемі естеліктер көп."
             data-ru="У тебя много красивых воспоминаний из детства.">
             Сенің балалық шағыңнан әдемі естеліктер көп.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 25 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact25.jpeg"
-            alt="25-факт">
-
-          <div class="fact-number">
-            25 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact25.jpeg" alt="25-факт">
+          <div class="fact-number">25 / 31</div>
+          <div class="fact-text"
             data-kk="Жыл өткен сайын жаңа қырларың ашыла бастайды."
             data-ru="С каждым годом в тебе открывается что-то новое.">
             Жыл өткен сайын жаңа қырларың ашыла бастайды.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 26 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact26.jpg"
-            alt="26-факт">
-
-          <div class="fact-number">
-            26 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact26.jpg" alt="26-факт">
+          <div class="fact-number">26 / 31</div>
+          <div class="fact-text"
             data-kk="31 — жаңа тараудың басы."
             data-ru="31 — начало новой главы.">
             31 — жаңа тараудың басы.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 27 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact27.jpg"
-            alt="27-факт">
-
-          <div class="fact-number">
-            27 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact27.jpg" alt="27-факт">
+          <div class="fact-number">27 / 31</div>
+          <div class="fact-text"
             data-kk="Алда әлі өте көп әдемі сәттер бар."
             data-ru="Впереди ещё очень много красивых моментов.">
             Алда әлі өте көп әдемі сәттер бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 28 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact28.jpeg"
-            alt="28-факт">
-
-          <div class="fact-number">
-            28 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact28.jpeg" alt="28-факт">
+          <div class="fact-number">28 / 31</div>
+          <div class="fact-text"
             data-kk="Сен біздің ортақ тарихымыздың бір бөлшегісің."
             data-ru="Ты большая часть нашей общей истории.">
             Сен біздің ортақ тарихымыздың бір бөлшегісің.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 29 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact29.jpeg"
-            alt="29-факт">
-
-          <div class="fact-number">
-            29 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact29.jpeg" alt="29-факт">
+          <div class="fact-number">29 / 31</div>
+          <div class="fact-text"
             data-kk="Әр жасыңның өз әдемілігі бар."
             data-ru="В каждом твоём возрасте есть своя красота.">
             Әр жасыңның өз әдемілігі бар.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 30 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact30.jpg"
-            alt="30-факт">
-
-          <div class="fact-number">
-            30 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact30.jpg" alt="30-факт">
+          <div class="fact-number">30 / 31</div>
+          <div class="fact-text"
             data-kk="Сен — біздің әпкеміз, жақын адамымызсың."
             data-ru="Ты — наша сестра и наш близкий человек.">
             Сен — біздің әпкеміз, жақын адамымызсың.
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- FACT 31 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact31.jpeg"
-            alt="31-факт">
-
-          <div class="fact-number">
-            31 / 31
-          </div>
-
-          <div
-            class="fact-text"
+          <img class="fact-photo" src="fact31.jpeg" alt="31-факт">
+          <div class="fact-number">31 / 31</div>
+          <div class="fact-text"
             data-kk="Ең бастысы — біз сені қатты жақсы көреміз."
             data-ru="И самый главный факт — мы тебя очень любим.">
             Ең бастысы — біз сені қатты жақсы көреміз.
           </div>
-
         </div>
-
       </div>
 
     </div>
-
   </div>
-
 
   <div class="facts-controls">
 
@@ -2068,7 +1590,6 @@ p{
 
   </div>
 
-
   <button
     class="next"
     onclick="goTo(3)"
@@ -2081,7 +1602,7 @@ p{
 
 
 <!-- =====================================================
-     04 — OUR MEMORIES
+     03 — OUR MEMORIES
 ===================================================== -->
 
 <section class="screen" id="s3">
@@ -2099,13 +1620,11 @@ p{
     Біздің<br>естеліктеріміз.
   </h2>
 
-
   <div class="gallery-wrap">
 
     <div
       class="gallery"
       id="ourGallery">
-
 
       <div class="slide active">
 
@@ -2126,7 +1645,6 @@ p{
 
       </div>
 
-
       <div class="slide">
 
         <div class="polaroid">
@@ -2145,7 +1663,6 @@ p{
         </div>
 
       </div>
-
 
       <div class="slide">
 
@@ -2166,7 +1683,6 @@ p{
 
       </div>
 
-
       <div class="slide">
 
         <div class="polaroid">
@@ -2185,7 +1701,6 @@ p{
         </div>
 
       </div>
-
 
       <div class="slide">
 
@@ -2206,7 +1721,6 @@ p{
 
       </div>
 
-
       <div class="slide">
 
         <div class="polaroid">
@@ -2226,7 +1740,6 @@ p{
 
       </div>
 
-
       <div class="slide">
 
         <div class="polaroid">
@@ -2245,7 +1758,6 @@ p{
         </div>
 
       </div>
-
 
       <div class="slide">
 
@@ -2267,7 +1779,6 @@ p{
       </div>
 
     </div>
-
 
     <div class="gallery-controls">
 
@@ -2293,7 +1804,6 @@ p{
 
   </div>
 
-
   <button
     class="next"
     onclick="goTo(4)"
@@ -2306,287 +1816,16 @@ p{
 
 
 <!-- =====================================================
-     05 — HER PEOPLE
+     04 — VIDEO
 ===================================================== -->
 
 <section class="screen" id="s4">
 
   <div
     class="eyebrow"
-    data-kk="04 / оның адамдары"
-    data-ru="04 / её люди">
-    04 / оның адамдары
-  </div>
-
-  <h2
-    data-kk="Оның<br>адамдары."
-    data-ru="Её<br>люди.">
-    Оның<br>адамдары.
-  </h2>
-
-  <p
-    data-kk="Оның өміріндегі ең жақын адамдары: отбасы,жүрегіне жақын жандар."
-    data-ru="Самые близкие люди в её жизни: семья,и те, кто ей дорог.">
-    Оның өміріндегі ең жақын адамдары: отбасы,жүрегіне жақын жандар.
-  </p>
-
-
-  <div class="gallery-wrap">
-
-    <div
-      class="gallery"
-      id="peopleGallery">
-
-
-      <div class="slide active">
-
-        <div class="polaroid">
-
-          <img
-            src="sister10.jpeg"
-            alt="Отбасы">
-
-          <div
-            class="polaroid-caption"
-            data-kk="отбасы"
-            data-ru="семья">
-            отбасы
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister11.jpeg"
-            alt="Жақын адамдар">
-
-          <div
-            class="polaroid-caption"
-            data-kk="жақын адамдар"
-            data-ru="близкие люди">
-            жақын адамдар
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister12.jpeg"
-            alt="Отбасы">
-
-          <div
-            class="polaroid-caption"
-            data-kk="үй"
-            data-ru="дом">
-            үй
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister13.jpeg"
-            alt="Жақындар">
-
-          <div
-            class="polaroid-caption"
-            data-kk="әрқашан бірге"
-            data-ru="всегда вместе">
-            әрқашан бірге
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister14.jpeg"
-            alt="жақындары">
-
-          <div
-            class="polaroid-caption"
-            data-kk="жақындары"
-            data-ru="близкие">
-            жақындары
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister15.jpeg"
-            alt="Сәттер">
-
-          <div
-            class="polaroid-caption"
-            data-kk="Сәттер"
-            data-ru="Моменты">
-             Сәттер
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister16.jpeg"
-            alt="сүйікті жандары">
-
-          <div
-            class="polaroid-caption"
-            data-kk="сүйікті жандары"
-            data-ru="любимые люди">
-            сүйікті жандары
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister17.jpeg"
-            alt="Жақын жандар">
-
-          <div
-            class="polaroid-caption"
-            data-kk="жақын жандар"
-            data-ru="дорогие люди">
-            жақын жандар
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister18.jpeg"
-            alt="Отбасы">
-
-          <div
-            class="polaroid-caption"
-            data-kk="біздің адамдар"
-            data-ru="наши люди">
-            біздің адамдар
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="slide">
-
-        <div class="polaroid">
-
-          <img
-            src="sister19.jpeg"
-            alt="Естелік">
-
-          <div
-            class="polaroid-caption"
-            data-kk="бірге"
-            data-ru="вместе">
-            бірге
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-controls">
-
-      <button
-        class="gallery-btn"
-        onclick="moveGallery('people',-1)">
-        ←
-      </button>
-
-      <div
-        class="counter"
-        id="peopleCounter">
-        01 / 10
-      </div>
-
-      <button
-        class="gallery-btn"
-        onclick="moveGallery('people',1)">
-        →
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <button
-    class="next"
-    onclick="goTo(5)"
-    data-kk="келесі"
-    data-ru="дальше">
-    келесі
-  </button>
-
-</section>
-
-
-<!-- =====================================================
-     06 — VIDEO
-===================================================== -->
-
-<section class="screen" id="s5">
-
-  <div
-    class="eyebrow"
-    data-kk="05 / бір сәт"
-    data-ru="05 / один момент">
-    05 / бір сәт
+    data-kk="04 / бір сәт"
+    data-ru="04 / один момент">
+    04 / бір сәт
   </div>
 
   <h2
@@ -2594,7 +1833,6 @@ p{
     data-ru="Один момент.">
     Бір сәт.
   </h2>
-
 
   <div class="video">
 
@@ -2611,10 +1849,9 @@ p{
 
   </div>
 
-
   <button
     class="next"
-    onclick="goTo(6)"
+    onclick="goTo(5)"
     data-kk="келесі"
     data-ru="дальше">
     келесі
@@ -2624,16 +1861,16 @@ p{
 
 
 <!-- =====================================================
-     07 — SOUNDTRACK
+     05 — SOUNDTRACK
 ===================================================== -->
 
-<section class="screen" id="s6">
+<section class="screen" id="s5">
 
   <div
     class="eyebrow"
-    data-kk="06 / оның саундтрегі"
-    data-ru="06 / её саундтрек">
-    06 / оның саундтрегі
+    data-kk="05 / оның саундтрегі"
+    data-ru="05 / её саундтрек">
+    05 / оның саундтрегі
   </div>
 
   <h2
@@ -2642,9 +1879,7 @@ p{
     Сенің<br>саундтрегің.
   </h2>
 
-
   <div class="song-list">
-
 
     <div class="song">
 
@@ -2660,7 +1895,6 @@ p{
 
     </div>
 
-
     <div class="song">
 
       <span>
@@ -2674,7 +1908,6 @@ p{
       </span>
 
     </div>
-
 
     <div class="song">
 
@@ -2692,13 +1925,11 @@ p{
 
     </div>
 
-
   </div>
-
 
   <button
     class="next"
-    onclick="goTo(7)"
+    onclick="goTo(6)"
     data-kk="келесі"
     data-ru="дальше">
     келесі
@@ -2708,16 +1939,16 @@ p{
 
 
 <!-- =====================================================
-     08 — LETTER
+     06 — LETTER
 ===================================================== -->
 
-<section class="screen" id="s7">
+<section class="screen" id="s6">
 
   <div
     class="eyebrow"
-    data-kk="07 / саған арналған"
-    data-ru="07 / для тебя">
-    07 / саған арналған
+    data-kk="06 / саған арналған"
+    data-ru="06 / для тебя">
+    06 / саған арналған
   </div>
 
   <h2
@@ -2730,6 +1961,7 @@ p{
 
     <div
       class="note"
+
       data-kk="Менің ең қымбатты, ең жақын татем ❤️
 
 Бүгін саған жүрегімдегі сөздердің бәрін айтқым келеді. Мен сені қатты жақсы көремін және сенің мен үшін қаншалықты қымбат адам екеніңді сөзбен айтып жеткізу қиын. Кейде күнделікті өмірде сезімдерімді ашық айта бермейтін шығармын, бірақ жүрегімде саған деген махаббатым мен құрметім әрқашан бар.
@@ -2783,13 +2015,14 @@ p{
       Мен сенің сіңілің болғаныңа ғана емес, сенің дәл менің татем болғаныңа қуанамын. Сен үшін мақтанамын және сені шексіз жақсы көремін. ❤️
 
       Туған күніңмен, менің жан татем! Әрқашан бақытты бол. Мен үшін сенің амандығың мен бақытты болғаныңнан артық ештеңе жоқ. Жақсы көремін сені, татуль. ❤️
+
     </div>
 
   </div>
 
   <button
     class="next"
-    onclick="goTo(8)"
+    onclick="goTo(7)"
     data-kk="соңына"
     data-ru="к финалу">
     соңына
@@ -2799,18 +2032,18 @@ p{
 
 
 <!-- =====================================================
-     09 — FINAL
+     07 — FINAL
 ===================================================== -->
 
-<section class="screen" id="s8">
+<section class="screen" id="s7">
 
   <div class="secret">
 
     <div
       class="eyebrow"
-      data-kk="08 / соңғы бет"
-      data-ru="08 / последняя страница">
-      08 / соңғы бет
+      data-kk="07 / соңғы бет"
+      data-ru="07 / последняя страница">
+      07 / соңғы бет
     </div>
 
     <h2
@@ -2819,7 +2052,6 @@ p{
       Соңғы<br>бет.
     </h2>
 
-
     <button
       onclick="revealSecret()"
       data-kk="соңғы сөзді оқу"
@@ -2827,11 +2059,12 @@ p{
       соңғы сөзді оқу
     </button>
 
-
     <div
       class="secret-message"
       id="secretMessage"
+
       data-kk="31 жасың құтты болсын. Бұл — сенің тарихыңдағы тағы бір әдемі бет қана. Алда әлі көп нәрсе бар. Біз сені жақсы көреміз."
+
       data-ru="С 31-летием. Это всего лишь ещё одна красивая страница твоей истории. Впереди ещё очень много всего. Мы тебя любим.">
 
       31 жасың құтты болсын.
@@ -2891,7 +2124,7 @@ function goTo(index){
 
 
 /* =========================================================
-   GALLERIES
+   GALLERY
 ========================================================= */
 
 const galleries = {
@@ -2900,12 +2133,6 @@ const galleries = {
     index:0,
     el:document.getElementById("ourGallery"),
     counter:document.getElementById("ourCounter")
-  },
-
-  people:{
-    index:0,
-    el:document.getElementById("peopleGallery"),
-    counter:document.getElementById("peopleCounter")
   }
 
 };
@@ -3018,7 +2245,9 @@ const factCounter =
 function renderFacts(){
 
   const slideWidth =
-    document.getElementById("factsWindow").clientWidth;
+    document
+      .getElementById("factsWindow")
+      .clientWidth;
 
   factTrack.style.transform =
     `translate3d(-${factIndex * slideWidth}px, 0, 0)`;
@@ -3029,10 +2258,17 @@ function renderFacts(){
     ).padStart(2,"0")
     +
     " / 31";
+
 }
-window.addEventListener("resize", () => {
-  renderFacts();
-});
+
+
+window.addEventListener(
+  "resize",
+  () => {
+    renderFacts();
+  }
+);
+
 
 function moveFact(direction){
 
@@ -3156,7 +2392,7 @@ screens.forEach(
 
 
 /* =========================================================
-   SWIPE — GALLERIES
+   SWIPE — OUR GALLERY
 ========================================================= */
 
 function addSwipe(
@@ -3238,17 +2474,6 @@ addSwipe(
 );
 
 
-addSwipe(
-  "peopleGallery",
-  direction=>{
-    moveGallery(
-      "people",
-      direction
-    );
-  }
-);
-
-
 /* =========================================================
    SWIPE — 31 FACTS
 ========================================================= */
@@ -3322,7 +2547,6 @@ document.addEventListener(
   "keydown",
   event=>{
 
-
     if(
       event.key === "ArrowDown" ||
       event.key === "PageDown"
@@ -3367,16 +2591,6 @@ document.addEventListener(
 
       }
 
-
-      if(current === 4){
-
-        moveGallery(
-          "people",
-          1
-        );
-
-      }
-
     }
 
 
@@ -3395,16 +2609,6 @@ document.addEventListener(
 
         moveGallery(
           "our",
-          -1
-        );
-
-      }
-
-
-      if(current === 4){
-
-        moveGallery(
-          "people",
           -1
         );
 
@@ -3457,8 +2661,6 @@ document
 ========================================================= */
 
 renderGallery("our");
-
-renderGallery("people");
 
 renderFacts();
 
