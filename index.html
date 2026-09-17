@@ -161,11 +161,6 @@ body{
 
   justify-content:center;
 
-  /*
-    ВАЖНО:
-    раньше overflow:hidden мог обрезать
-    длинный текст в блоке 31 факта.
-  */
   overflow-x:hidden;
   overflow-y:visible;
 }
@@ -592,22 +587,12 @@ p{
 .facts-screen{
   background:#ebe4da;
 
-  /*
-    Важно:
-    этот экран теперь может быть выше одного viewport,
-    если текст длинный.
-  */
   justify-content:flex-start;
 }
 
 .facts-header{
   margin-bottom:28px;
 }
-
-
-/* ---------------------------------------------------------
-   FACTS WINDOW
---------------------------------------------------------- */
 
 .facts-window{
   width:100%;
@@ -620,11 +605,6 @@ p{
 
   overscroll-behavior-x:none;
 }
-
-
-/* ---------------------------------------------------------
-   FACTS TRACK
---------------------------------------------------------- */
 
 .facts-track{
   display:flex;
@@ -640,14 +620,6 @@ p{
 
   will-change:transform;
 }
-
-
-/* ---------------------------------------------------------
-   FACT SLIDE
-
-   Главное изменение:
-   высота больше НЕ фиксирована.
---------------------------------------------------------- */
 
 .fact-slide{
   flex:0 0 100%;
@@ -667,13 +639,6 @@ p{
   box-sizing:border-box;
 }
 
-
-/* ---------------------------------------------------------
-   FACT POLAROID
-
-   Теперь карточка растёт вместе с текстом.
---------------------------------------------------------- */
-
 .fact-polaroid{
   width:min(620px,82vw);
 
@@ -689,10 +654,6 @@ p{
 
   transform:rotate(-1deg);
 
-  /*
-    Никакого fixed height.
-    Карточка сама определяет свою высоту.
-  */
   height:auto;
 
   overflow:visible;
@@ -724,11 +685,6 @@ p{
   z-index:5;
 }
 
-
-/* ---------------------------------------------------------
-   FACT PHOTO
---------------------------------------------------------- */
-
 .fact-photo{
   width:100%;
 
@@ -740,13 +696,6 @@ p{
 
   background:#e5ded4;
 }
-
-
-/* ---------------------------------------------------------
-   FACT NUMBER
-
-   Теперь он не накладывается на текст.
---------------------------------------------------------- */
 
 .fact-number{
   position:static;
@@ -761,13 +710,6 @@ p{
 
   text-transform:uppercase;
 }
-
-
-/* ---------------------------------------------------------
-   FACT TEXT
-
-   ОСНОВНОЕ ИСПРАВЛЕНИЕ
---------------------------------------------------------- */
 
 .fact-text{
   position:static;
@@ -788,9 +730,6 @@ p{
 
   text-align:center;
 
-  /*
-    Теперь текст переносится.
-  */
   white-space:normal;
 
   overflow:visible;
@@ -803,18 +742,10 @@ p{
 
   hyphens:auto;
 
-  /*
-    Никакой фиксированной высоты.
-  */
   height:auto;
 
   min-height:0;
 }
-
-
-/* ---------------------------------------------------------
-   FACT CONTROLS
---------------------------------------------------------- */
 
 .facts-controls{
   display:flex;
@@ -864,12 +795,6 @@ p{
 
   color:var(--gray);
 }
-
-
-/*
-  У facts обычная кнопка "дальше" теперь не должна
-  висеть поверх контента.
-*/
 
 .facts-screen .next{
   position:relative;
@@ -936,7 +861,7 @@ p{
 
 
 /* =========================================================
-   SONGS
+   SONGS / SOUNDTRACK
 ========================================================= */
 
 .song-list{
@@ -948,29 +873,191 @@ p{
 }
 
 .song{
-  display:flex;
+  display:grid;
+
+  grid-template-columns:1fr auto;
 
   align-items:center;
 
-  justify-content:space-between;
+  gap:14px 25px;
 
   border-bottom:1px solid var(--line);
 
-  padding:18px 4px;
+  padding:22px 4px;
 }
 
-.song span:first-child{
+.song-info{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:7px;
+
+  min-width:0;
+}
+
+.song-info > span{
   font-family:"Cormorant Garamond",serif;
 
   font-size:27px;
+
+  color:var(--black);
 }
 
-.song span:last-child{
+.song-info small{
+  display:block;
+
+  max-width:650px;
+
+  font-family:"Cormorant Garamond",serif;
+
+  font-size:16px;
+
+  line-height:1.45;
+
+  color:var(--gray);
+}
+
+.song-label{
   font-size:10px;
 
   color:var(--gray);
 
   letter-spacing:.12em;
+
+  text-transform:uppercase;
+
+  text-align:right;
+
+  white-space:nowrap;
+}
+
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+
+.audio-player{
+  grid-column:1 / -1;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  padding:13px 0 2px;
+
+  border-top:1px solid var(--line);
+}
+
+.audio-player audio{
+  display:none;
+}
+
+.audio-play{
+  width:43px;
+  height:43px;
+
+  flex:0 0 43px;
+
+  border:1px solid var(--black);
+
+  border-radius:50%;
+
+  background:var(--black);
+
+  color:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:0 0 0 2px;
+
+  font-size:12px;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.audio-play:hover{
+  background:transparent;
+
+  color:var(--black);
+}
+
+.audio-content{
+  flex:1;
+
+  min-width:0;
+}
+
+.audio-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:7px;
+
+  font-size:10px;
+
+  letter-spacing:.08em;
+
+  color:var(--gray);
+}
+
+.audio-progress{
+  width:100%;
+
+  height:3px;
+
+  appearance:none;
+
+  -webkit-appearance:none;
+
+  background:#d8d0c5;
+
+  outline:none;
+
+  cursor:pointer;
+
+  display:block;
+}
+
+.audio-progress::-webkit-slider-thumb{
+  appearance:none;
+
+  -webkit-appearance:none;
+
+  width:11px;
+  height:11px;
+
+  border-radius:50%;
+
+  background:var(--black);
+
+  cursor:pointer;
+}
+
+.audio-progress::-moz-range-thumb{
+  width:11px;
+  height:11px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:var(--black);
+
+  cursor:pointer;
 }
 
 
@@ -1168,9 +1255,7 @@ p{
   }
 
 
-  /* =======================================================
-     FACTS MOBILE
-  ======================================================= */
+  /* FACTS */
 
   .facts-screen{
     padding-left:8vw;
@@ -1194,10 +1279,6 @@ p{
   .fact-photo{
     width:100%;
 
-    /*
-      Не фиксируем огромную высоту.
-      Но фотография остаётся достаточно большой.
-    */
     height:430px;
 
     max-height:48vh;
@@ -1250,11 +1331,38 @@ p{
   /* SONGS */
 
   .song{
-    gap:15px;
+    grid-template-columns:1fr;
+
+    gap:12px;
+
+    padding:22px 0;
   }
 
-  .song span:first-child{
-    font-size:23px;
+  .song-info > span{
+    font-size:24px;
+  }
+
+  .song-info small{
+    font-size:16px;
+
+    line-height:1.45;
+  }
+
+  .song-label{
+    text-align:left;
+
+    font-size:9px;
+  }
+
+  .audio-player{
+    gap:12px;
+  }
+
+  .audio-play{
+    width:42px;
+    height:42px;
+
+    flex-basis:42px;
   }
 
 
@@ -1576,964 +1684,406 @@ p{
       id="factsTrack">
 
 
-      <!-- 01 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact1.jpg"
-            alt="1-факт">
-
-          <div class="fact-number">
-            01 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Әрқашан әдемісің."
-
-            data-ru="Ты всегда красивая.">
-
+          <img class="fact-photo" src="fact1.jpg" alt="1-факт">
+          <div class="fact-number">01 / 31</div>
+          <div class="fact-text"
+               data-kk="Әрқашан әдемісің."
+               data-ru="Ты всегда красивая.">
             Әрқашан әдемісің.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 02 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact2.jpg"
-            alt="2-факт">
-
-          <div class="fact-number">
-            02 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Өзіңе ғана тән әдемілігің бар."
-
-            data-ru="У тебя есть своя особенная красота.">
-
+          <img class="fact-photo" src="fact2.jpg" alt="2-факт">
+          <div class="fact-number">02 / 31</div>
+          <div class="fact-text"
+               data-kk="Өзіңе ғана тән әдемілігің бар."
+               data-ru="У тебя есть своя особенная красота.">
             Өзіңе ғана тән әдемілігің бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 03 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact3.jpeg"
-            alt="3-факт">
-
-          <div class="fact-number">
-            03 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Жүрегің жұмсақ."
-
-            data-ru="У тебя мягкое сердце.">
-
+          <img class="fact-photo" src="fact3.jpeg" alt="3-факт">
+          <div class="fact-number">03 / 31</div>
+          <div class="fact-text"
+               data-kk="Жүрегің жұмсақ."
+               data-ru="У тебя мягкое сердце.">
             Жүрегің жұмсақ.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 04 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact4.jpg"
-            alt="4-факт">
-
-          <div class="fact-number">
-            04 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Өз ойың бар."
-
-            data-ru="У тебя всегда есть своё мнение.">
-
+          <img class="fact-photo" src="fact4.jpg" alt="4-факт">
+          <div class="fact-number">04 / 31</div>
+          <div class="fact-text"
+               data-kk="Өз ойың бар."
+               data-ru="У тебя всегда есть своё мнение.">
             Өз ойың бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 05 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact5.jpg"
-            alt="5-факт">
-
-          <div class="fact-number">
-            05 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен мықтысың."
-
-            data-ru="Ты сильная.">
-
+          <img class="fact-photo" src="fact5.jpg" alt="5-факт">
+          <div class="fact-number">05 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен мықтысың."
+               data-ru="Ты сильная.">
             Сен мықтысың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 06 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact6.jpg"
-            alt="6-факт">
-
-          <div class="fact-number">
-            06 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Батылдығың көп нәрсеге жетелейді."
-
-            data-ru="Твоя смелость помогает тебе пройти через многое.">
-
+          <img class="fact-photo" src="fact6.jpg" alt="6-факт">
+          <div class="fact-number">06 / 31</div>
+          <div class="fact-text"
+               data-kk="Батылдығың көп нәрсеге жетелейді."
+               data-ru="Твоя смелость помогает тебе пройти через многое.">
             Батылдығың көп нәрсеге жетелейді.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 07 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact7.jpg"
-            alt="7-факт">
-
-          <div class="fact-number">
-            07 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Отбасыңды қатты бағалайсың."
-
-            data-ru="Ты очень ценишь свою семью.">
-
+          <img class="fact-photo" src="fact7.jpg" alt="7-факт">
+          <div class="fact-number">07 / 31</div>
+          <div class="fact-text"
+               data-kk="Отбасыңды қатты бағалайсың."
+               data-ru="Ты очень ценишь свою семью.">
             Отбасыңды қатты бағалайсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 08 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact8.jpeg"
-            alt="8-факт">
-
-          <div class="fact-number">
-            08 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Жақыныңды әрқашан қорғайсың."
-
-            data-ru="Ты всегда защищаешь своих близких.">
-
+          <img class="fact-photo" src="fact8.jpeg" alt="8-факт">
+          <div class="fact-number">08 / 31</div>
+          <div class="fact-text"
+               data-kk="Жақыныңды әрқашан қорғайсың."
+               data-ru="Ты всегда защищаешь своих близких.">
             Жақыныңды әрқашан қорғайсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 09 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact9.jpeg"
-            alt="9-факт">
-
-          <div class="fact-number">
-            09 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Күлкің көңіл-күйді бірден өзгертеді."
-
-            data-ru="Твоя улыбка сразу меняет настроение вокруг.">
-
+          <img class="fact-photo" src="fact9.jpeg" alt="9-факт">
+          <div class="fact-number">09 / 31</div>
+          <div class="fact-text"
+               data-kk="Күлкің көңіл-күйді бірден өзгертеді."
+               data-ru="Твоя улыбка сразу меняет настроение вокруг.">
             Күлкің көңіл-күйді бірден өзгертеді.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 10 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact10.jpg"
-            alt="10-факт">
-
-          <div class="fact-number">
-            10 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Өзіңе ғана тән стилің бар."
-
-            data-ru="У тебя есть свой собственный стиль.">
-
+          <img class="fact-photo" src="fact10.jpg" alt="10-факт">
+          <div class="fact-number">10 / 31</div>
+          <div class="fact-text"
+               data-kk="Өзіңе ғана тән стилің бар."
+               data-ru="У тебя есть свой собственный стиль.">
             Өзіңе ғана тән стилің бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 11 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact11.jpg"
-            alt="11-факт">
-
-          <div class="fact-number">
-            11 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сенімен бірге уақыт қызық өтеді."
-
-            data-ru="С тобой всегда интересно проводить время.">
-
+          <img class="fact-photo" src="fact11.jpg" alt="11-факт">
+          <div class="fact-number">11 / 31</div>
+          <div class="fact-text"
+               data-kk="Сенімен бірге уақыт қызық өтеді."
+               data-ru="С тобой всегда интересно проводить время.">
             Сенімен бірге уақыт қызық өтеді.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 12 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact12.jpeg"
-            alt="12-факт">
-
-          <div class="fact-number">
-            12 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сенің жаның жылы."
-
-            data-ru="У тебя очень тёплая душа.">
-
+          <img class="fact-photo" src="fact12.jpeg" alt="12-факт">
+          <div class="fact-number">12 / 31</div>
+          <div class="fact-text"
+               data-kk="Сенің жаның жылы."
+               data-ru="У тебя очень тёплая душа.">
             Сенің жаның жылы.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 13 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact13.jpeg"
-            alt="13-факт">
-
-          <div class="fact-number">
-            13 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Өмірге деген ерекше көзқарасың бар."
-
-            data-ru="У тебя особенный взгляд на жизнь.">
-
+          <img class="fact-photo" src="fact13.jpeg" alt="13-факт">
+          <div class="fact-number">13 / 31</div>
+          <div class="fact-text"
+               data-kk="Өмірге деген ерекше көзқарасың бар."
+               data-ru="У тебя особенный взгляд на жизнь.">
             Өмірге деген ерекше көзқарасың бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 14 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact14.jpg"
-            alt="14-факт">
-
-          <div class="fact-number">
-            14 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен батылсың."
-
-            data-ru="Ты смелая.">
-
+          <img class="fact-photo" src="fact14.jpg" alt="14-факт">
+          <div class="fact-number">14 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен батылсың."
+               data-ru="Ты смелая.">
             Сен батылсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 15 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact15.jpg"
-            alt="15-факт">
-
-          <div class="fact-number">
-            15 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Еңбекқорлығыңды бағалаймыз."
-
-            data-ru="Мы ценим твоё трудолюбие.">
-
+          <img class="fact-photo" src="fact15.jpg" alt="15-факт">
+          <div class="fact-number">15 / 31</div>
+          <div class="fact-text"
+               data-kk="Еңбекқорлығыңды бағалаймыз."
+               data-ru="Мы ценим твоё трудолюбие.">
             Еңбекқорлығыңды бағалаймыз.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 16 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact16.jpeg"
-            alt="16-факт">
-
-          <div class="fact-number">
-            16 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Кейде қырсық болғаның да сүйкімді."
-
-            data-ru="Твоя упрямость иногда очень милая.">
-
+          <img class="fact-photo" src="fact16.jpeg" alt="16-факт">
+          <div class="fact-number">16 / 31</div>
+          <div class="fact-text"
+               data-kk="Кейде қырсық болғаның да сүйкімді."
+               data-ru="Твоя упрямость иногда очень милая.">
             Кейде қырсық болғаның да сүйкімді.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 17 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact17.jpg"
-            alt="17-факт">
-
-          <div class="fact-number">
-            17 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен отбасың үшін ерекше адамсың."
-
-            data-ru="Ты особенный человек для своей семьи.">
-
+          <img class="fact-photo" src="fact17.jpg" alt="17-факт">
+          <div class="fact-number">17 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен отбасың үшін ерекше адамсың."
+               data-ru="Ты особенный человек для своей семьи.">
             Сен отбасың үшін ерекше адамсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 18 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact18.jpeg"
-            alt="18-факт">
-
-          <div class="fact-number">
-            18 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен адалсың."
-
-            data-ru="Ты умеешь быть верной.">
-
+          <img class="fact-photo" src="fact18.jpeg" alt="18-факт">
+          <div class="fact-number">18 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен адалсың."
+               data-ru="Ты умеешь быть верной.">
             Сен адалсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 19 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact19.jpg"
-            alt="19-факт">
-
-          <div class="fact-number">
-            19 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен қамқор жансың."
-
-            data-ru="Ты очень заботливый человек.">
-
+          <img class="fact-photo" src="fact19.jpg" alt="19-факт">
+          <div class="fact-number">19 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен қамқор жансың."
+               data-ru="Ты очень заботливый человек.">
             Сен қамқор жансың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 20 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact20.jpg"
-            alt="20-факт">
-
-          <div class="fact-number">
-            20 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Жақындарыңды жүрегіңмен сезесің."
-
-            data-ru="Чувствуешь своих близких сердцем.">
-
+          <img class="fact-photo" src="fact20.jpg" alt="20-факт">
+          <div class="fact-number">20 / 31</div>
+          <div class="fact-text"
+               data-kk="Жақындарыңды жүрегіңмен сезесің."
+               data-ru="Чувствуешь своих близких сердцем.">
             Жақындарыңды жүрегіңмен сезесің.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 21 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact21.jpeg"
-            alt="21-факт">
-
-          <div class="fact-number">
-            21 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен өз армандарыңды бағалайсың."
-
-            data-ru="Ты ценишь свои мечты.">
-
+          <img class="fact-photo" src="fact21.jpeg" alt="21-факт">
+          <div class="fact-number">21 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен өз армандарыңды бағалайсың."
+               data-ru="Ты ценишь свои мечты.">
             Сен өз армандарыңды бағалайсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 22 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact22.jpeg"
-            alt="22-факт">
-
-          <div class="fact-number">
-            22 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сенің өз әлемің бар."
-
-            data-ru="У тебя есть свой особенный мир.">
-
+          <img class="fact-photo" src="fact22.jpeg" alt="22-факт">
+          <div class="fact-number">22 / 31</div>
+          <div class="fact-text"
+               data-kk="Сенің өз әлемің бар."
+               data-ru="У тебя есть свой особенный мир.">
             Сенің өз әлемің бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 23 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact23.jpg"
-            alt="23-факт">
-
-          <div class="fact-number">
-            23 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен есте қалатын адамсың."
-
-            data-ru="Ты из тех людей, которых запоминают.">
-
+          <img class="fact-photo" src="fact23.jpg" alt="23-факт">
+          <div class="fact-number">23 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен есте қалатын адамсың."
+               data-ru="Ты из тех людей, которых запоминают.">
             Сен есте қалатын адамсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 24 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact24.jpg"
-            alt="24-факт">
-
-          <div class="fact-number">
-            24 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Балалық шағыңнан әдемі естеліктер көп."
-
-            data-ru="Много красивых воспоминаний из детства.">
-
+          <img class="fact-photo" src="fact24.jpg" alt="24-факт">
+          <div class="fact-number">24 / 31</div>
+          <div class="fact-text"
+               data-kk="Балалық шағыңнан әдемі естеліктер көп."
+               data-ru="Много красивых воспоминаний из детства.">
             Балалық шағыңнан әдемі естеліктер көп.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 25 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact25.jpeg"
-            alt="25-факт">
-
-          <div class="fact-number">
-            25 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Жыл өткен сайын жаңа қырларың ашыла бастайды."
-
-            data-ru="С каждым годом в тебе открывается что-то новое.">
-
+          <img class="fact-photo" src="fact25.jpeg" alt="25-факт">
+          <div class="fact-number">25 / 31</div>
+          <div class="fact-text"
+               data-kk="Жыл өткен сайын жаңа қырларың ашыла бастайды."
+               data-ru="С каждым годом в тебе открывается что-то новое.">
             Жыл өткен сайын жаңа қырларың ашыла бастайды.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 26 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact26.jpg"
-            alt="26-факт">
-
-          <div class="fact-number">
-            26 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="31 — жаңа тараудың басы."
-
-            data-ru="31 — начало новой главы.">
-
+          <img class="fact-photo" src="fact26.jpg" alt="26-факт">
+          <div class="fact-number">26 / 31</div>
+          <div class="fact-text"
+               data-kk="31 — жаңа тараудың басы."
+               data-ru="31 — начало новой главы.">
             31 — жаңа тараудың басы.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 27 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact27.jpg"
-            alt="27-факт">
-
-          <div class="fact-number">
-            27 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Алда әлі өте көп әдемі сәттер бар."
-
-            data-ru="Впереди ещё очень много красивых моментов.">
-
+          <img class="fact-photo" src="fact27.jpg" alt="27-факт">
+          <div class="fact-number">27 / 31</div>
+          <div class="fact-text"
+               data-kk="Алда әлі өте көп әдемі сәттер бар."
+               data-ru="Впереди ещё очень много красивых моментов.">
             Алда әлі өте көп әдемі сәттер бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 28 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact28.jpeg"
-            alt="28-факт">
-
-          <div class="fact-number">
-            28 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен біздің ортақ тарихымыздың бір бөлшегісің."
-
-            data-ru="Ты большая часть нашей общей истории.">
-
+          <img class="fact-photo" src="fact28.jpeg" alt="28-факт">
+          <div class="fact-number">28 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен біздің ортақ тарихымыздың бір бөлшегісің."
+               data-ru="Ты большая часть нашей общей истории.">
             Сен біздің ортақ тарихымыздың бір бөлшегісің.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 29 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact29.jpeg"
-            alt="29-факт">
-
-          <div class="fact-number">
-            29 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Әр жасыңның өз әдемілігі бар."
-
-            data-ru="В каждом твоём возрасте есть своя красота.">
-
+          <img class="fact-photo" src="fact29.jpeg" alt="29-факт">
+          <div class="fact-number">29 / 31</div>
+          <div class="fact-text"
+               data-kk="Әр жасыңның өз әдемілігі бар."
+               data-ru="В каждом твоём возрасте есть своя красота.">
             Әр жасыңның өз әдемілігі бар.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 30 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact30.jpg"
-            alt="30-факт">
-
-          <div class="fact-number">
-            30 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Сен — біздің әпкеміз, жақын адамымызсың."
-
-            data-ru="Ты — наша сестра и наш близкий человек.">
-
+          <img class="fact-photo" src="fact30.jpg" alt="30-факт">
+          <div class="fact-number">30 / 31</div>
+          <div class="fact-text"
+               data-kk="Сен — біздің әпкеміз, жақын адамымызсың."
+               data-ru="Ты — наша сестра и наш близкий человек.">
             Сен — біздің әпкеміз, жақын адамымызсың.
-
           </div>
-
         </div>
-
       </div>
 
 
-      <!-- 31 -->
-
       <div class="fact-slide">
-
         <div class="fact-polaroid">
-
-          <img
-            class="fact-photo"
-            src="fact31.jpeg"
-            alt="31-факт">
-
-          <div class="fact-number">
-            31 / 31
-          </div>
-
-          <div
-            class="fact-text"
-
-            data-kk="Ең бастысы — біз сені қатты жақсы көреміз."
-
-            data-ru="И самый главный факт — мы тебя очень любим.">
-
+          <img class="fact-photo" src="fact31.jpeg" alt="31-факт">
+          <div class="fact-number">31 / 31</div>
+          <div class="fact-text"
+               data-kk="Ең бастысы — біз сені қатты жақсы көреміз."
+               data-ru="И самый главный факт — мы тебя очень любим.">
             Ең бастысы — біз сені қатты жақсы көреміз.
-
           </div>
-
         </div>
-
       </div>
 
 
@@ -2549,21 +2099,16 @@ p{
       ←
     </button>
 
-
     <div
       class="facts-counter"
       id="factCounter">
-
       01 / 31
-
     </div>
-
 
     <button
       class="facts-btn"
       onclick="moveFact(1)">
       →
-
     </button>
 
   </div>
@@ -2607,9 +2152,7 @@ p{
 
 
   <h2
-
     data-kk="Біздің<br>естеліктеріміз."
-
     data-ru="Наши<br>воспоминания.">
 
     Біздің<br>естеліктеріміз.
@@ -2887,9 +2430,7 @@ p{
 
 
   <h2
-
     data-kk="Бір сәт."
-
     data-ru="Один момент.">
 
     Бір сәт.
@@ -2951,9 +2492,7 @@ p{
 
 
   <h2
-
     data-kk="Сенің<br>саундтрегің."
-
     data-ru="Твой<br>саундтрек.">
 
     Сенің<br>саундтрегің.
@@ -2964,68 +2503,268 @@ p{
   <div class="song-list">
 
 
-    <div class="song">
-
-      <span>
-        01 — Homay
-      </span>
-
-      <span
-
-        data-kk="жылдамдық · еркіндік"
-
-        data-ru="скорость · свобода">
-
-        жылдамдық · еркіндік
-
-      </span>
-
-    </div>
-
+    <!-- =====================================================
+         01 — HOMAY
+    ====================================================== -->
 
     <div class="song">
 
-      <span>
-        02 — Не говори
-      </span>
+      <div class="song-info">
 
-      <span
+        <span>
+          01 — Homay
+        </span>
 
-        data-kk="әдемі · сабырлы · сенімді"
+        <small
+          data-kk="жылдамдық · еркіндік"
+          data-ru="скорость · свобода">
 
-        data-ru="красиво · спокойно · уверенно">
+          жылдамдық · еркіндік
 
-        әдемі · сабырлы · сенімді
+        </small>
 
-      </span>
-
-    </div>
+      </div>
 
 
-    <div class="song">
-<span>
-   03 - Жанымда бол
-</span>
-       
-      <span
-
-        data-kk="Осы әнді үйлену тойларыңда екеуің бірге орындадыңдар. Сондықтан бұл ән әр шырқалған сайын сол күннің қуанышын, махаббатын және екеуіңнің бірге бастаған әдемі жолдарыңды еске салады."
-
-        data-ru="Есть песни, которые просто слушаешь. А есть те, которые становятся воспоминанием. Эта — о начале вашей общей жизни, о вашем дне и о моменте, когда вы спели её вместе на своей свадьбе.">
-
-        Осы әнді үйлену тойларыңда екеуің бірге орындадыңдар. Сондықтан бұл ән әр шырқалған сайын сол күннің қуанышын, махаббатын және екеуіңнің бірге бастаған әдемі жолдарыңды еске салады.
-
-      </span>
-
-      <span
-
-        data-kk="біздің таңдауымыз"
-
-        data-ru="наш выбор">
+      <span class="song-label"
+            data-kk="біздің таңдауымыз"
+            data-ru="наш выбор">
 
         біздің таңдауымыз
 
       </span>
+
+
+      <div class="audio-player">
+
+        <button
+          class="audio-play"
+          id="play1"
+          onclick="toggleAudio(1)"
+          aria-label="Ойнату">
+
+          ▶
+
+        </button>
+
+
+        <div class="audio-content">
+
+          <div class="audio-top">
+
+            <span>
+              Homay
+            </span>
+
+            <span id="time1">
+              0:00
+            </span>
+
+          </div>
+
+
+          <input
+            class="audio-progress"
+            type="range"
+            id="progress1"
+            value="0"
+            min="0"
+            max="100"
+            step="0.1"
+            aria-label="Перемотка Homay">
+
+        </div>
+
+
+        <audio
+          id="audio1"
+          preload="metadata">
+
+          <source
+            src="music1.mp3"
+            type="audio/mpeg">
+
+        </audio>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         02 — НЕ ГОВОРИ
+    ====================================================== -->
+
+    <div class="song">
+
+      <div class="song-info">
+
+        <span>
+          02 — Не говори
+        </span>
+
+        <small
+          data-kk="әдемі · сабырлы · сенімді"
+          data-ru="красиво · спокойно · уверенно">
+
+          әдемі · сабырлы · сенімді
+
+        </small>
+
+      </div>
+
+
+      <span class="song-label"
+            data-kk="біздің таңдауымыз"
+            data-ru="наш выбор">
+
+        біздің таңдауымыз
+
+      </span>
+
+
+      <div class="audio-player">
+
+        <button
+          class="audio-play"
+          id="play2"
+          onclick="toggleAudio(2)"
+          aria-label="Ойнату">
+
+          ▶
+
+        </button>
+
+
+        <div class="audio-content">
+
+          <div class="audio-top">
+
+            <span>
+              Не говори
+            </span>
+
+            <span id="time2">
+              0:00
+            </span>
+
+          </div>
+
+
+          <input
+            class="audio-progress"
+            type="range"
+            id="progress2"
+            value="0"
+            min="0"
+            max="100"
+            step="0.1"
+            aria-label="Перемотка Не говори">
+
+        </div>
+
+
+        <audio
+          id="audio2"
+          preload="metadata">
+
+          <source
+            src="music2.mp3"
+            type="audio/mpeg">
+
+        </audio>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         03 — ЖАНЫМДА БОЛ
+    ====================================================== -->
+
+    <div class="song">
+
+      <div class="song-info">
+
+        <span>
+          03 — Жанымда бол
+        </span>
+
+
+        <small
+          data-kk="Кейбір әндер жүректе мәңгі сақталатын бір сәтпен байланысып қалады. Бұл ән де сендер үшін сондай ерекше ән. Ол — бірге бастаған жаңа өмірлеріңнің, бір-біріңе «иә» деген сол әдемі күннің естелігі. Ең қымбаттысы — осы әнді үйлену тойларыңда екеуің бірге орындадыңдар. Сондықтан бұл ән әр шырқалған сайын сол күннің қуанышын, махаббатын және екеуіңнің бірге бастаған әдемі жолдарыңды еске салады."
+
+          data-ru="Есть песни, которые навсегда связываются с одним особенным моментом. Эта песня именно такая для вас. Она — о начале вашей общей жизни, о том красивом дне, когда вы сказали друг другу «да». И самое особенное — вы вместе исполнили её на своей свадьбе. Поэтому каждый раз, когда звучит эта песня, она возвращает к радости того дня, вашей любви и началу вашего общего пути.">
+
+          Кейбір әндер жүректе мәңгі сақталатын бір сәтпен байланысып қалады. Бұл ән де сендер үшін сондай ерекше ән. Ол — бірге бастаған жаңа өмірлеріңнің, бір-біріңе «иә» деген сол әдемі күннің естелігі. Ең қымбаттысы — осы әнді үйлену тойларыңда екеуің бірге орындадыңдар. Сондықтан бұл ән әр шырқалған сайын сол күннің қуанышын, махаббатын және екеуіңнің бірге бастаған әдемі жолдарыңды еске салады.
+
+        </small>
+
+      </div>
+
+
+      <span class="song-label"
+            data-kk="біздің таңдауымыз"
+            data-ru="наш выбор">
+
+        біздің таңдауымыз
+
+      </span>
+
+
+      <div class="audio-player">
+
+        <button
+          class="audio-play"
+          id="play3"
+          onclick="toggleAudio(3)"
+          aria-label="Ойнату">
+
+          ▶
+
+        </button>
+
+
+        <div class="audio-content">
+
+          <div class="audio-top">
+
+            <span>
+              Жанымда бол
+            </span>
+
+            <span id="time3">
+              0:00
+            </span>
+
+          </div>
+
+
+          <input
+            class="audio-progress"
+            type="range"
+            id="progress3"
+            value="0"
+            min="0"
+            max="100"
+            step="0.1"
+            aria-label="Перемотка Жанымда бол">
+
+        </div>
+
+
+        <audio
+          id="audio3"
+          preload="metadata">
+
+          <source
+            src="music3.mp3"
+            type="audio/mpeg">
+
+        </audio>
+
+      </div>
 
     </div>
 
@@ -3071,9 +2810,7 @@ p{
 
 
   <h2
-
     data-kk="Саған<br>арналған хат."
-
     data-ru="Письмо<br>тебе.">
 
     Саған<br>арналған хат.
@@ -3085,7 +2822,6 @@ p{
 
     <div
       class="note"
-
 
       data-kk="Менің ең қымбатты, ең жақын татем ❤️
 
@@ -3105,7 +2841,6 @@ p{
 
 Туған күніңмен, менің жан татем! Әрқашан бақытты бол. Мен үшін сенің амандығың мен бақытты болғаныңнан артық ештеңе жоқ. Жақсы көремін сені, татуль. ❤️"
 
-
       data-ru="Моя родная сестра, моя старшая ❤️
 
 Я хочу сегодня сказать тебе то, что, возможно, не всегда получается сказать в обычной жизни. Я безумно тебя люблю и очень сильно тобой дорожу. Мне правда сложно представить свою жизнь без тебя и я каждый раз думаю о том, какое же это счастье родиться именно твоей младшей сестрой.
@@ -3123,7 +2858,6 @@ p{
 Я безумно рада, что судьба подарила мне именно тебя. Рада, что могу сказать «это моя старшая сестра» и гордиться этим. Ты навсегда останешься для меня моей родной старшей сестрёнкой, которую я люблю всем сердцем.
 
 Я тебя очень очень люблю. Береги себя и всегда помни, что у тебя есть я. И что бы ни случилось, я всегда буду рядом. ❤️">
-
 
       Менің ең қымбатты, ең жақын татем ❤️
 
@@ -3189,9 +2923,7 @@ p{
 
 
     <h2
-
       data-kk="Соңғы<br>бет."
-
       data-ru="Последняя<br>страница.">
 
       Соңғы<br>бет.
@@ -3217,12 +2949,9 @@ p{
 
       id="secretMessage"
 
-
       data-kk="31 жасың құтты болсын. Бұл — сенің тарихыңдағы тағы бір әдемі бет қана. Алда әлі көп нәрсе бар. Біз сені жақсы көреміз."
 
-
       data-ru="С 31-летием. Это всего лишь ещё одна красивая страница твоей истории. Впереди ещё очень много всего. Мы тебя любим.">
-
 
       31 жасың құтты болсын.
 
@@ -3231,7 +2960,6 @@ p{
       Алда әлі көп нәрсе бар.
 
       Біз сені жақсы көреміз.
-
 
     </div>
 
@@ -3498,6 +3226,288 @@ function moveFact(direction){
 
 
 /* =========================================================
+   AUDIO PLAYERS
+========================================================= */
+
+const audioPlayers = {
+
+  1:{
+    audio:
+      document.getElementById("audio1"),
+
+    button:
+      document.getElementById("play1"),
+
+    progress:
+      document.getElementById("progress1"),
+
+    time:
+      document.getElementById("time1")
+  },
+
+  2:{
+    audio:
+      document.getElementById("audio2"),
+
+    button:
+      document.getElementById("play2"),
+
+    progress:
+      document.getElementById("progress2"),
+
+    time:
+      document.getElementById("time2")
+  },
+
+  3:{
+    audio:
+      document.getElementById("audio3"),
+
+    button:
+      document.getElementById("play3"),
+
+    progress:
+      document.getElementById("progress3"),
+
+    time:
+      document.getElementById("time3")
+  }
+
+};
+
+
+function toggleAudio(number){
+
+  const currentPlayer =
+    audioPlayers[number];
+
+
+  /*
+    Останавливаем остальные песни.
+  */
+
+  Object.keys(audioPlayers).forEach(
+    key=>{
+
+      if(
+        Number(key) !== number
+      ){
+
+        const other =
+          audioPlayers[key];
+
+
+        other.audio.pause();
+
+        other.button.textContent =
+          "▶";
+
+      }
+
+    }
+  );
+
+
+  if(
+    currentPlayer.audio.paused
+  ){
+
+    const playPromise =
+      currentPlayer.audio.play();
+
+
+    if(
+      playPromise !== undefined
+    ){
+
+      playPromise
+        .then(
+          () => {
+
+            currentPlayer.button.textContent =
+              "❚❚";
+
+          }
+        )
+        .catch(
+          () => {
+
+            currentPlayer.button.textContent =
+              "▶";
+
+          }
+        );
+
+    }
+
+  }else{
+
+    currentPlayer.audio.pause();
+
+    currentPlayer.button.textContent =
+      "▶";
+
+  }
+
+}
+
+
+/*
+  Настройка каждого аудиоплеера.
+*/
+
+Object.values(audioPlayers)
+  .forEach(
+    player=>{
+
+
+      /*
+        Загружена информация о длине песни.
+      */
+
+      player.audio.addEventListener(
+        "loadedmetadata",
+
+        () => {
+
+          player.progress.max =
+            player.audio.duration;
+
+          player.progress.value = 0;
+
+          player.time.textContent =
+            formatAudioTime(
+              player.audio.currentTime
+            );
+
+        }
+      );
+
+
+      /*
+        Обновляем прогресс во время песни.
+      */
+
+      player.audio.addEventListener(
+        "timeupdate",
+
+        () => {
+
+          player.progress.value =
+            player.audio.currentTime;
+
+          player.time.textContent =
+            formatAudioTime(
+              player.audio.currentTime
+            );
+
+        }
+      );
+
+
+      /*
+        Перемотка.
+      */
+
+      player.progress.addEventListener(
+        "input",
+
+        () => {
+
+          player.audio.currentTime =
+            Number(
+              player.progress.value
+            );
+
+        }
+      );
+
+
+      /*
+        Когда песня закончилась.
+      */
+
+      player.audio.addEventListener(
+        "ended",
+
+        () => {
+
+          player.button.textContent =
+            "▶";
+
+          player.progress.value =
+            0;
+
+          player.time.textContent =
+            "0:00";
+
+        }
+      );
+
+
+      /*
+        Если песню поставили на паузу
+        другим способом.
+      */
+
+      player.audio.addEventListener(
+        "pause",
+
+        () => {
+
+          player.button.textContent =
+            "▶";
+
+        }
+      );
+
+
+      player.audio.addEventListener(
+        "play",
+
+        () => {
+
+          player.button.textContent =
+            "❚❚";
+
+        }
+      );
+
+    }
+  );
+
+
+function formatAudioTime(seconds){
+
+  if(
+    !isFinite(seconds)
+  ){
+
+    return "0:00";
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const remaining =
+    Math.floor(
+      seconds % 60
+    )
+    .toString()
+    .padStart(2,"0");
+
+
+  return `${minutes}:${remaining}`;
+
+}
+
+
+/* =========================================================
    LANGUAGE
 ========================================================= */
 
@@ -3539,10 +3549,6 @@ function setLanguage(lang){
     );
 
 
-  /*
-    После смены языка размеры текста могут измениться.
-    Пересчитываем высоту/позицию фактов.
-  */
   requestAnimationFrame(
     () => {
 
