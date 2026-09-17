@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>31 — Happy Birthday</title>
+<title>31 — Туған күніңмен</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,9 @@ body{
   overflow-x:hidden;
 }
 
-/* ---------------- LANGUAGE ---------------- */
+/* =========================
+   LANGUAGE
+========================= */
 
 .lang{
   position:fixed;
@@ -77,7 +79,9 @@ body{
   color:white;
 }
 
-/* ---------------- NAVIGATION ---------------- */
+/* =========================
+   NAVIGATION
+========================= */
 
 .dots{
   position:fixed;
@@ -117,7 +121,9 @@ body{
   background:var(--black);
 }
 
-/* ---------------- GENERAL ---------------- */
+/* =========================
+   GENERAL
+========================= */
 
 .screen{
   min-height:100svh;
@@ -175,7 +181,9 @@ p{
   max-width:650px;
 }
 
-/* ---------------- NEXT BUTTON ---------------- */
+/* =========================
+   NEXT
+========================= */
 
 .next{
   position:absolute;
@@ -205,10 +213,13 @@ p{
   color:var(--black);
 }
 
-/* ---------------- COVER ---------------- */
+/* =========================
+   COVER
+========================= */
 
 .cover{
   position:relative;
+
   text-align:center;
   align-items:center;
 
@@ -285,7 +296,9 @@ p{
   letter-spacing:.12em;
 }
 
-/* ---------------- SPLIT ---------------- */
+/* =========================
+   HER SECTION
+========================= */
 
 .split{
   display:grid;
@@ -304,54 +317,49 @@ p{
 
   border:1px solid var(--line);
 
-  overflow:hidden;
+  overflow:visible;
+
+  position:relative;
+
+  padding:15px;
+
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.12);
+
+  transform:rotate(1.5deg);
+}
+
+.photo-placeholder:before{
+  content:"";
+
+  position:absolute;
+
+  top:-13px;
+  left:50%;
+
+  transform:translateX(-50%) rotate(-2deg);
+
+  width:95px;
+  height:25px;
+
+  background:rgba(211,195,166,.72);
+
+  z-index:3;
 }
 
 .photo-placeholder img{
   width:100%;
   height:100%;
-  min-height:55vh;
+  min-height:52vh;
 
   object-fit:cover;
 
   display:block;
 }
 
-/* ---------------- 31 FACTS ---------------- */
-
-.facts{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:8px;
-
-  max-width:850px;
-}
-
-.fact{
-  border-top:1px solid var(--line);
-
-  padding:12px 4px 16px;
-
-  font-size:12px;
-
-  color:var(--gray);
-}
-
-.fact b{
-  color:var(--black);
-
-  font-family:"Cormorant Garamond",serif;
-
-  font-size:23px;
-
-  font-weight:500;
-}
-
-/* ---------------- GALLERY ---------------- */
+/* =========================
+   POLAROID GALLERY
+========================= */
 
 .gallery-wrap{
   margin-top:40px;
@@ -362,11 +370,19 @@ p{
 
   height:min(58vh,560px);
 
-  background:var(--paper);
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(0,0,0,.025) 0 1px,
+      transparent 1px
+    ),
+    var(--paper);
+
+  background-size:7px 7px;
 
   border:1px solid var(--line);
-
-  overflow:hidden;
 
   touch-action:pan-y;
 }
@@ -388,8 +404,8 @@ p{
   transform:translateX(100%);
 
   transition:
-    transform .5s cubic-bezier(.2,.75,.2,1),
-    opacity .35s ease;
+    transform .55s cubic-bezier(.2,.75,.2,1),
+    opacity .4s ease;
 }
 
 .slide.active{
@@ -404,13 +420,72 @@ p{
   transform:translateX(-100%);
 }
 
-.slide img{
-  width:100%;
-  height:100%;
+.polaroid{
+  width:min(430px,76vw);
 
-  object-fit:contain;
+  background:#fff;
+
+  padding:13px 13px 57px;
+
+  box-shadow:
+    0 20px 42px rgba(0,0,0,.15),
+    0 3px 8px rgba(0,0,0,.07);
+
+  position:relative;
+
+  transform:rotate(-1.5deg);
+
+  transition:.3s;
+}
+
+.slide:nth-child(even) .polaroid{
+  transform:rotate(1.7deg);
+}
+
+.slide:nth-child(3n) .polaroid{
+  transform:rotate(-.7deg);
+}
+
+.polaroid:before{
+  content:"";
+
+  position:absolute;
+
+  width:82px;
+  height:23px;
+
+  background:rgba(211,195,166,.72);
+
+  top:-10px;
+  left:50%;
+
+  transform:translateX(-50%) rotate(-2deg);
+
+  z-index:3;
+}
+
+.polaroid img{
+  width:100%;
+  height:430px;
+
+  object-fit:cover;
 
   display:block;
+
+  background:#e5ded4;
+}
+
+.polaroid-caption{
+  position:absolute;
+
+  left:18px;
+  bottom:14px;
+
+  font-family:"Cormorant Garamond",serif;
+
+  font-size:19px;
+
+  color:#2b2926;
 }
 
 .gallery-controls{
@@ -435,6 +510,13 @@ p{
   cursor:pointer;
 
   font-size:18px;
+
+  transition:.25s;
+}
+
+.gallery-btn:hover{
+  background:var(--black);
+  color:white;
 }
 
 .counter{
@@ -453,7 +535,186 @@ p{
   margin-top:12px;
 }
 
-/* ---------------- VIDEO ---------------- */
+/* =========================
+   FACTS
+========================= */
+
+.facts-screen{
+  background:#ebe4da;
+}
+
+.facts-header{
+  margin-bottom:28px;
+}
+
+.facts-window{
+  width:100%;
+
+  overflow:hidden;
+
+  touch-action:pan-y;
+
+  position:relative;
+}
+
+.facts-track{
+  display:flex;
+
+  transition:
+    transform .65s cubic-bezier(.77,0,.18,1);
+}
+
+.fact-slide{
+  flex:0 0 100%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 0 20px;
+}
+
+.fact-polaroid{
+  width:min(620px,82vw);
+
+  background:#fff;
+
+  padding:15px 15px 75px;
+
+  box-shadow:
+    0 24px 55px rgba(0,0,0,.15),
+    0 3px 10px rgba(0,0,0,.08);
+
+  position:relative;
+
+  transform:rotate(-1deg);
+}
+
+.fact-slide:nth-child(even) .fact-polaroid{
+  transform:rotate(1deg);
+}
+
+.fact-slide:nth-child(3n) .fact-polaroid{
+  transform:rotate(-.5deg);
+}
+
+.fact-polaroid:before{
+  content:"";
+
+  position:absolute;
+
+  top:-11px;
+  left:50%;
+
+  transform:translateX(-50%) rotate(-2deg);
+
+  width:95px;
+  height:25px;
+
+  background:rgba(211,195,166,.72);
+
+  z-index:5;
+}
+
+.fact-photo{
+  width:100%;
+
+  height:min(53vh,430px);
+
+  object-fit:cover;
+
+  display:block;
+
+  background:#e5ded4;
+}
+
+.fact-number{
+  position:absolute;
+
+  left:19px;
+  bottom:39px;
+
+  font-size:9px;
+
+  letter-spacing:.2em;
+
+  color:var(--accent);
+
+  text-transform:uppercase;
+}
+
+.fact-text{
+  position:absolute;
+
+  left:19px;
+  right:19px;
+
+  bottom:13px;
+
+  font-family:"Cormorant Garamond",serif;
+
+  font-size:22px;
+
+  line-height:1.05;
+
+  color:var(--black);
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.facts-controls{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:28px;
+
+  margin-top:10px;
+}
+
+.facts-btn{
+  border:1px solid var(--line);
+
+  background:transparent;
+
+  border-radius:50%;
+
+  width:42px;
+  height:42px;
+
+  cursor:pointer;
+
+  font-size:19px;
+
+  transition:.25s;
+}
+
+.facts-btn:hover{
+  background:var(--black);
+  color:white;
+}
+
+.facts-counter{
+  min-width:75px;
+
+  text-align:center;
+
+  font-size:10px;
+
+  letter-spacing:.18em;
+
+  color:var(--gray);
+}
+
+/* =========================
+   VIDEO
+========================= */
 
 .video{
   margin-top:35px;
@@ -470,6 +731,15 @@ p{
   color:white;
 
   position:relative;
+
+  overflow:hidden;
+}
+
+.video video{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
 }
 
 .play{
@@ -488,7 +758,9 @@ p{
   font-size:22px;
 }
 
-/* ---------------- SONGS ---------------- */
+/* =========================
+   SONGS
+========================= */
 
 .song-list{
   margin-top:35px;
@@ -523,7 +795,9 @@ p{
   letter-spacing:.12em;
 }
 
-/* ---------------- LETTER ---------------- */
+/* =========================
+   LETTER
+========================= */
 
 .note{
   max-width:700px;
@@ -547,9 +821,29 @@ p{
   padding:55px;
 
   max-width:850px;
+
+  position:relative;
 }
 
-/* ---------------- SECRET ---------------- */
+.card:before{
+  content:"";
+
+  position:absolute;
+
+  width:95px;
+  height:25px;
+
+  background:rgba(211,195,166,.72);
+
+  top:-12px;
+  left:50%;
+
+  transform:translateX(-50%) rotate(-2deg);
+}
+
+/* =========================
+   SECRET
+========================= */
 
 .secret{
   text-align:center;
@@ -575,6 +869,14 @@ p{
   text-transform:uppercase;
 
   cursor:pointer;
+
+  transition:.25s;
+}
+
+.secret button:hover{
+  background:transparent;
+
+  color:var(--black);
 }
 
 .secret-message{
@@ -595,7 +897,42 @@ p{
   display:block;
 }
 
-/* ---------------- MOBILE ---------------- */
+/* =========================
+   MISSING PHOTO
+========================= */
+
+.missing-photo{
+  width:100%;
+  height:100%;
+
+  min-height:300px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #e5ded4,
+      #e5ded4 10px,
+      #ddd5ca 10px,
+      #ddd5ca 20px
+    );
+
+  color:#77736d;
+
+  font-size:9px;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -619,23 +956,70 @@ p{
   }
 
   .photo-placeholder{
-    min-height:35vh;
+    min-height:40vh;
   }
 
   .photo-placeholder img{
-    min-height:35vh;
-  }
-
-  .facts{
-    grid-template-columns:repeat(2,1fr);
+    min-height:40vh;
   }
 
   .gallery{
     height:55vh;
   }
 
+  .polaroid{
+    width:82vw;
+
+    padding:10px 10px 52px;
+  }
+
+  .polaroid img{
+    height:390px;
+  }
+
+  .fact-polaroid{
+    width:88vw;
+
+    padding:10px 10px 70px;
+  }
+
+  .fact-photo{
+    height:430px;
+  }
+
+  .fact-text{
+    font-size:20px;
+  }
+
+  .song{
+    gap:15px;
+  }
+
+  .song span:first-child{
+    font-size:23px;
+  }
+
   .card{
-    padding:30px 22px;
+    padding:38px 25px;
+  }
+
+  .note{
+    font-size:21px;
+  }
+
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    transition:none !important;
   }
 
 }
@@ -645,7 +1029,10 @@ p{
 
 <body>
 
-<!-- LANGUAGE SWITCHER -->
+
+<!-- =========================
+     LANGUAGE
+========================= -->
 
 <div class="lang">
 
@@ -664,25 +1051,37 @@ p{
 
 </div>
 
-<!-- SIDE NAVIGATION -->
+
+<!-- =========================
+     SIDE NAVIGATION
+========================= -->
 
 <nav class="dots">
 
   <button class="dot active" onclick="goTo(0)"></button>
+
   <button class="dot" onclick="goTo(1)"></button>
+
   <button class="dot" onclick="goTo(2)"></button>
+
   <button class="dot" onclick="goTo(3)"></button>
+
   <button class="dot" onclick="goTo(4)"></button>
+
   <button class="dot" onclick="goTo(5)"></button>
+
   <button class="dot" onclick="goTo(6)"></button>
+
   <button class="dot" onclick="goTo(7)"></button>
+
   <button class="dot" onclick="goTo(8)"></button>
 
 </nav>
 
-<!-- =========================
-     01 COVER
-========================= -->
+
+<!-- =====================================================
+     01 — COVER
+===================================================== -->
 
 <section class="screen cover" id="s0">
 
@@ -710,15 +1109,16 @@ p{
     class="next"
     onclick="goTo(1)"
     data-kk="ары қарай"
-    data-ru="дальше">
+    data-ru="ары қарай">
     ары қарай
   </button>
 
 </section>
 
-<!-- =========================
-     02 HER
-========================= -->
+
+<!-- =====================================================
+     02 — HER
+===================================================== -->
 
 <section class="screen" id="s1">
 
@@ -748,7 +1148,11 @@ p{
     </div>
 
     <div class="photo-placeholder">
-      <img src="sister1.jpeg" alt="Фото сестры">
+
+      <img
+        src="sister1.jpeg"
+        alt="Әпке">
+
     </div>
 
   </div>
@@ -763,126 +1167,902 @@ p{
 
 </section>
 
-<!-- =========================
-     03 31 FACTS
-========================= -->
 
-<section class="screen" id="s2">
+<!-- =====================================================
+     03 — 31 FACTS
+===================================================== -->
+
+<section class="screen facts-screen" id="s2">
 
   <div
     class="eyebrow"
-    data-kk="02 / 31 факт"
+    data-kk="02 / 31 нәрсе"
     data-ru="02 / 31 факт">
-    02 / 31 факт
+    02 / 31 нәрсе
   </div>
 
-  <h2
-    data-kk="Сен туралы<br>31 нәрсе."
-    data-ru="31 вещь<br>о тебе.">
-    Сен туралы<br>31 нәрсе.
-  </h2>
+  <div class="facts-header">
 
-  <div class="facts">
+    <h2
+      data-kk="Сен туралы<br>31 нәрсе."
+      data-ru="31 факт<br>о тебе.">
+      Сен туралы<br>31 нәрсе.
+    </h2>
 
-    <script>
+  </div>
 
-      const kkFacts = [
 
-        "әрқашан әдемісің",
-        "күлкің ерекше",
-        "жүрегің жұмсақ",
-        "өз ойың бар",
-        "күштісің",
-        "шыдамдысың",
-        "отбасыңды бағалайсың",
-        "жақындарыңды қорғайсың",
-        "әдемі күлкің бар",
-        "өз стилің бар",
-        "қызық адамсың",
-        "жылы жансың",
-        "ерекше көзқарасың бар",
-        "батылсың",
-        "еңбекқорсың",
-        "кейде қырсықсың",
-        "керемет ата-анаңның қызысың",
-        "адалсың",
-        "керемет анасың",
-        "қамқорсың",
-        "керемет жарсың",
-        "өз армандарың бар",
-        "өз әлемің бар",
-        "сен — сенсің",
-        "саған ұқсайтын ешкім жоқ",
-        "үйдің бір бөлшегісің",
-        "керемет әпкесің",
-        "жақсы адамсың",
-        "жаның әдемі",
-        "көп нәрсеге лайықсың",
-        "ең бастысы — өзің бол"
+  <div
+    class="facts-window"
+    id="factsWindow">
 
-      ];
+    <div
+      class="facts-track"
+      id="factsTrack">
 
-      const ruFacts = [
+      <!-- FACT 01 -->
 
-        "всегда красивая",
-        "у тебя особенный смех",
-        "у тебя мягкое сердце",
-        "у тебя своё мнение",
-        "ты сильная",
-        "ты терпеливая",
-        "ты ценишь семью",
-        "ты защищаешь близких",
-        "у тебя красивая улыбка",
-        "у тебя свой стиль",
-        "с тобой интересно",
-        "ты тёплый человек",
-        "у тебя свой взгляд",
-        "ты смелая",
-        "ты трудолюбивая",
-        "иногда ты упрямая",
-        "самая лучшая дочка",
-        "ты честная",
-        "лучшая мама",
-        "ты заботливая",
-        "прекрасная жена",
-        "у тебя есть мечты",
-        "у тебя свой мир",
-        "ты — это ты",
-        "такой больше нет",
-        "ты часть дома",
-        "прекрасная сестра",
-        "ты хороший человек",
-        "у тебя красивая душа",
-        "ты заслуживаешь многого",
-        "главное — оставайся собой"
+      <div class="fact-slide">
 
-      ];
+        <div class="fact-polaroid">
 
-      for(let i = 0; i < 31; i++){
+          <img
+            class="fact-photo"
+            src="fact1.jpeg"
+            alt="1-факт">
 
-        document.write(`
-
-          <div class="fact">
-
-            <b>${i + 1}</b>
-
-            <br>
-
-            <span
-              data-kk="${kkFacts[i]}"
-              data-ru="${ruFacts[i]}">
-              ${kkFacts[i]}
-            </span>
-
+          <div class="fact-number">
+            01 / 31
           </div>
 
-        `);
+          <div
+            class="fact-text"
+            data-kk="Әрқашан әдемісің."
+            data-ru="Ты всегда красивая.">
+            Әрқашан әдемісің.
+          </div>
 
-      }
+        </div>
 
-    </script>
+      </div>
+
+
+      <!-- FACT 02 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact2.jpeg"
+            alt="2-факт">
+
+          <div class="fact-number">
+            02 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Күлкіңнің өзіне ғана тән әдемілігі бар."
+            data-ru="У твоего смеха есть своя особенная красота.">
+            Күлкіңнің өзіне ғана тән әдемілігі бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 03 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact3.jpeg"
+            alt="3-факт">
+
+          <div class="fact-number">
+            03 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Жүрегің жұмсақ."
+            data-ru="У тебя мягкое сердце.">
+            Жүрегің жұмсақ.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 04 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact4.jpeg"
+            alt="4-факт">
+
+          <div class="fact-number">
+            04 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Өз ойың бар."
+            data-ru="У тебя всегда есть своё мнение.">
+            Өз ойың бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 05 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact5.jpeg"
+            alt="5-факт">
+
+          <div class="fact-number">
+            05 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен мықтысың."
+            data-ru="Ты сильная.">
+            Сен мықтысың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 06 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact6.jpeg"
+            alt="6-факт">
+
+          <div class="fact-number">
+            06 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Шыдамдылығың көп нәрсеге жетелейді."
+            data-ru="Твоё терпение помогает тебе пройти через многое.">
+            Шыдамдылығың көп нәрсеге жетелейді.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 07 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact7.jpeg"
+            alt="7-факт">
+
+          <div class="fact-number">
+            07 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Отбасыңды қатты бағалайсың."
+            data-ru="Ты очень ценишь свою семью.">
+            Отбасыңды қатты бағалайсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 08 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact8.jpeg"
+            alt="8-факт">
+
+          <div class="fact-number">
+            08 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Жақындарыңды әрқашан қорғайсың."
+            data-ru="Ты всегда защищаешь своих близких.">
+            Жақындарыңды әрқашан қорғайсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 09 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact9.jpeg"
+            alt="9-факт">
+
+          <div class="fact-number">
+            09 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Күлкің көңіл-күйді бірден өзгертеді."
+            data-ru="Твоя улыбка сразу меняет настроение вокруг.">
+            Күлкің көңіл-күйді бірден өзгертеді.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 10 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact10.jpeg"
+            alt="10-факт">
+
+          <div class="fact-number">
+            10 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Өзіңе ғана тән стилің бар."
+            data-ru="У тебя есть свой собственный стиль.">
+            Өзіңе ғана тән стилің бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 11 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact11.jpeg"
+            alt="11-факт">
+
+          <div class="fact-number">
+            11 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сенімен бірге уақыт қызық өтеді."
+            data-ru="С тобой всегда интересно проводить время.">
+            Сенімен бірге уақыт қызық өтеді.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 12 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact12.jpeg"
+            alt="12-факт">
+
+          <div class="fact-number">
+            12 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сенің жаның жылы."
+            data-ru="У тебя очень тёплая душа.">
+            Сенің жаның жылы.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 13 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact13.jpeg"
+            alt="13-факт">
+
+          <div class="fact-number">
+            13 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Өзіңнің ерекше көзқарасың бар."
+            data-ru="У тебя свой особенный взгляд на жизнь.">
+            Өзіңнің ерекше көзқарасың бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 14 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact14.jpeg"
+            alt="14-факт">
+
+          <div class="fact-number">
+            14 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен батылсың."
+            data-ru="Ты смелая.">
+            Сен батылсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 15 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact15.jpeg"
+            alt="15-факт">
+
+          <div class="fact-number">
+            15 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Еңбекқорлығыңды бағалаймыз."
+            data-ru="Мы ценим твоё трудолюбие.">
+            Еңбекқорлығыңды бағалаймыз.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 16 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact16.jpeg"
+            alt="16-факт">
+
+          <div class="fact-number">
+            16 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Кейде қырсық болғаның да сүйкімді."
+            data-ru="Даже твоя упрямость иногда очень милая.">
+            Кейде қырсық болғаның да сүйкімді.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 17 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact17.jpeg"
+            alt="17-факт">
+
+          <div class="fact-number">
+            17 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен отбасың үшін ерекше адамсың."
+            data-ru="Ты особенный человек для своей семьи.">
+            Сен отбасың үшін ерекше адамсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 18 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact18.jpeg"
+            alt="18-факт">
+
+          <div class="fact-number">
+            18 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен адалсың."
+            data-ru="Ты умеешь быть искренней и верной.">
+            Сен адалсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 19 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact19.jpeg"
+            alt="19-факт">
+
+          <div class="fact-number">
+            19 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен қамқор жансың."
+            data-ru="Ты очень заботливый человек.">
+            Сен қамқор жансың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 20 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact20.jpeg"
+            alt="20-факт">
+
+          <div class="fact-number">
+            20 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен жақындарыңды жүрегіңмен сезесің."
+            data-ru="Ты чувствуешь своих близких сердцем.">
+            Сен жақындарыңды жүрегіңмен сезесің.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 21 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact21.jpeg"
+            alt="21-факт">
+
+          <div class="fact-number">
+            21 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен өз армандарыңды бағалайсың."
+            data-ru="Ты ценишь свои мечты.">
+            Сен өз армандарыңды бағалайсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 22 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact22.jpeg"
+            alt="22-факт">
+
+          <div class="fact-number">
+            22 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сенің өз әлемің бар."
+            data-ru="У тебя есть свой особенный мир.">
+            Сенің өз әлемің бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 23 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact23.jpeg"
+            alt="23-факт">
+
+          <div class="fact-number">
+            23 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен есте қалатын адамсың."
+            data-ru="Ты из тех людей, которых запоминают.">
+            Сен есте қалатын адамсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 24 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact24.jpeg"
+            alt="24-факт">
+
+          <div class="fact-number">
+            24 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сенің балалық шағыңнан әдемі естеліктер көп."
+            data-ru="У тебя много красивых воспоминаний из детства.">
+            Сенің балалық шағыңнан әдемі естеліктер көп.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 25 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact25.jpeg"
+            alt="25-факт">
+
+          <div class="fact-number">
+            25 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Жыл өткен сайын жаңа қырың ашылады."
+            data-ru="С каждым годом в тебе открывается что-то новое.">
+            Жыл өткен сайын жаңа қырың ашылады.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 26 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact26.jpeg"
+            alt="26-факт">
+
+          <div class="fact-number">
+            26 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="31 — жаңа тараудың басы."
+            data-ru="31 — начало новой главы.">
+            31 — жаңа тараудың басы.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 27 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact27.jpeg"
+            alt="27-факт">
+
+          <div class="fact-number">
+            27 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Алда әлі өте көп әдемі сәттер бар."
+            data-ru="Впереди ещё очень много красивых моментов.">
+            Алда әлі өте көп әдемі сәттер бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 28 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact28.jpeg"
+            alt="28-факт">
+
+          <div class="fact-number">
+            28 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен біздің ортақ тарихымыздың бір бөлшегісің."
+            data-ru="Ты большая часть нашей общей истории.">
+            Сен біздің ортақ тарихымыздың бір бөлшегісің.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 29 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact29.jpeg"
+            alt="29-факт">
+
+          <div class="fact-number">
+            29 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Әр жасыңның өз әдемілігі бар."
+            data-ru="В каждом твоём возрасте есть своя красота.">
+            Әр жасыңның өз әдемілігі бар.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 30 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact30.jpeg"
+            alt="30-факт">
+
+          <div class="fact-number">
+            30 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Сен — біздің әпкеміз, жақын адамымызсың."
+            data-ru="Ты — наша сестра и наш близкий человек.">
+            Сен — біздің әпкеміз, жақын адамымызсың.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FACT 31 -->
+
+      <div class="fact-slide">
+
+        <div class="fact-polaroid">
+
+          <img
+            class="fact-photo"
+            src="fact31.jpeg"
+            alt="31-факт">
+
+          <div class="fact-number">
+            31 / 31
+          </div>
+
+          <div
+            class="fact-text"
+            data-kk="Ең бастысы — біз сені қатты жақсы көреміз."
+            data-ru="И самый главный факт — мы тебя очень любим.">
+            Ең бастысы — біз сені қатты жақсы көреміз.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
+
+
+  <div class="facts-controls">
+
+    <button
+      class="facts-btn"
+      onclick="moveFact(-1)">
+      ←
+    </button>
+
+    <div
+      class="facts-counter"
+      id="factCounter">
+      01 / 31
+    </div>
+
+    <button
+      class="facts-btn"
+      onclick="moveFact(1)">
+      →
+    </button>
+
+  </div>
+
 
   <button
     class="next"
@@ -894,9 +2074,10 @@ p{
 
 </section>
 
-<!-- =========================
-     04 OUR MEMORIES
-========================= -->
+
+<!-- =====================================================
+     04 — OUR MEMORIES
+===================================================== -->
 
 <section class="screen" id="s3">
 
@@ -913,43 +2094,175 @@ p{
     Біздің<br>естеліктеріміз.
   </h2>
 
+
   <div class="gallery-wrap">
 
-    <div class="gallery" id="ourGallery">
+    <div
+      class="gallery"
+      id="ourGallery">
+
 
       <div class="slide active">
-        <img src="sister2.JPG" alt="Наше фото 01">
+
+        <div class="polaroid">
+
+          <img
+            src="sister2.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="біздің естелік"
+            data-ru="наше воспоминание">
+            біздің естелік
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister3.jpeg" alt="Наше фото 02">
-      </div>
 
       <div class="slide">
-        <img src="sister4.jpeg" alt="Наше фото 03">
+
+        <div class="polaroid">
+
+          <img
+            src="sister3.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="сол бір күн"
+            data-ru="тот самый день">
+            сол бір күн
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister5.jpg" alt="Наше фото 04">
-      </div>
 
       <div class="slide">
-        <img src="sister6.jpg" alt="Наше фото 05">
+
+        <div class="polaroid">
+
+          <img
+            src="sister4.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="үшеуміз"
+            data-ru="мы втроём">
+            үшеуміз
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister7.jpg" alt="Наше фото 06">
-      </div>
 
       <div class="slide">
-        <img src="sister8.jpg" alt="Наше фото 07">
+
+        <div class="polaroid">
+
+          <img
+            src="sister5.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="тағы бір әдемі сәт"
+            data-ru="ещё один красивый момент">
+            тағы бір әдемі сәт
+          </div>
+
+        </div>
+
       </div>
 
+
       <div class="slide">
-        <img src="sister9.jpg" alt="Наше фото 08">
+
+        <div class="polaroid">
+
+          <img
+            src="sister6.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="біздің тарихымыз"
+            data-ru="наша история">
+            біздің тарихымыз
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister7.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="бірге"
+            data-ru="вместе">
+            бірге
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister8.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="есте қалатын күн"
+            data-ru="день, который запомнился">
+            есте қалатын күн
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister9.jpeg"
+            alt="Біздің естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="әрқашан біз"
+            data-ru="всегда мы">
+            әрқашан біз
+          </div>
+
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="gallery-controls">
 
@@ -975,6 +2288,7 @@ p{
 
   </div>
 
+
   <button
     class="next"
     onclick="goTo(4)"
@@ -985,9 +2299,10 @@ p{
 
 </section>
 
-<!-- =========================
-     05 HER PEOPLE
-========================= -->
+
+<!-- =====================================================
+     05 — HER PEOPLE
+===================================================== -->
 
 <section class="screen" id="s4">
 
@@ -1005,56 +2320,220 @@ p{
   </h2>
 
   <p
-    data-kk="Бұл бөлімде оның өміріндегі ең жақын адамдар болады: отбасы, туыстар, достар және жүрегіне жақын жандар."
-    data-ru="Здесь будут самые близкие люди в её жизни: семья, родственники, друзья и те, кто ей дорог.">
-    Бұл бөлімде оның өміріндегі ең жақын адамдар болады: отбасы, туыстар, достар және жүрегіне жақын жандар.
+    data-kk="Оның өміріндегі ең жақын адамдар: отбасы, туыстар, достар және жүрегіне жақын жандар."
+    data-ru="Самые близкие люди в её жизни: семья, родственники, друзья и те, кто ей дорог.">
+    Оның өміріндегі ең жақын адамдар: отбасы, туыстар, достар және жүрегіне жақын жандар.
   </p>
+
 
   <div class="gallery-wrap">
 
-    <div class="gallery" id="peopleGallery">
+    <div
+      class="gallery"
+      id="peopleGallery">
+
 
       <div class="slide active">
-        <img src="sister10.jpg" alt="Близкие 01">
+
+        <div class="polaroid">
+
+          <img
+            src="sister10.jpeg"
+            alt="Отбасы">
+
+          <div
+            class="polaroid-caption"
+            data-kk="отбасы"
+            data-ru="семья">
+            отбасы
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister11.jpg" alt="Близкие 02">
-      </div>
 
       <div class="slide">
-        <img src="sister12.jpg" alt="Близкие 03">
+
+        <div class="polaroid">
+
+          <img
+            src="sister11.jpeg"
+            alt="Жақын адамдар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="жақын адамдар"
+            data-ru="близкие люди">
+            жақын адамдар
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister13.jpg" alt="Близкие 04">
-      </div>
 
       <div class="slide">
-        <img src="sister14.jpg" alt="Близкие 05">
+
+        <div class="polaroid">
+
+          <img
+            src="sister12.jpeg"
+            alt="Отбасы">
+
+          <div
+            class="polaroid-caption"
+            data-kk="үй"
+            data-ru="дом">
+            үй
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister15.jpg" alt="Близкие 06">
-      </div>
 
       <div class="slide">
-        <img src="sister16.jpg" alt="Близкие 07">
+
+        <div class="polaroid">
+
+          <img
+            src="sister13.jpeg"
+            alt="Жақындар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="әрқашан бірге"
+            data-ru="всегда вместе">
+            әрқашан бірге
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="slide">
-        <img src="sister17.jpg" alt="Близкие 08">
-      </div>
 
       <div class="slide">
-        <img src="sister18.jpg" alt="Близкие 09">
+
+        <div class="polaroid">
+
+          <img
+            src="sister14.jpeg"
+            alt="Достар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="достар"
+            data-ru="друзья">
+            достар
+          </div>
+
+        </div>
+
       </div>
 
+
       <div class="slide">
-        <img src="sister19.jpg" alt="Близкие 10">
+
+        <div class="polaroid">
+
+          <img
+            src="sister15.jpeg"
+            alt="Жақын адамдар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="оның адамдары"
+            data-ru="её люди">
+            оның адамдары
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister16.jpeg"
+            alt="Туыстар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="туыстар"
+            data-ru="родные">
+            туыстар
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister17.jpeg"
+            alt="Жақын жандар">
+
+          <div
+            class="polaroid-caption"
+            data-kk="жақын жандар"
+            data-ru="дорогие люди">
+            жақын жандар
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister18.jpeg"
+            alt="Отбасы">
+
+          <div
+            class="polaroid-caption"
+            data-kk="біздің адамдар"
+            data-ru="наши люди">
+            біздің адамдар
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide">
+
+        <div class="polaroid">
+
+          <img
+            src="sister19.jpeg"
+            alt="Естелік">
+
+          <div
+            class="polaroid-caption"
+            data-kk="бірге"
+            data-ru="вместе">
+            бірге
+          </div>
+
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="gallery-controls">
 
@@ -1080,12 +2559,14 @@ p{
 
   </div>
 
+
   <div
     class="people-note"
     data-kk="фотоларды кейін қалағанымызша көбейтеміз"
-    data-ru="фотографий позже добавим столько, сколько понадобится">
+    data-ru="позже добавим столько фотографий, сколько понадобится">
     фотоларды кейін қалағанымызша көбейтеміз
   </div>
+
 
   <button
     class="next"
@@ -1097,9 +2578,10 @@ p{
 
 </section>
 
-<!-- =========================
-     06 VIDEO
-========================= -->
+
+<!-- =====================================================
+     06 — VIDEO
+===================================================== -->
 
 <section class="screen" id="s5">
 
@@ -1117,18 +2599,27 @@ p{
   </h2>
 
   <p
-    data-kk="Бұл жерде кейін видео пайда болады. Бір видео қалдыруға да, бірнешеуін шағын видеогалерея қылып жасауға да болады."
-    data-ru="Здесь позже появится видео. Можно оставить одно видео или сделать небольшую видеогалерею из нескольких.">
-    Бұл жерде кейін видео пайда болады. Бір видео қалдыруға да, бірнешеуін шағын видеогалерея қылып жасауға да болады.
+    data-kk="Бұл жерде сенің видеоң болады."
+    data-ru="Здесь будет твоё видео.">
+    Бұл жерде сенің видеоң болады.
   </p>
+
 
   <div class="video">
 
-    <div class="play">
-      ▶
-    </div>
+    <video
+      controls
+      playsinline
+      preload="metadata">
+
+      <source
+        src="video1.mp4"
+        type="video/mp4">
+
+    </video>
 
   </div>
+
 
   <button
     class="next"
@@ -1140,15 +2631,16 @@ p{
 
 </section>
 
-<!-- =========================
-     07 MUSIC
-========================= -->
+
+<!-- =====================================================
+     07 — SOUNDTRACK
+===================================================== -->
 
 <section class="screen" id="s6">
 
   <div
     class="eyebrow"
-    data-kk="06 / оның саундтрегi"
+    data-kk="06 / оның саундтрегі"
     data-ru="06 / её саундтрек">
     06 / оның саундтрегі
   </div>
@@ -1159,34 +2651,59 @@ p{
     Сенің<br>саундтрегің.
   </h2>
 
+
   <div class="song-list">
 
-    <div class="song">
-      <span>01 — Ән</span>
-      <span>кейін қосамыз</span>
-    </div>
 
     <div class="song">
-      <span>02 — Ән</span>
-      <span>кейін қосамыз</span>
+
+      <span>
+        01 — Homay
+      </span>
+
+      <span
+        data-kk="жылдамдық · еркіндік"
+        data-ru="скорость · свобода">
+        жылдамдық · еркіндік
+      </span>
+
     </div>
 
-    <div class="song">
-      <span>03 — Ән</span>
-      <span>кейін қосамыз</span>
-    </div>
 
     <div class="song">
-      <span>04 — Ән</span>
-      <span>кейін қосамыз</span>
+
+      <span>
+        02 — Не говори
+      </span>
+
+      <span
+        data-kk="әдемі · сабырлы · сенімді"
+        data-ru="красиво · спокойно · уверенно">
+        әдемі · сабырлы · сенімді
+      </span>
+
     </div>
 
+
     <div class="song">
-      <span>05 — Ән</span>
-      <span>кейін қосамыз</span>
+
+      <span
+        data-kk="03 — кейін таңдаймыз"
+        data-ru="03 — выберем позже">
+        03 — кейін таңдаймыз
+      </span>
+
+      <span
+        data-kk="біздің таңдауымыз"
+        data-ru="наш выбор">
+        біздің таңдауымыз
+      </span>
+
     </div>
+
 
   </div>
+
 
   <button
     class="next"
@@ -1198,9 +2715,10 @@ p{
 
 </section>
 
-<!-- =========================
-     08 LETTER
-========================= -->
+
+<!-- =====================================================
+     08 — LETTER
+===================================================== -->
 
 <section class="screen" id="s7">
 
@@ -1217,20 +2735,20 @@ p{
     Саған<br>арналған хат.
   </h2>
 
+
   <div class="card">
 
     <div
       class="note"
       data-kk="Сен біздің өміріміздегі жай ғана адам емессің. Сен — үйдің бір бөлігі, ортақ естеліктеріміздің үлкен бөлігісің. 31 жасың саған тыныштық, махаббат, күлкі және өзің қалаған барлық жақсы нәрселерді әкелсін."
       data-ru="Ты не просто человек в нашей жизни. Ты — часть дома и большая часть наших общих воспоминаний. Пусть твои 31 принесут тебе спокойствие, любовь, смех и всё хорошее, чего ты сама хочешь.">
-
       Сен біздің өміріміздегі жай ғана адам емессің.
       Сен — үйдің бір бөлігі, ортақ естеліктеріміздің үлкен бөлігісің.
       31 жасың саған тыныштық, махаббат, күлкі және өзің қалаған барлық жақсы нәрселерді әкелсін.
-
     </div>
 
   </div>
+
 
   <button
     class="next"
@@ -1242,37 +2760,46 @@ p{
 
 </section>
 
-<!-- =========================
-     09 SECRET
-========================= -->
+
+<!-- =====================================================
+     09 — FINAL
+===================================================== -->
 
 <section class="screen" id="s8">
 
   <div class="secret">
 
-    <div class="eyebrow">
-      08 / THE SECRET
+    <div
+      class="eyebrow"
+      data-kk="08 / соңғы бет"
+      data-ru="08 / последняя страница">
+      08 / соңғы бет
     </div>
 
-    <h2>
-      THE<br>SECRET.
+    <h2
+      data-kk="Соңғы<br>бет."
+      data-ru="Последняя<br>страница.">
+      Соңғы<br>бет.
     </h2>
+
 
     <button
       onclick="revealSecret()"
-      data-kk="құпияны ашу"
-      data-ru="открыть секрет">
-      құпияны ашу
+      data-kk="соңғы сөзді оқу"
+      data-ru="прочитать последнее">
+      соңғы сөзді оқу
     </button>
+
 
     <div
       class="secret-message"
       id="secretMessage"
-      data-kk="Бұл сайттағы ең маңызды нәрсе — сенің өзің. Туған күніңмен. Біз сені жақсы көреміз."
-      data-ru="Самое важное во всём этом сайте — ты сама. С днём рождения. Мы тебя любим.">
+      data-kk="31 жасың құтты болсын. Бұл — сенің тарихыңдағы тағы бір әдемі бет қана. Алда әлі көп нәрсе бар. Біз сені жақсы көреміз."
+      data-ru="С 31-летием. Это всего лишь ещё одна красивая страница твоей истории. Впереди ещё очень много всего. Мы тебя любим.">
 
-      Бұл сайттағы ең маңызды нәрсе — сенің өзің.
-      Туған күніңмен.
+      31 жасың құтты болсын.
+      Бұл — сенің тарихыңдағы тағы бір әдемі бет қана.
+      Алда әлі көп нәрсе бар.
       Біз сені жақсы көреміз.
 
     </div>
@@ -1281,11 +2808,12 @@ p{
 
 </section>
 
+
 <script>
 
-/* =========================
+/* =========================================================
    PAGE NAVIGATION
-========================= */
+========================================================= */
 
 let current = 0;
 
@@ -1297,31 +2825,37 @@ const dots = [
   ...document.querySelectorAll(".dot")
 ];
 
-function goTo(i){
 
-  current = Math.max(
-    0,
-    Math.min(i, screens.length - 1)
-  );
+function goTo(index){
+
+  current =
+    Math.max(
+      0,
+      Math.min(
+        index,
+        screens.length - 1
+      )
+    );
 
   screens[current].scrollIntoView({
     behavior:"smooth"
   });
 
-  dots.forEach((dot,index)=>{
-
-    dot.classList.toggle(
-      "active",
-      index === current
-    );
-
-  });
+  dots.forEach(
+    (dot,index)=>{
+      dot.classList.toggle(
+        "active",
+        index === current
+      );
+    }
+  );
 
 }
 
-/* =========================
+
+/* =========================================================
    GALLERIES
-========================= */
+========================================================= */
 
 const galleries = {
 
@@ -1339,38 +2873,52 @@ const galleries = {
 
 };
 
+
 function renderGallery(name){
 
-  const gallery = galleries[name];
+  const gallery =
+    galleries[name];
 
-  const slides = [
-    ...gallery.el.querySelectorAll(".slide")
-  ];
+  const slides =
+    [
+      ...gallery.el.querySelectorAll(".slide")
+    ];
 
-  slides.forEach((slide,index)=>{
 
-    slide.classList.remove(
-      "active",
-      "prev"
-    );
+  slides.forEach(
+    (slide,index)=>{
 
-    if(index === gallery.index){
+      slide.classList.remove(
+        "active",
+        "prev"
+      );
 
-      slide.classList.add("active");
+
+      if(index === gallery.index){
+
+        slide.classList.add(
+          "active"
+        );
+
+      }
+
+      else if(index < gallery.index){
+
+        slide.classList.add(
+          "prev"
+        );
+
+      }
 
     }
+  );
 
-    else if(index < gallery.index){
-
-      slide.classList.add("prev");
-
-    }
-
-  });
 
   gallery.counter.textContent =
 
-    String(gallery.index + 1).padStart(2,"0")
+    String(
+      gallery.index + 1
+    ).padStart(2,"0")
 
     +
 
@@ -1378,31 +2926,106 @@ function renderGallery(name){
 
     +
 
-    String(slides.length).padStart(2,"0");
+    String(
+      slides.length
+    ).padStart(2,"0");
 
 }
 
-function moveGallery(name,direction){
 
-  const gallery = galleries[name];
+function moveGallery(
+  name,
+  direction
+){
+
+  const gallery =
+    galleries[name];
 
   const total =
-    gallery.el.querySelectorAll(".slide").length;
+    gallery.el
+      .querySelectorAll(".slide")
+      .length;
+
 
   gallery.index =
-    (gallery.index + direction + total) % total;
+    (
+      gallery.index +
+      direction +
+      total
+    ) % total;
+
 
   renderGallery(name);
 
 }
 
-/* =========================
+
+/* =========================================================
+   31 FACTS SLIDER
+========================================================= */
+
+let factIndex = 0;
+
+const factTrack =
+  document.getElementById("factsTrack");
+
+const factSlides =
+  [
+    ...document.querySelectorAll(".fact-slide")
+  ];
+
+const factCounter =
+  document.getElementById("factCounter");
+
+
+function renderFacts(){
+
+  factTrack.style.transform =
+    `translateX(-${factIndex * 100}%)`;
+
+
+  factCounter.textContent =
+
+    String(
+      factIndex + 1
+    ).padStart(2,"0")
+
+    +
+
+    " / 31";
+
+}
+
+
+function moveFact(direction){
+
+  factIndex =
+
+    (
+      factIndex +
+      direction +
+      factSlides.length
+    )
+
+    %
+
+    factSlides.length;
+
+
+  renderFacts();
+
+}
+
+
+/* =========================================================
    LANGUAGE
-========================= */
+========================================================= */
 
 function setLanguage(lang){
 
-  document.documentElement.lang = lang;
+  document.documentElement.lang =
+    lang;
+
 
   document
     .querySelectorAll("[data-kk]")
@@ -1413,6 +3036,7 @@ function setLanguage(lang){
 
     });
 
+
   document
     .getElementById("kkBtn")
     .classList
@@ -1420,6 +3044,7 @@ function setLanguage(lang){
       "active",
       lang === "kk"
     );
+
 
   document
     .getElementById("ruBtn")
@@ -1431,9 +3056,10 @@ function setLanguage(lang){
 
 }
 
-/* =========================
+
+/* =========================================================
    SECRET
-========================= */
+========================================================= */
 
 function revealSecret(){
 
@@ -1444,55 +3070,70 @@ function revealSecret(){
 
 }
 
-/* =========================
-   UPDATE DOTS ON SCROLL
-========================= */
 
-screens.forEach((screen,index)=>{
+/* =========================================================
+   SCROLL → DOTS
+========================================================= */
 
-  const observer =
-    new IntersectionObserver(
+screens.forEach(
+  (screen,index)=>{
 
-      entries=>{
+    const observer =
+      new IntersectionObserver(
 
-        if(entries[0].isIntersecting){
+        entries=>{
 
-          current = index;
+          if(
+            entries[0].isIntersecting
+          ){
 
-          dots.forEach((dot,n)=>{
+            current = index;
 
-            dot.classList.toggle(
-              "active",
-              n === index
+
+            dots.forEach(
+              (dot,n)=>{
+
+                dot.classList.toggle(
+                  "active",
+                  n === index
+                );
+
+              }
             );
 
-          });
+          }
 
+        },
+
+        {
+          threshold:.55
         }
 
-      },
+      );
 
-      {
-        threshold:.55
-      }
 
-    );
+    observer.observe(screen);
 
-  observer.observe(screen);
+  }
+);
 
-});
 
-/* =========================
-   SWIPE GALLERIES
-========================= */
+/* =========================================================
+   SWIPE — GALLERIES
+========================================================= */
 
-function addSwipe(id,name){
+function addSwipe(
+  id,
+  callback
+){
 
   const element =
     document.getElementById(id);
 
+
   let startX = 0;
   let startY = 0;
+
 
   element.addEventListener(
     "touchstart",
@@ -1510,6 +3151,7 @@ function addSwipe(id,name){
     }
   );
 
+
   element.addEventListener(
     "touchend",
     event=>{
@@ -1520,19 +3162,20 @@ function addSwipe(id,name){
       const endY =
         event.changedTouches[0].clientY;
 
+
       const dx =
         endX - startX;
 
       const dy =
         endY - startY;
 
+
       if(
         Math.abs(dx) > 50 &&
         Math.abs(dx) > Math.abs(dy)
       ){
 
-        moveGallery(
-          name,
+        callback(
           dx < 0 ? 1 : -1
         );
 
@@ -1546,69 +3189,187 @@ function addSwipe(id,name){
 
 }
 
+
 addSwipe(
   "ourGallery",
-  "our"
+  direction=>{
+    moveGallery(
+      "our",
+      direction
+    );
+  }
 );
+
 
 addSwipe(
   "peopleGallery",
-  "people"
+  direction=>{
+    moveGallery(
+      "people",
+      direction
+    );
+  }
 );
 
-/* =========================
+
+/* =========================================================
+   SWIPE — 31 FACTS
+========================================================= */
+
+let factStartX = 0;
+let factStartY = 0;
+
+
+document
+  .getElementById("factsWindow")
+  .addEventListener(
+    "touchstart",
+    event=>{
+
+      factStartX =
+        event.touches[0].clientX;
+
+      factStartY =
+        event.touches[0].clientY;
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+document
+  .getElementById("factsWindow")
+  .addEventListener(
+    "touchend",
+    event=>{
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const endY =
+        event.changedTouches[0].clientY;
+
+
+      const dx =
+        endX - factStartX;
+
+      const dy =
+        endY - factStartY;
+
+
+      if(
+        Math.abs(dx) > 50 &&
+        Math.abs(dx) > Math.abs(dy)
+      ){
+
+        moveFact(
+          dx < 0 ? 1 : -1
+        );
+
+      }
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+/* =========================================================
    KEYBOARD
-========================= */
+========================================================= */
 
 document.addEventListener(
   "keydown",
   event=>{
+
 
     if(
       event.key === "ArrowDown" ||
       event.key === "PageDown"
     ){
 
-      goTo(current + 1);
+      goTo(
+        current + 1
+      );
 
     }
+
 
     if(
       event.key === "ArrowUp" ||
       event.key === "PageUp"
     ){
 
-      goTo(current - 1);
+      goTo(
+        current - 1
+      );
 
     }
 
-    if(event.key === "ArrowRight"){
 
-      if(current === 3){
+    if(
+      event.key === "ArrowRight"
+    ){
 
-        moveGallery("our",1);
+      if(current === 2){
+
+        moveFact(1);
 
       }
 
+
+      if(current === 3){
+
+        moveGallery(
+          "our",
+          1
+        );
+
+      }
+
+
       if(current === 4){
 
-        moveGallery("people",1);
+        moveGallery(
+          "people",
+          1
+        );
 
       }
 
     }
 
-    if(event.key === "ArrowLeft"){
 
-      if(current === 3){
+    if(
+      event.key === "ArrowLeft"
+    ){
 
-        moveGallery("our",-1);
+      if(current === 2){
+
+        moveFact(-1);
 
       }
 
+
+      if(current === 3){
+
+        moveGallery(
+          "our",
+          -1
+        );
+
+      }
+
+
       if(current === 4){
 
-        moveGallery("people",-1);
+        moveGallery(
+          "people",
+          -1
+        );
 
       }
 
@@ -1617,13 +3378,52 @@ document.addEventListener(
   }
 );
 
-/* =========================
+
+/* =========================================================
+   PHOTO ERROR HANDLING
+========================================================= */
+
+document
+  .querySelectorAll("img")
+  .forEach(img=>{
+
+    img.addEventListener(
+      "error",
+      function(){
+
+        const placeholder =
+          document.createElement(
+            "div"
+          );
+
+
+        placeholder.className =
+          "missing-photo";
+
+
+        placeholder.textContent =
+          "фотосурет қосыңыз";
+
+
+        this.replaceWith(
+          placeholder
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
    INITIALIZE
-========================= */
+========================================================= */
 
 renderGallery("our");
 
 renderGallery("people");
+
+renderFacts();
 
 setLanguage("kk");
 
