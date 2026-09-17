@@ -549,23 +549,28 @@ p{
 
 .facts-window{
   width:100%;
-
   overflow:hidden;
-
-  touch-action:pan-y;
-
   position:relative;
+  touch-action:pan-y;
+  overscroll-behavior-x:none;
 }
 
 .facts-track{
   display:flex;
+  width:100%;
+
+  transform:translate3d(0,0,0);
 
   transition:
     transform .65s cubic-bezier(.77,0,.18,1);
+
+  will-change:transform;
 }
 
 .fact-slide{
   flex:0 0 100%;
+  width:100%;
+  min-width:100%;
 
   display:flex;
 
@@ -573,6 +578,8 @@ p{
   justify-content:center;
 
   padding:12px 0 20px;
+
+  box-sizing:border-box;
 }
 
 .fact-polaroid{
@@ -1176,17 +1183,17 @@ p{
 
   <div
     class="eyebrow"
-    data-kk="02 / 31 нәрсе"
+    data-kk="02 / 31 құндылық."
     data-ru="02 / 31 факт">
-    02 / 31 нәрсе
+    02 / 31 құндылық.
   </div>
 
   <div class="facts-header">
 
     <h2
-      data-kk="Сен туралы<br>31 нәрсе."
+      data-kk="Сен туралы<br>31 құндылық."
       data-ru="31 факт<br>о тебе.">
-      Сен туралы<br>31 нәрсе.
+      Сен туралы<br>31 құндылық.
     </h2>
 
   </div>
@@ -1244,9 +1251,9 @@ p{
 
           <div
             class="fact-text"
-            data-kk="Күлкіңнің өзіне ғана тән әдемілігі бар."
+            data-kk="Күлкіңнің өзіңе ғана тән әдемілігі бар."
             data-ru="У твоего смеха есть своя особенная красота.">
-            Күлкіңнің өзіне ғана тән әдемілігі бар.
+            Күлкіңнің өзіңе ғана тән әдемілігі бар.
           </div>
 
         </div>
@@ -1541,9 +1548,9 @@ p{
 
           <div
             class="fact-text"
-            data-kk="Өзіңнің ерекше көзқарасың бар."
+            data-kk="Өзіңнің өмірге деген ерекше көзқарасың бар."
             data-ru="У тебя свой особенный взгляд на жизнь.">
-            Өзіңнің ерекше көзқарасың бар.
+            Өзіңнің өмірге деген ерекше көзқарасың бар.
           </div>
 
         </div>
@@ -1865,9 +1872,9 @@ p{
 
           <div
             class="fact-text"
-            data-kk="Жыл өткен сайын жаңа қырың ашылады."
+            data-kk="Жыл өткен сайын жаңа қырларың ашыла бастайды."
             data-ru="С каждым годом в тебе открывается что-то новое.">
-            Жыл өткен сайын жаңа қырың ашылады.
+            Жыл өткен сайын жаңа қырларың ашыла бастайды.
           </div>
 
         </div>
@@ -2980,22 +2987,22 @@ const factCounter =
 
 function renderFacts(){
 
-  factTrack.style.transform =
-    `translateX(-${factIndex * 100}%)`;
+  const slideWidth =
+    document.getElementById("factsWindow").clientWidth;
 
+  factTrack.style.transform =
+    `translate3d(-${factIndex * slideWidth}px, 0, 0)`;
 
   factCounter.textContent =
-
     String(
       factIndex + 1
     ).padStart(2,"0")
-
     +
-
     " / 31";
-
 }
-
+window.addEventListener("resize", () => {
+  renderFacts();
+});
 
 function moveFact(direction){
 
