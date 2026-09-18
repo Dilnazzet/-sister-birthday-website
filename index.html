@@ -40,6 +40,147 @@ body{
 
 
 /* =========================================================
+   BACKGROUND MUSIC — MUSIC 6
+========================================================= */
+
+const backgroundMusic =
+  document.getElementById("backgroundMusic");
+
+const backgroundMusicBtn =
+  document.getElementById("backgroundMusicBtn");
+
+let backgroundEnabled = true;
+
+backgroundMusic.volume = 0.35;
+
+
+function updateBackgroundButton(){
+
+  backgroundMusicBtn.classList.toggle(
+    "playing",
+    !backgroundMusic.paused
+  );
+
+  backgroundMusicBtn.classList.toggle(
+    "paused",
+    backgroundMusic.paused
+  );
+
+}
+
+
+function startBackgroundMusic(){
+
+  if(!backgroundEnabled){
+    return;
+  }
+
+  if(anySongPlaying()){
+    return;
+  }
+
+  const promise =
+    backgroundMusic.play();
+
+  if(promise !== undefined){
+
+    promise
+      .then(()=>{
+        updateBackgroundButton();
+      })
+      .catch(()=>{
+        updateBackgroundButton();
+      });
+
+  }
+
+}
+
+
+function pauseBackgroundMusic(){
+
+  backgroundMusic.pause();
+  updateBackgroundButton();
+
+}
+
+
+function anySongPlaying(){
+
+  return Object.values(audioPlayers)
+    .some(
+      player =>
+        player.audio &&
+        !player.audio.paused
+    );
+
+}
+
+
+function toggleBackgroundMusic(){
+
+  if(backgroundMusic.paused){
+
+    backgroundEnabled = true;
+    startBackgroundMusic();
+
+  }else{
+
+    backgroundEnabled = false;
+    pauseBackgroundMusic();
+
+  }
+
+}
+
+
+backgroundMusic.addEventListener(
+  "play",
+  updateBackgroundButton
+);
+
+backgroundMusic.addEventListener(
+  "pause",
+  updateBackgroundButton
+);
+
+
+/*
+  Браузеры часто блокируют автоматический звук.
+  Поэтому мы сначала пробуем включить music6 сразу,
+  а если браузер запретил — запускаем её при первом
+  обычном нажатии/касании страницы.
+*/
+
+window.addEventListener(
+  "load",
+  ()=>{
+    startBackgroundMusic();
+  }
+);
+
+
+document.addEventListener(
+  "pointerdown",
+  event=>{
+
+    if(
+      event.target.closest(
+        "#backgroundMusicBtn"
+      )
+    ){
+      return;
+    }
+
+    if(!anySongPlaying()){
+      startBackgroundMusic();
+    }
+
+  },
+  {passive:true}
+);
+
+/* =========================================================
    LANGUAGE
 ========================================================= */
 
@@ -633,6 +774,45 @@ p{
 
 
 /* =========================================================
+   BACKGROUND MUSIC — MUSIC 6
+========================================================= */
+
+#backgroundMusic{
+  display:none;
+}
+
+.background-music-btn{
+  position:fixed;
+  left:24px;
+  bottom:24px;
+  z-index:100;
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:rgba(250,248,243,.88);
+  backdrop-filter:blur(10px);
+  color:var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  margin:0;
+  font:500 16px "DM Sans",sans-serif;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(29,28,26,.08);
+}
+
+.background-music-btn.playing{
+  background:var(--black);
+  color:white;
+}
+
+.background-music-btn.paused{
+  opacity:.65;
+}
+
+/* =========================================================
    SONGS / SOUNDTRACK
 ========================================================= */
 
@@ -1110,6 +1290,32 @@ p{
   </button>
 
 </div>
+
+
+<!-- =========================================================
+     BACKGROUND MUSIC — MUSIC 6
+========================================================= -->
+
+<audio
+  id="backgroundMusic"
+  loop
+  preload="auto"
+  aria-hidden="true">
+
+  <source
+    src="music6.mp3"
+    type="audio/mpeg">
+
+</audio>
+
+<button
+  id="backgroundMusicBtn"
+  class="background-music-btn paused"
+  type="button"
+  onclick="toggleBackgroundMusic()"
+  aria-label="Фоновая музыка">
+  ♫
+</button>
 
 
 <!-- =========================================================
@@ -2962,6 +3168,8 @@ function toggleAudio(number){
     currentPlayer.audio.paused
   ){
 
+    pauseBackgroundMusic();
+
     const playPromise =
       currentPlayer.audio.play();
 
@@ -2996,6 +3204,8 @@ function toggleAudio(number){
 
     currentPlayer.button.textContent =
       "▶";
+
+    startBackgroundMusic();
 
   }
 
@@ -3074,6 +3284,8 @@ Object.values(audioPlayers)
 
           player.time.textContent =
             "0:00";
+
+          startBackgroundMusic();
 
         }
       );
