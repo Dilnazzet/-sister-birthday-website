@@ -1122,11 +1122,57 @@ p{
 
 }
 
+
+
+/* =========================================================
+   OPENING SCREEN — DARK WARM EDITORIAL
+========================================================= */
+
+.opening-screen{
+  position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 50% 34%,rgba(128,92,75,.16),transparent 34%),linear-gradient(145deg,#29211e 0%,#211b19 48%,#171413 100%);
+  color:#eee7df; overflow:hidden; cursor:pointer;
+  transition:opacity 1s cubic-bezier(.77,0,.18,1),visibility 1s;
+}
+.opening-screen::before{content:"";position:absolute;inset:22px;border:1px solid rgba(231,220,209,.12);pointer-events:none}
+.opening-screen::after{content:"";position:absolute;width:72vw;height:72vw;max-width:720px;max-height:720px;border:1px solid rgba(180,139,117,.13);border-radius:50%;pointer-events:none}
+.opening-screen.opening{opacity:0;visibility:hidden;pointer-events:none}
+.opening-inner{position:relative;z-index:2;width:min(88vw,520px);padding:36px 28px 38px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.opening-small{margin:0 0 28px;font:500 9px/1.2 "DM Sans",sans-serif;letter-spacing:.34em;text-transform:uppercase;color:rgba(238,231,223,.55)}
+.opening-number{margin:0;font:400 clamp(118px,25vw,172px)/.72 "Cormorant Garamond",serif;letter-spacing:-.07em;color:#eee7df;text-shadow:0 12px 40px rgba(0,0,0,.25)}
+.opening-date{margin:27px 0 28px;font:400 10px/1.5 "DM Sans",sans-serif;letter-spacing:.28em;color:rgba(238,231,223,.48)}
+.opening-divider{width:36px;height:1px;margin-bottom:25px;background:#b89480;opacity:.65}
+.opening-title{margin:0 0 10px;font:500 clamp(25px,6vw,32px)/1.15 "Playfair Display",serif;color:#f1e9e1}
+.opening-subtitle{max-width:310px;margin:0 0 31px;font:400 11px/1.8 "DM Sans",sans-serif;color:rgba(238,231,223,.58)}
+.opening-button{appearance:none;border:1px solid rgba(231,220,209,.28);background:transparent;color:#eee7df;min-width:112px;padding:11px 20px 10px;font:500 8px/1 "DM Sans",sans-serif;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:background .3s ease,border-color .3s ease,transform .3s ease}
+.opening-button:hover{background:rgba(238,231,223,.08);border-color:rgba(231,220,209,.55);transform:translateY(-1px)}
+.opening-hint{position:absolute;left:50%;bottom:3px;transform:translateX(-50%);white-space:nowrap;font:400 8px/1.2 "DM Sans",sans-serif;letter-spacing:.18em;color:rgba(238,231,223,.32);text-transform:uppercase}
+@media(max-width:600px){.opening-screen::before{inset:16px}.opening-inner{width:calc(100vw - 40px);padding:30px 20px 38px}.opening-small{margin-bottom:25px}.opening-title{font-size:27px}.opening-subtitle{font-size:10px;max-width:285px}.opening-button{min-width:108px;padding:10px 18px 9px}}
 </style>
 </head>
 
 
+
 <body>
+
+<!-- =========================================================
+     OPENING SCREEN — TAP TO OPEN
+========================================================= -->
+
+<div id="openingScreen" class="opening-screen" aria-label="Открыть сайт">
+  <div class="opening-inner">
+    <p class="opening-small">19 · 09 · 1995 — ∞</p>
+    <h1 class="opening-number">31</h1>
+    <p class="opening-date">бір өмір · мың естелік</p>
+    <div class="opening-divider"></div>
+    <h2 class="opening-title">Туған күніңмен, жаным, тәтем</h2>
+    <p class="opening-subtitle">әр күнің қуанышқа, әр арманың бақытқа толы болсын. бұл кішкентай әлем — саған.</p>
+    <button id="openGiftButton" class="opening-button" type="button">
+      ашу ♡
+    </button>
+    <span class="opening-hint">саған арналған</span>
+  </div>
+</div>
 
 
 <!-- =========================================================
@@ -2335,7 +2381,7 @@ p{
 
 
         <small
-          data-kk="Сенің бойыңда өте нәзік, жұмсақ әрі ерекше бір қырың бар. Оны бірден байқай бермеуге болады, бірақ дәл осы қасиет сені ерекше етеді. Бұл ән — жарыңның жанында өзіңді еркін сезініп, жұмсарып, сезімдеріңе жай ғана мүмкіндік бере алатын ән туралы."
+          data-kk="Сенің бойыңда өте нәзік, жұмсақ әрі ерекше бір қырың бар. Оны бірден байқай бермеуге болады, бірақ дәл осы қасиет сені ерекше етеді. Бұл ән — біреудің жарыңның өзіңді еркін сезініп, жұмсарып, сезімдеріңе жай ғана мүмкіндік бере алатын ән туралы."
 
           data-ru="Есть в тебе и такая сторона — очень нежная, мягкая и особенная. Та, которую не всегда увидишь сразу, но именно она делает тебя тобой. Эта песня про состояние, когда рядом с мужем можно немного расслабиться, стать мягче и просто позволить себе чувствовать.">
 
@@ -2995,6 +3041,46 @@ const audioPlayers = {
 /* =========================================================
    BACKGROUND MUSIC — MUSIC 6
 ========================================================= */
+
+
+/* =========================================================
+   OPENING SCREEN — START MUSIC FROM USER GESTURE
+========================================================= */
+
+const openingScreen = document.getElementById("openingScreen");
+const openGiftButton = document.getElementById("openGiftButton");
+
+function openBirthdaySite(event){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  backgroundEnabled = true;
+
+  const playPromise = backgroundMusic.play();
+
+  if(playPromise !== undefined){
+    playPromise
+      .then(() => {
+        updateBackgroundButton();
+        openingScreen.classList.add("opening");
+        setTimeout(() => openingScreen.remove(), 800);
+      })
+      .catch(() => {
+        /* If the browser still blocks playback, keep the screen open. */
+        updateBackgroundButton();
+      });
+  }
+}
+
+if(openingScreen){
+  openingScreen.addEventListener("click", openBirthdaySite);
+}
+
+if(openGiftButton){
+  openGiftButton.addEventListener("click", openBirthdaySite);
+}
 
 const backgroundMusic = document.getElementById("backgroundMusic");
 const backgroundMusicBtn = document.getElementById("backgroundMusicBtn");
