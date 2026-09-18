@@ -40,147 +40,6 @@ body{
 
 
 /* =========================================================
-   BACKGROUND MUSIC — MUSIC 6
-========================================================= */
-
-const backgroundMusic =
-  document.getElementById("backgroundMusic");
-
-const backgroundMusicBtn =
-  document.getElementById("backgroundMusicBtn");
-
-let backgroundEnabled = true;
-
-backgroundMusic.volume = 0.35;
-
-
-function updateBackgroundButton(){
-
-  backgroundMusicBtn.classList.toggle(
-    "playing",
-    !backgroundMusic.paused
-  );
-
-  backgroundMusicBtn.classList.toggle(
-    "paused",
-    backgroundMusic.paused
-  );
-
-}
-
-
-function startBackgroundMusic(){
-
-  if(!backgroundEnabled){
-    return;
-  }
-
-  if(anySongPlaying()){
-    return;
-  }
-
-  const promise =
-    backgroundMusic.play();
-
-  if(promise !== undefined){
-
-    promise
-      .then(()=>{
-        updateBackgroundButton();
-      })
-      .catch(()=>{
-        updateBackgroundButton();
-      });
-
-  }
-
-}
-
-
-function pauseBackgroundMusic(){
-
-  backgroundMusic.pause();
-  updateBackgroundButton();
-
-}
-
-
-function anySongPlaying(){
-
-  return Object.values(audioPlayers)
-    .some(
-      player =>
-        player.audio &&
-        !player.audio.paused
-    );
-
-}
-
-
-function toggleBackgroundMusic(){
-
-  if(backgroundMusic.paused){
-
-    backgroundEnabled = true;
-    startBackgroundMusic();
-
-  }else{
-
-    backgroundEnabled = false;
-    pauseBackgroundMusic();
-
-  }
-
-}
-
-
-backgroundMusic.addEventListener(
-  "play",
-  updateBackgroundButton
-);
-
-backgroundMusic.addEventListener(
-  "pause",
-  updateBackgroundButton
-);
-
-
-/*
-  Браузеры часто блокируют автоматический звук.
-  Поэтому мы сначала пробуем включить music6 сразу,
-  а если браузер запретил — запускаем её при первом
-  обычном нажатии/касании страницы.
-*/
-
-window.addEventListener(
-  "load",
-  ()=>{
-    startBackgroundMusic();
-  }
-);
-
-
-document.addEventListener(
-  "pointerdown",
-  event=>{
-
-    if(
-      event.target.closest(
-        "#backgroundMusicBtn"
-      )
-    ){
-      return;
-    }
-
-    if(!anySongPlaying()){
-      startBackgroundMusic();
-    }
-
-  },
-  {passive:true}
-);
-
-/* =========================================================
    LANGUAGE
 ========================================================= */
 
@@ -3131,6 +2990,63 @@ const audioPlayers = {
   }
 
 };
+
+
+/* =========================================================
+   BACKGROUND MUSIC — MUSIC 6
+========================================================= */
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+const backgroundMusicBtn = document.getElementById("backgroundMusicBtn");
+let backgroundEnabled = true;
+
+backgroundMusic.volume = 0.35;
+
+function updateBackgroundButton(){
+  if(!backgroundMusicBtn) return;
+  backgroundMusicBtn.classList.toggle("playing", !backgroundMusic.paused);
+  backgroundMusicBtn.classList.toggle("paused", backgroundMusic.paused);
+}
+
+function anySongPlaying(){
+  return Object.values(audioPlayers).some(player => player.audio && !player.audio.paused);
+}
+
+function startBackgroundMusic(){
+  if(!backgroundEnabled || anySongPlaying() || !backgroundMusic.paused) return;
+
+  const playPromise = backgroundMusic.play();
+  if(playPromise !== undefined){
+    playPromise.then(updateBackgroundButton).catch(updateBackgroundButton);
+  }
+}
+
+function pauseBackgroundMusic(){
+  backgroundMusic.pause();
+  updateBackgroundButton();
+}
+
+function toggleBackgroundMusic(){
+  if(backgroundMusic.paused){
+    backgroundEnabled = true;
+    startBackgroundMusic();
+  }else{
+    backgroundEnabled = false;
+    pauseBackgroundMusic();
+  }
+}
+
+backgroundMusic.addEventListener("play", updateBackgroundButton);
+backgroundMusic.addEventListener("pause", updateBackgroundButton);
+
+window.addEventListener("load", () => {
+  startBackgroundMusic();
+});
+
+document.addEventListener("pointerdown", event => {
+  if(event.target.closest("#backgroundMusicBtn")) return;
+  if(!anySongPlaying()) startBackgroundMusic();
+}, {passive:true});
 
 
 function toggleAudio(number){
